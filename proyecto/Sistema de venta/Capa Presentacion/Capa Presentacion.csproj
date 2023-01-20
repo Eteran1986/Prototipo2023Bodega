@@ -76,6 +76,12 @@
     <Compile Include="Agregar\FrmAgregarProveedor.Designer.cs">
       <DependentUpon>FrmAgregarProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editar\FrmEditarEmpresa1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar\FrmEditarEmpresa1.Designer.cs">
+      <DependentUpon>FrmEditarEmpresa1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Front-End\FrmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Agregar\FrmAgregarEmpresa.resx">
       <DependentUpon>FrmAgregarEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar\FrmEditarEmpresa1.resx">
+      <DependentUpon>FrmEditarEmpresa1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>

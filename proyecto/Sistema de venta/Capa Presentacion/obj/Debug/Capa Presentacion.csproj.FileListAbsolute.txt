@@ -29,3 +29,34 @@ E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Pre
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmEditarCliente.resources
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmEmpresa.resources
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmAgregarEmpresa.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\Capa Presentacion.exe.config
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\Capa Presentacion.exe
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\Capa Presentacion.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\Capa Dominio.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\Capa Entidad.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\CapaDatos.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\Capa Dominio.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\Capa Entidad.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\bin\Debug\CapaDatos.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.csproj.AssemblyReference.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.csproj.SuggestedBindingRedirects.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmAgregarEmpresa.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FormBase.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmAgregarCliente.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmAgregarProducto.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmAgregarProveedor.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmClientes.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmEditarCliente.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmEditarProducto.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmEditarProveedor.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmEmpresa.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmInventario.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmPrincipal.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmProductos.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmProveedores.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.Properties.Resources.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.csproj.GenerateResource.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.csproj.CoreCompileInputs.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.csproj.CopyComplete
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.exe
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.pdb

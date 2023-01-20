@@ -4,3 +4,9 @@ E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Ent
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Entidad\obj\Debug\Capa Entidad.csproj.CoreCompileInputs.cache
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Entidad\obj\Debug\Capa Entidad.dll
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB\proyecto\Sistema de venta\Capa Entidad\obj\Debug\Capa Entidad.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Entidad\bin\Debug\Capa Entidad.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Entidad\bin\Debug\Capa Entidad.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Entidad\obj\Debug\Capa Entidad.csproj.AssemblyReference.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Entidad\obj\Debug\Capa Entidad.csproj.CoreCompileInputs.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Entidad\obj\Debug\Capa Entidad.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Entidad\obj\Debug\Capa Entidad.pdb
