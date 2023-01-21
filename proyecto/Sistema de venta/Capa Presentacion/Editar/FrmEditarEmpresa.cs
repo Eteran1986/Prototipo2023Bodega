@@ -7,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_Dominio; //se agregaron
-using Capa_Entidad; // se agregaron
-using System.IO; // Se agregaron
-
+using Capa_Dominio;//se agregaron
+using Capa_Entidad;//se agregaron
+using System.IO;//se agregaron
 
 namespace Capa_Presentacion
 {
-    public partial class FrmAgregarEmpresa : FormBase
+    public partial class FrmEditarEmpresa : FormBase
     {
-        public FrmAgregarEmpresa(FrmEmpresa Empresa)
+        public FrmEditarEmpresa(FrmEmpresa Empresas)
         {
             InitializeComponent();
         }
@@ -25,7 +24,8 @@ namespace Capa_Presentacion
         CDo_Empresas Empresas = new CDo_Empresas();
         CE_Empresas Empresa = new CE_Empresas();
         //perimte las carpetas agregar nuestras imagenes en empresas
-        OpenFileDialog examinar = new OpenFileDialog(); 
+        OpenFileDialog examinar = new OpenFileDialog();
+        internal object PtbLogo;
 
         public delegate void UpdateDelegate(object sender, UpdatedEventArgs args);
         public event UpdateDelegate UpdatedEventHandler;
@@ -35,13 +35,13 @@ namespace Capa_Presentacion
             public string Data { get; set; }
         }
 
-        protected void Agregar()
+        protected void Actualizar()
         {
             UpdatedEventArgs args = new UpdatedEventArgs();
             UpdatedEventHandler.Invoke(this, args);
         }
 
-        private void FrmAgregarEmpresa_Load(object sender, EventArgs e)
+        private void FrmEditarEmpresa1_Load(object sender, EventArgs e)
         {
 
         }
@@ -50,7 +50,7 @@ namespace Capa_Presentacion
         {
             examinar.Filter = "image files|*.jpg;*.png;*.gif;*.ico;.*;";
             DialogResult Dres = examinar.ShowDialog();
-            if(Dres == DialogResult.Abort)
+            if (Dres == DialogResult.Abort)
             {
                 return;
             }
@@ -59,7 +59,7 @@ namespace Capa_Presentacion
                 return;
             }
             TxtExaminar.Text = examinar.FileName;
-            PtbLogoAgregar.Image= Image.FromFile(examinar.FileName);
+            PtbLogoAgregar.Image = Image.FromFile(examinar.FileName);
         }
 
         private void TxtNomEmpresa_KeyPress(object sender, KeyPressEventArgs e)
@@ -107,22 +107,22 @@ namespace Capa_Presentacion
             }
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            Guardar();
+            Editar();
         }
-
-        public override bool Guardar()
+        public override void Editar()
         {
             try
             {
                 if (TxtNomEmpresa.Text == "" || TxtRUCEmpresa.Text == "" || TxtDirEmpresa.Text == "" ||
                     MtxtTelefonoEmpresa.Text == "" || TxtEmailEmpresa.Text == "")
                 {
-                    MessageBox.Show("Debe de completar los campos : ", "Agregar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe de completar los campos : ", "Editar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
+                    Empresa.ID_Empresa = Convert.ToInt32(TxtIDEmpresa.Text);
                     Empresa.Nombre = TxtNomEmpresa.Text.Trim();
                     Empresa.RUC_Empresa = TxtRUCEmpresa.Text.Trim();
                     Empresa.Direccion = TxtDirEmpresa.Text.Trim();
@@ -135,22 +135,16 @@ namespace Capa_Presentacion
 
                     Empresa.Nombre = TxtNomEmpresa.Text.Trim();
 
-                    Empresas.AgregarEmpresa(Empresa);
-                    MessageBox.Show("La empresa fue agregado con exito", "Agregar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Procedimientos.LimpiarTexto(this);
-                    MtxtTelefonoEmpresa.Text = string.Empty;
-                    TxtNomEmpresa.Focus();
-                    PtbLogoAgregar.Image = Properties.Resources.sinlogo;
-                    Agregar();
-                    return true;
-
+                    Empresas.EditarEmpresa(Empresa);
+                    MessageBox.Show("La empresa fue modificada con exito", "Editar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Actualizar();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("La empresa no fue agregada por : " + ex.Message, "Agregar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("La empresa no fue modificada por : " + ex.Message, "Editar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return false;
+
         }
     }
 }

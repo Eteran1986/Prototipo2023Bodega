@@ -42,7 +42,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(1045, 383);
+            this.btnCancelar.Location = new System.Drawing.Point(879, 383);
             // 
             // btnEditar
             // 
@@ -58,6 +58,7 @@
             this.btnEditar.TabIndex = 22;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -73,6 +74,7 @@
             this.btnEliminar.TabIndex = 21;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -89,6 +91,7 @@
             this.btnNuevo.TabIndex = 20;
             this.btnNuevo.Text = "Agregar";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // dataGridView1
             // 
@@ -123,7 +126,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(973, 299);
+            this.dataGridView1.Size = new System.Drawing.Size(987, 299);
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
@@ -133,9 +136,9 @@
             this.PtbLogo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.PtbLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PtbLogo.Image = global::Capa_Presentacion.Properties.Resources.sinlogo;
-            this.PtbLogo.Location = new System.Drawing.Point(991, 12);
+            this.PtbLogo.Location = new System.Drawing.Point(640, 317);
             this.PtbLogo.Name = "PtbLogo";
-            this.PtbLogo.Size = new System.Drawing.Size(174, 141);
+            this.PtbLogo.Size = new System.Drawing.Size(211, 96);
             this.PtbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PtbLogo.TabIndex = 23;
             this.PtbLogo.TabStop = false;
@@ -144,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 425);
+            this.ClientSize = new System.Drawing.Size(1011, 425);
             this.Controls.Add(this.PtbLogo);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);

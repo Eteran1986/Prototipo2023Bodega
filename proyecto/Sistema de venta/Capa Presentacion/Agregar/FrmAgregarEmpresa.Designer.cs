@@ -64,6 +64,7 @@
             this.btnGuardar.TabIndex = 27;
             this.btnGuardar.Text = "Agregar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // TxtEmailEmpresa
             // 
@@ -74,6 +75,7 @@
             this.TxtEmailEmpresa.Name = "TxtEmailEmpresa";
             this.TxtEmailEmpresa.Size = new System.Drawing.Size(243, 25);
             this.TxtEmailEmpresa.TabIndex = 26;
+            this.TxtEmailEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtEmailEmpresa_KeyPress);
             // 
             // label6
             // 
@@ -94,6 +96,7 @@
             this.TxtDirEmpresa.Name = "TxtDirEmpresa";
             this.TxtDirEmpresa.Size = new System.Drawing.Size(376, 25);
             this.TxtDirEmpresa.TabIndex = 24;
+            this.TxtDirEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDirEmpresa_KeyPress);
             // 
             // label4
             // 
@@ -114,6 +117,7 @@
             this.TxtRUCEmpresa.Name = "TxtRUCEmpresa";
             this.TxtRUCEmpresa.Size = new System.Drawing.Size(180, 25);
             this.TxtRUCEmpresa.TabIndex = 22;
+            this.TxtRUCEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRUCEmpresa_KeyPress);
             // 
             // label3
             // 
@@ -142,10 +146,9 @@
             this.TxtNomEmpresa.Location = new System.Drawing.Point(12, 32);
             this.TxtNomEmpresa.Multiline = true;
             this.TxtNomEmpresa.Name = "TxtNomEmpresa";
-            this.TxtNomEmpresa.ReadOnly = true;
             this.TxtNomEmpresa.Size = new System.Drawing.Size(173, 25);
             this.TxtNomEmpresa.TabIndex = 19;
-            this.TxtNomEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TxtNomEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNomEmpresa_KeyPress);
             // 
             // MtxtTelefonoEmpresa
             // 
@@ -156,6 +159,7 @@
             this.MtxtTelefonoEmpresa.Name = "MtxtTelefonoEmpresa";
             this.MtxtTelefonoEmpresa.Size = new System.Drawing.Size(115, 26);
             this.MtxtTelefonoEmpresa.TabIndex = 29;
+            this.MtxtTelefonoEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MtxtTelefonoEmpresa_KeyPress);
             // 
             // label5
             // 

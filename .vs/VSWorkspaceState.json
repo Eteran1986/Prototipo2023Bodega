@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\proyecto",
+    "\\proyecto\\Sistema de venta",
+    "\\proyecto\\Sistema de venta\\Capa Presentacion",
+    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End"
   ],
+  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End\\FrmPrincipal.cs",
   "PreviewInSolutionExplorer": false
 }
