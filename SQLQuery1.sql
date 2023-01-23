@@ -86,6 +86,33 @@ create table Empresas
 )
 go
 
+--TABLA INGRESAR PRODUCTO
+create table Ingreso_Producto
+(
+	ID_Ingreso int identity(1,1) primary key not null,
+	Id_Proveedor int not null,
+	Fecha_Ingreso date not null,
+	Comprobante varchar(20) not null,
+	Monto_Total decimal (12,2) not null,
+	Estado varchar (10) not null
+)
+go
+
+--DETALLE INGRESO
+create table Detalle_Producto
+(
+	ID_Detalle int identity(1,1) primary key not null,
+	Id_Ingreso int not null,
+	Id_Producto int not null,
+	--Nombre varchar(100) not null,
+	Cantidad int not null,
+	Fecha_caducidad date not null,
+	Costo_Unitario decimal (12,2) not null,
+	Sub_Total decimal (12,2) not null,
+)
+go
+
+
 
 
 
@@ -128,9 +155,11 @@ create proc EditarProducto
 @Precio_Venta decimal(10,2),
 @Tipo_Cargo varchar(10)
 as
-update Productos set Codigo=@Codigo, Nombre=@Nombre,Descripcion=@Descripcion,
-Presentacion=@Presentacion,Costo_Unitario=@Costo_Unitario,
-Precio_venta=@Precio_venta,Tipo_Cargo=@Tipo_Cargo where ID_Producto=@ID_Producto
+update Productos 
+set Codigo=@Codigo, Nombre=@Nombre,Descripcion=@Descripcion,
+	Presentacion=@Presentacion,Costo_Unitario=@Costo_Unitario,
+	Precio_venta=@Precio_venta,Tipo_Cargo=@Tipo_Cargo 
+where ID_Producto=@ID_Producto
 go
 
 --eliminar Producto
@@ -139,6 +168,9 @@ create proc EliminarProducto
 as
 delete from Productos where ID_Producto=@ID_Producto
 go
+
+
+
 
 --************************************PROVEEDOR**************************
 --Crear Proveedor
@@ -164,8 +196,10 @@ create proc EditarProveedor
 @Telefono varchar(15),
 @Email varchar(50)
 as
-update Proveedores set Codigo=@Codigo, Nombre=@Nombre,RUC_Proveedor=@RUC_Proveedor,
-Direccion=@Direccion,Telefono=@Telefono,Email=@Email where ID_Proveedor=@ID_Proveedor
+update Proveedores 
+set Codigo=@Codigo, Nombre=@Nombre,RUC_Proveedor=@RUC_Proveedor,
+	Direccion=@Direccion,Telefono=@Telefono,Email=@Email 
+where ID_Proveedor=@ID_Proveedor
 go
 
 --eliminar Proveedor 
@@ -201,8 +235,10 @@ create proc EditarCliente
 @Email varchar(50),
 @Estado varchar(10)
 as
-update Clientes set Codigo=@Codigo, Nombre=@Nombre,RUC_Cliente=@RUC_Cliente,
-Direccion=@Direccion,Telefono=@Telefono,Email=@Email, Estado=@Estado 
+update Clientes 
+set Codigo=@Codigo, Nombre=@Nombre,RUC_Cliente=@RUC_Cliente,
+	Direccion=@Direccion,Telefono=@Telefono,Email=@Email, 
+	Estado=@Estado 
 where ID_Cliente=@ID_Cliente
 go
 
@@ -238,8 +274,9 @@ create proc EditarEmpresa
 @Email varchar(50),
 @Logo image
 as
-update Empresas set Nombre=@Nombre,RUC_Empresa=@RUC_Empresa,
-Direccion=@Direccion,Telefono=@Telefono,Email=@Email, Logo=@Logo 
+update Empresas 
+set Nombre=@Nombre,RUC_Empresa=@RUC_Empresa,Direccion=@Direccion,
+	Telefono=@Telefono,Email=@Email, Logo=@Logo 
 where ID_Empresa=@ID_Empresa
 go
 
@@ -250,7 +287,82 @@ as
 delete from Empresas where ID_Empresa=@ID_Empresa
 go
 
+---------------------------------------------------------------------------------------------------------
+--****************************************Producto********************************************
+---Ingreso de productos
+create proc Agregar_Ing_Producto
+@ID_Ingreso int,
+@Id_Proveedor int,
+@Fecha_Ingreso date,
+@Comprobante varchar(20),
+@Monto_Total decimal (12,2),
+@Estado varchar (10)
+as
+Insert into Ingreso_Producto 
+	(Id_Proveedor,Fecha_Ingreso, Comprobante, Monto_Total, Estado)
+Values(@Id_Proveedor,@Fecha_Ingreso, @Comprobante, @Monto_Total, @Estado)
+go
 
+---Anular Ingreso de productos
+create proc Anular_Ing_Producto
+@ID_Ingreso int,
+@Id_Proveedor int,
+@Fecha_Ingreso date,
+@Comprobante varchar(20),
+@Monto_Total decimal (12,2),
+@Estado varchar (10)
+as
+Update Ingreso_Producto 
+Set Id_Proveedor=@Id_Proveedor, Fecha_Ingreso=@Fecha_Ingreso,
+	Comprobante= @Comprobante, Monto_Total= @Monto_Total,
+	Estado=@Estado
+where ID_Ingreso=@ID_Ingreso
+
+go
+
+----------Agregar detalle producto
+create proc Agregar_Det_Ingreso
+@Id_Ingreso int,
+@Id_Producto int,
+--Nombre varchar(100) not null,
+@Cantidad int,
+@Fecha_caducidad date,
+@Costo_Unitario decimal (12,2),
+@Sub_Total decimal (12,2)
+as
+Insert into Detalle_Producto	
+			(Id_Ingreso,Id_Producto,Cantidad,
+			 Fecha_caducidad,Costo_Unitario,Sub_Total)
+values	(@Id_Ingreso,@Id_Producto,@Cantidad,@Fecha_caducidad,
+		 @Costo_Unitario,@Sub_Total)
+
+go
+
+----------Anular detalle producto
+create proc Anular_Det_Producto
+@ID_Detalle int,
+@Id_Ingreso int,
+@Id_Producto int,
+--Nombre varchar(100) not null,
+@Cantidad int,
+@Fecha_caducidad date,
+@Costo_Unitario decimal (12,2),
+@Sub_Total decimal (12,2)
+as
+Update Detalle_Producto
+Set Id_Ingreso=@Id_Ingreso,Id_Producto=@Id_Producto,
+	Fecha_caducidad=@Fecha_caducidad,
+	Costo_Unitario=@Costo_Unitario,Sub_Total=@Sub_Total
+Where ID_Detalle=@ID_Detalle
+go
+
+----Mostrar detalles de los Ingreso
+create proc Mostrar_Ingreso
+as
+select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+				  From Ingreso_Producto Ing inner join Proveedores Pro
+				  on Ing.Id_Proveedor=Pro.ID_Proveedor
+go
 
 
 
@@ -347,6 +459,37 @@ select * from Empresas where RUC_Empresa like @Buscar + '%'
 go
 
 
+--------------------------------------------------------------------------------------------------------------------------------------
+---****************************************************** BUSQUEDA DE PRODUCTOS MEDIANTE EL INGRESO********************************************
+--Buscar Ingreso de los productos por proveedores
+create proc Buscar_IngrProd_Proveedor
+@Buscar nvarchar(100)
+as
+select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+				  From Ingreso_Producto Ing inner join Proveedores Pro
+				  on Ing.Id_Proveedor=Pro.ID_Proveedor
+where Nombre like @Buscar + '%' 
+go
+
+--Buscar Ingreso de los productos por fecha
+create proc Buscar_IngrProd_Fecha
+@Buscar nvarchar(100)
+as
+select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+				  From Ingreso_Producto Ing inner join Proveedores Pro
+				  on Ing.Id_Proveedor=Pro.ID_Proveedor
+where Fecha_Ingreso like @Buscar + '%' 
+go
+
+--Buscar Ingreso de los productos por comprobante
+create proc Buscar_IngrProd_Comprobante
+@Buscar nvarchar(100)
+as
+select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+				  From Ingreso_Producto Ing inner join Proveedores Pro
+				  on Ing.Id_Proveedor=Pro.ID_Proveedor
+where Comprobante like @Buscar + '%' 
+go
 
 
 
@@ -386,6 +529,28 @@ values(@ID_Inventario,@Codigo, @Nombre, @Cantidad,@Costo_Unitario, @Precio_Venta
 @Tipo_Cargo)
 go
 
+--TABLA PRODUCTOS ACTUALIZAR INVENTARIO
+
+Create Trigger Tr_Editar_producto_inv
+on Productos for Update
+as
+Set nocount on
+declare @ID_Inventario int
+declare @Codigo varchar (15)
+declare @Nombre varchar (50)
+declare @Cantidad int
+declare @Costo_Unitario decimal(10,2)
+declare @Precio_Venta decimal(10,2)
+declare @Monto_Total decimal(10,2)
+declare @Tipo_Cargo varchar (10)
+select @ID_Inventario=ID_Producto,@Codigo=Codigo, @Nombre=Nombre,@Costo_Unitario=Costo_Unitario,
+		@Precio_Venta=Precio_venta,	@Tipo_Cargo=Tipo_Cargo from inserted
+select @Cantidad=Cantidad from Inventarios where ID_Inventario=@ID_Inventario
+update Inventarios set inventarios.Codigo=@Codigo,inventarios.Nombre=@Nombre,inventarios.Costo_Unitario=@Costo_Unitario,
+inventarios.Precio_venta=@Precio_Venta,inventarios.Monto_Total=(@Cantidad-@Costo_Unitario),inventarios.Tipo_Cargo=@Tipo_Cargo
+where ID_Inventario=@ID_Inventario
+go
+
 --Trigger para eliminar productos en la tabla inventario
 Create Trigger Tr_Eliminar_producto_inv
 on Productos for delete
@@ -398,6 +563,48 @@ Delete from Inventarios where ID_Inventario=@ID_Inventario
 go
 
 
+---Agregar los productos al inventario
+create trigger Tr_Balan_Productos_Inv
+on Detalle_Producto for insert --detalle ingreso
+as
+set nocount on
+declare @ID_Inventario int
+declare @Cantidad int
+declare @Stock_Actual int
+declare @Costo_Unitario decimal(12,2)
+declare @Monto_Total decimal(12,2)
+declare @Balance_Actual decimal(12,2) 
+Select	@ID_Inventario=Id_Producto, @Cantidad=Cantidad, @Costo_Unitario =Costo_Unitario, @Monto_Total=(@Cantidad*@Costo_Unitario) From inserted
+Select  @Stock_Actual=Cantidad, @Balance_Actual=Monto_Total From Inventarios where ID_Inventario=@ID_Inventario
+update Inventarios set Inventarios.Cantidad=@Cantidad + @Stock_Actual, Inventarios.Monto_Total = @Monto_Total + @Balance_Actual
+where Inventarios.ID_Inventario=@ID_Inventario
+go
+
+
+---disminuir los productos al ingreso de los inventario "cuando se anule una compra"
+create trigger Reducir_Productos_Inv
+on Detalle_Producto for update --detalle ingreso
+as
+set nocount on
+declare @ID_Inventario int
+declare @Cantidad int
+declare @Stock_Actual int
+declare @Costo_Unitario decimal(12,2)
+declare @Monto_Total decimal(12,2)
+declare @Balance_Actual decimal(12,2) 
+Select	@ID_Inventario=Id_Producto, @Cantidad=Cantidad From inserted
+Select  @Stock_Actual=Cantidad, @Costo_Unitario=Costo_Unitario, @Balance_Actual=Monto_Total From Inventarios where ID_Inventario=@ID_Inventario
+update Inventarios set Inventarios.Cantidad=@Stock_Actual -@Cantidad, Inventarios.Monto_Total = @Balance_Actual - (@Cantidad*@Costo_Unitario)
+where Inventarios.ID_Inventario=@ID_Inventario
+go
+
+
+
+
+
+
+
+
 
 
 -------------------------------------------------------CONSULTA DE LAS TABLAS-------------------------------------------------
@@ -408,3 +615,4 @@ SELECT * FROM Inventarios
 SELECT * FROM Productos
 SELECT * FROM Proveedores
 SELECT * FROM Clientes
+SELECT * FROM Empresas
