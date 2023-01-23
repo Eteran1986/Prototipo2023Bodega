@@ -168,7 +168,7 @@ namespace Capa_Presentacion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Debe seleccionar un registro para eliminar", "Eliminar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe seleccionar un registro para eliminar" +ex, "Eliminar Empresa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
