@@ -44,9 +44,11 @@
   <ItemGroup>
     <Compile Include="CDo_Clientes.cs" />
     <Compile Include="CDo_Empresas.cs" />
+    <Compile Include="CDo_IngresoProducto.cs" />
     <Compile Include="CDo_Procedimientos.cs" />
     <Compile Include="CDo_Productos.cs" />
     <Compile Include="CDo_Proveedores.cs" />
+    <Compile Include="CDo_DetalleIngreso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

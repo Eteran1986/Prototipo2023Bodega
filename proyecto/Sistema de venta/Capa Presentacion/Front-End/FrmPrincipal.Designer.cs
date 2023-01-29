@@ -37,6 +37,7 @@
             this.gestiónClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventarioToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,10 +124,20 @@
             // 
             // gestiónComprasToolStripMenuItem
             // 
+            this.gestiónComprasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.comprasToolStripMenuItem});
             this.gestiónComprasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.Compras;
             this.gestiónComprasToolStripMenuItem.Name = "gestiónComprasToolStripMenuItem";
             this.gestiónComprasToolStripMenuItem.Size = new System.Drawing.Size(157, 28);
             this.gestiónComprasToolStripMenuItem.Text = "Gestión Compras";
+            // 
+            // comprasToolStripMenuItem
+            // 
+            this.comprasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.smartphone;
+            this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.comprasToolStripMenuItem.Text = "Compras";
+            this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
             // inventarioToolStripMenuItem
             // 
@@ -166,7 +177,7 @@
             // 
             this.empresasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.empresa;
             this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(144, 30);
             this.empresasToolStripMenuItem.Text = "Empresas";
             this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
             // 
@@ -258,6 +269,7 @@
         private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empresasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
     }
 }
 

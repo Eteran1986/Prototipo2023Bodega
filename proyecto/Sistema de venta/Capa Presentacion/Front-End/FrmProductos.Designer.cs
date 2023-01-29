@@ -44,7 +44,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(1108, 408);
+            this.btnCancelar.Location = new System.Drawing.Point(1108, 385);
             // 
             // dataGridView1
             // 
@@ -74,12 +74,12 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 78);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 39);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1216, 324);
+            this.dataGridView1.Size = new System.Drawing.Size(1216, 340);
             this.dataGridView1.TabIndex = 1;
             // 
             // btnNuevo
@@ -90,7 +90,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.Image = global::Capa_Presentacion.Properties.Resources.agregar;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(12, 408);
+            this.btnNuevo.Location = new System.Drawing.Point(12, 396);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnNuevo.Size = new System.Drawing.Size(120, 30);
@@ -107,7 +107,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Image = global::Capa_Presentacion.Properties.Resources.eliminar;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(138, 408);
+            this.btnEliminar.Location = new System.Drawing.Point(138, 396);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(120, 30);
             this.btnEliminar.TabIndex = 3;
@@ -123,7 +123,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.Image = global::Capa_Presentacion.Properties.Resources.editar;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(264, 408);
+            this.btnEditar.Location = new System.Drawing.Point(264, 396);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(120, 30);
             this.btnEditar.TabIndex = 4;
@@ -136,7 +136,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(613, 33);
+            this.label1.Location = new System.Drawing.Point(613, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 5;
@@ -151,7 +151,7 @@
             "Código",
             "Nombre",
             "Descripción"});
-            this.CboTipoBusqueda.Location = new System.Drawing.Point(684, 32);
+            this.CboTipoBusqueda.Location = new System.Drawing.Point(684, 12);
             this.CboTipoBusqueda.Name = "CboTipoBusqueda";
             this.CboTipoBusqueda.Size = new System.Drawing.Size(149, 21);
             this.CboTipoBusqueda.TabIndex = 6;
@@ -160,7 +160,7 @@
             // 
             this.TxtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtBuscar.BackColor = System.Drawing.Color.GhostWhite;
-            this.TxtBuscar.Location = new System.Drawing.Point(839, 32);
+            this.TxtBuscar.Location = new System.Drawing.Point(839, 12);
             this.TxtBuscar.Multiline = true;
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(389, 20);
@@ -171,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 450);
+            this.ClientSize = new System.Drawing.Size(1240, 427);
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.CboTipoBusqueda);
             this.Controls.Add(this.label1);

@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="CD_Clientes.cs" />
     <Compile Include="CD_Conexion.cs" />
+    <Compile Include="CD_DetalleIngreso.cs" />
     <Compile Include="CD_Empresas.cs" />
+    <Compile Include="CD_IngresoProducto.cs" />
     <Compile Include="CD_Procedimientos.cs" />
     <Compile Include="CD_Productos.cs" />
     <Compile Include="CD_Proveedores.cs" />

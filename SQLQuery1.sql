@@ -90,6 +90,7 @@ go
 create table Ingreso_Producto
 (
 	ID_Ingreso int identity(1,1) primary key not null,
+	No_Ingreso varchar(15) not null,
 	Id_Proveedor int not null,
 	Fecha_Ingreso date not null,
 	Comprobante varchar(20) not null,
@@ -291,7 +292,7 @@ go
 --****************************************Producto********************************************
 ---Ingreso de productos
 create proc Agregar_Ing_Producto
-@ID_Ingreso int,
+@No_Ingreso varchar(15),
 @Id_Proveedor int,
 @Fecha_Ingreso date,
 @Comprobante varchar(20),
@@ -299,13 +300,14 @@ create proc Agregar_Ing_Producto
 @Estado varchar (10)
 as
 Insert into Ingreso_Producto 
-	(Id_Proveedor,Fecha_Ingreso, Comprobante, Monto_Total, Estado)
-Values(@Id_Proveedor,@Fecha_Ingreso, @Comprobante, @Monto_Total, @Estado)
+	(No_Ingreso, Id_Proveedor,Fecha_Ingreso, Comprobante, Monto_Total, Estado)
+Values(@No_Ingreso, @Id_Proveedor,@Fecha_Ingreso, @Comprobante, @Monto_Total, @Estado)
 go
 
 ---Anular Ingreso de productos
 create proc Anular_Ing_Producto
 @ID_Ingreso int,
+@No_Ingreso varchar(15),
 @Id_Proveedor int,
 @Fecha_Ingreso date,
 @Comprobante varchar(20),
@@ -313,7 +315,7 @@ create proc Anular_Ing_Producto
 @Estado varchar (10)
 as
 Update Ingreso_Producto 
-Set Id_Proveedor=@Id_Proveedor, Fecha_Ingreso=@Fecha_Ingreso,
+Set No_Ingreso=@No_Ingreso, Id_Proveedor=@Id_Proveedor, Fecha_Ingreso=@Fecha_Ingreso,
 	Comprobante= @Comprobante, Monto_Total= @Monto_Total,
 	Estado=@Estado
 where ID_Ingreso=@ID_Ingreso
@@ -356,19 +358,23 @@ Set Id_Ingreso=@Id_Ingreso,Id_Producto=@Id_Producto,
 Where ID_Detalle=@ID_Detalle
 go
 
-----Mostrar detalles de los Ingreso
+----Mostrar detalles de los Ingreso proveedor
 create proc Mostrar_Ingreso
 as
-select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+select ing.ID_Ingreso, ing.Id_Proveedor, ing.No_Ingreso ,Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
 go
 
-
-
-
-
-
+--Mostrar Detalles de ingresos
+create proc MostrarDetalleIngresos
+@Id_Ingreso int
+as
+Select DETPRO.ID_Detalle, DETPRO.Id_Ingreso, DETPRO.Id_Producto, PRO.Nombre, DETPRO.Cantidad,DETPRO.Costo_Unitario, 
+(DETPRO.Cantidad * DETPRO.Costo_Unitario) as 'SUB_TOTAL', DETPRO.Fecha_caducidad
+From Detalle_Producto DETPRO inner join Productos PRO on DETPRO.Id_Producto=PRO.ID_Producto
+Where Id_Ingreso=@Id_Ingreso
+go
 
 
 
@@ -465,7 +471,7 @@ go
 create proc Buscar_IngrProd_Proveedor
 @Buscar nvarchar(100)
 as
-select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
 where Nombre like @Buscar + '%' 
@@ -475,7 +481,7 @@ go
 create proc Buscar_IngrProd_Fecha
 @Buscar nvarchar(100)
 as
-select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
 where Fecha_Ingreso like @Buscar + '%' 
@@ -485,7 +491,7 @@ go
 create proc Buscar_IngrProd_Comprobante
 @Buscar nvarchar(100)
 as
-select Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
+select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
 where Comprobante like @Buscar + '%' 
@@ -616,3 +622,9 @@ SELECT * FROM Productos
 SELECT * FROM Proveedores
 SELECT * FROM Clientes
 SELECT * FROM Empresas
+SELECT * FROM Detalle_Producto 
+SELECT * FROM Ingreso_Producto
+
+SELECT PRO.Nombre, PROVEE.Nombre, DETPRO.Fecha_caducidad
+FROM Detalle_Producto DETPRO, Productos PRO, Ingreso_Producto ING, Proveedores PROVEE  
+where DETPRO.Id_Producto=pro.ID_Producto AND ING.Id_Proveedor=PROVEE.ID_Proveedor 

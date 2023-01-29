@@ -62,5 +62,11 @@ namespace Capa_Presentacion
             FrmEmpresa Empresa = new FrmEmpresa();
             Empresa.ShowDialog();
         }
+
+        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCompras Compra = new FrmCompras();
+            Compra.ShowDialog();
+        }
     }
 }

@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormBase.cs">
+    <Compile Include="Vistas\FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBase.Designer.cs">
+    <Compile Include="Vistas\FormBase.Designer.cs">
       <DependentUpon>FormBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Agregar\FrmAgregarCliente.cs">
@@ -81,6 +81,36 @@
     </Compile>
     <Compile Include="Editar\FrmEditarEmpresa.Designer.cs">
       <DependentUpon>FrmEditarEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agregar\FrmAgregarIngresoPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregar\FrmAgregarIngresoPro.Designer.cs">
+      <DependentUpon>FrmAgregarIngresoPro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anular\FrmAnularIngresoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anular\FrmAnularIngresoProducto.Designer.cs">
+      <DependentUpon>FrmAnularIngresoProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaProducto.Designer.cs">
+      <DependentUpon>FrmVistaProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaProveedor.Designer.cs">
+      <DependentUpon>FrmVistaProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Front-End\FrmCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Front-End\FrmCompras.Designer.cs">
+      <DependentUpon>FrmCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="Front-End\FrmClientes.cs">
       <SubType>Form</SubType>
@@ -144,7 +174,7 @@
     <EmbeddedResource Include="Editar\FrmEditarEmpresa.resx">
       <DependentUpon>FrmEditarEmpresa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormBase.resx">
+    <EmbeddedResource Include="Vistas\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Agregar\FrmAgregarCliente.resx">
@@ -155,6 +185,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Agregar\FrmAgregarProveedor.resx">
       <DependentUpon>FrmAgregarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agregar\FrmAgregarIngresoPro.resx">
+      <DependentUpon>FrmAgregarIngresoPro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Anular\FrmAnularIngresoProducto.resx">
+      <DependentUpon>FrmAnularIngresoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FrmVistaProducto.resx">
+      <DependentUpon>FrmVistaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FrmVistaProveedor.resx">
+      <DependentUpon>FrmVistaProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Front-End\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
@@ -167,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editar\FrmEditarProveedor.resx">
       <DependentUpon>FrmEditarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Front-End\FrmCompras.resx">
+      <DependentUpon>FrmCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Front-End\FrmEmpresa.resx">
       <DependentUpon>FrmEmpresa.cs</DependentUpon>
@@ -275,6 +320,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\agregar foto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-tocar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\impresora2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\impresora21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smartphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscardor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

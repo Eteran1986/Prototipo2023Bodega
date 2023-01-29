@@ -124,7 +124,7 @@ namespace Capa_Presentacion
                 }
                 else
                 {
-                    producto.ID_Producto = Convert.ToInt32(txtID_Prodcutos.Text.Trim());
+                    producto.ID_Producto = Convert.ToInt32(txtID_Productos.Text.Trim());
                     producto.Codigo = txtCodProducto.Text.Trim();
                     producto.Nombre = txtNomProducto.Text.Trim();
                     producto.Descripcion = txtDescripcionProducto.Text.Trim();

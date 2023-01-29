@@ -87,7 +87,7 @@ namespace Capa_Presentacion
                     {
                         FrmEditarProducto editarProducto = new FrmEditarProducto(this);
                         editarProducto.UpdatedEventHandler += EdPro_UpdateEventHandler;
-                        editarProducto.txtID_Prodcutos.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                        editarProducto.txtID_Productos.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
                         editarProducto.txtCodProducto.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                         editarProducto.txtNomProducto.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                         editarProducto.txtDescripcionProducto.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();

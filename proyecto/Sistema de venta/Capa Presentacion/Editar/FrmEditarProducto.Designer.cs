@@ -42,7 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodProducto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtID_Prodcutos = new System.Windows.Forms.TextBox();
+            this.txtID_Productos = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -213,18 +213,18 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Cod. Producto";
             // 
-            // txtID_Prodcutos
+            // txtID_Productos
             // 
-            this.txtID_Prodcutos.BackColor = System.Drawing.Color.Beige;
-            this.txtID_Prodcutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID_Prodcutos.Location = new System.Drawing.Point(119, 6);
-            this.txtID_Prodcutos.Multiline = true;
-            this.txtID_Prodcutos.Name = "txtID_Prodcutos";
-            this.txtID_Prodcutos.ReadOnly = true;
-            this.txtID_Prodcutos.Size = new System.Drawing.Size(32, 25);
-            this.txtID_Prodcutos.TabIndex = 30;
-            this.txtID_Prodcutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtID_Prodcutos.Visible = false;
+            this.txtID_Productos.BackColor = System.Drawing.Color.Beige;
+            this.txtID_Productos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID_Productos.Location = new System.Drawing.Point(119, 6);
+            this.txtID_Productos.Multiline = true;
+            this.txtID_Productos.Name = "txtID_Productos";
+            this.txtID_Productos.ReadOnly = true;
+            this.txtID_Productos.Size = new System.Drawing.Size(32, 25);
+            this.txtID_Productos.TabIndex = 30;
+            this.txtID_Productos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtID_Productos.Visible = false;
             // 
             // label6
             // 
@@ -242,7 +242,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 300);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtID_Prodcutos);
+            this.Controls.Add(this.txtID_Productos);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.cboTipoCargo);
             this.Controls.Add(this.label7);
@@ -275,7 +275,7 @@
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.cboTipoCargo, 0);
             this.Controls.SetChildIndex(this.btnEditar, 0);
-            this.Controls.SetChildIndex(this.txtID_Prodcutos, 0);
+            this.Controls.SetChildIndex(this.txtID_Productos, 0);
             this.Controls.SetChildIndex(this.label6, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -298,7 +298,7 @@
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtCodProducto;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox txtID_Prodcutos;
+        public System.Windows.Forms.TextBox txtID_Productos;
         private System.Windows.Forms.Label label6;
     }
 }

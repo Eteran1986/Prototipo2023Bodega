@@ -93,6 +93,16 @@ namespace Capa_Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap buscardor {
+            get {
+                object obj = ResourceManager.GetObject("buscardor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancelar {
             get {
                 object obj = ResourceManager.GetObject("cancelar", resourceCulture);
@@ -183,6 +193,16 @@ namespace Capa_Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap impresora21 {
+            get {
+                object obj = ResourceManager.GetObject("impresora21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap inventario {
             get {
                 object obj = ResourceManager.GetObject("inventario", resourceCulture);
@@ -206,6 +226,16 @@ namespace Capa_Presentacion.Properties {
         internal static System.Drawing.Bitmap LOGO_WEB_AZUL1 {
             get {
                 object obj = ResourceManager.GetObject("LOGO-WEB-AZUL1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap no_tocar {
+            get {
+                object obj = ResourceManager.GetObject("no-tocar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +276,16 @@ namespace Capa_Presentacion.Properties {
         internal static System.Drawing.Bitmap sinlogo {
             get {
                 object obj = ResourceManager.GetObject("sinlogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap smartphone {
+            get {
+                object obj = ResourceManager.GetObject("smartphone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
