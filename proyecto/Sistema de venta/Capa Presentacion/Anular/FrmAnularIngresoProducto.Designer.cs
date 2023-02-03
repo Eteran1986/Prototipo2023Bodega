@@ -184,7 +184,7 @@
             // TxtIdDetalleIngreso
             // 
             this.TxtIdDetalleIngreso.BackColor = System.Drawing.Color.Linen;
-            this.TxtIdDetalleIngreso.Location = new System.Drawing.Point(139, 0);
+            this.TxtIdDetalleIngreso.Location = new System.Drawing.Point(139, -1);
             this.TxtIdDetalleIngreso.Multiline = true;
             this.TxtIdDetalleIngreso.Name = "TxtIdDetalleIngreso";
             this.TxtIdDetalleIngreso.Size = new System.Drawing.Size(24, 26);

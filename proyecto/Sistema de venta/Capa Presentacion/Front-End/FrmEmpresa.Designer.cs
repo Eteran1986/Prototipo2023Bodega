@@ -136,9 +136,9 @@
             this.PtbLogo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.PtbLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PtbLogo.Image = global::Capa_Presentacion.Properties.Resources.sinlogo;
-            this.PtbLogo.Location = new System.Drawing.Point(640, 317);
+            this.PtbLogo.Location = new System.Drawing.Point(723, 317);
             this.PtbLogo.Name = "PtbLogo";
-            this.PtbLogo.Size = new System.Drawing.Size(211, 96);
+            this.PtbLogo.Size = new System.Drawing.Size(128, 96);
             this.PtbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PtbLogo.TabIndex = 23;
             this.PtbLogo.TabStop = false;

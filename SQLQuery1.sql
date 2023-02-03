@@ -113,12 +113,27 @@ create table Detalle_Producto
 )
 go
 
+--TAbla tipo de comprobante
+create table TipoComprobante
+(
+	ID_Comprobante int identity(1,1) primary key not null,
+	Nombre_Comprobante varchar(50) not null,
+	Tipo_Comprobante varchar(4) not null,
+	Correlativo int not null
+)
+go
 
 
-
-
-
-
+--Tabla ususario
+create table Acceso
+(
+	ID_Usuario int identity(1,1) primary key not null,
+	Nombre_Usuario varchar(50) not null,
+	Apellido_Usuario varchar(50) not null,
+	Usuario varchar(50) not null,
+	Password varchar(max) not null
+)
+go
 
 
 
@@ -375,6 +390,133 @@ Select DETPRO.ID_Detalle, DETPRO.Id_Ingreso, DETPRO.Id_Producto, PRO.Nombre, DET
 From Detalle_Producto DETPRO inner join Productos PRO on DETPRO.Id_Producto=PRO.ID_Producto
 Where Id_Ingreso=@Id_Ingreso
 go
+
+
+--Mostrar entrada de productos
+create proc Mostrar_IngresoProducto
+@Id_Ingreso int
+as
+Select	INGPRO.No_Ingreso, PROVEE.Nombre as 'Proveedor', INGPRO.Fecha_Ingreso, INGPRO.Comprobante, INGPRO.Monto_Total,
+		INGPRO.Estado, PRO.Nombre as 'Nombre',DETPRO.Cantidad,
+		DETPRO.Costo_Unitario, DETPRO.Sub_Total as 'Total', DETPRO.Fecha_caducidad,
+		EMP.Nombre, EMP.RUC_Empresa, EMP.Direccion, EMP.Telefono, EMP.Email, EMP.Logo
+from Ingreso_Producto INGPRO 
+inner join Detalle_Producto DETPRO on INGPRO.ID_Ingreso=DETPRO.Id_Ingreso
+inner join Proveedores PROVEE on INGPRO.Id_Proveedor=PROVEE.ID_Proveedor
+inner join Productos PRO on DETPRO.Id_Producto=PRO.ID_Producto
+cross join Empresas EMP 
+where INGPRO.ID_Ingreso=@Id_Ingreso order by Fecha_caducidad
+go
+
+/****************************************************TIPO DE COMPROBANTE*****************************************************************/
+
+--Agregar tipo de comprbante
+Create proc AgregarTipoCompro
+@Nombre_Comprobante varchar(50),
+@Tipo_Comprobante varchar(4),
+@Correlativo int
+as
+Insert into TipoComprobante(Nombre_Comprobante, Tipo_Comprobante, Correlativo)
+values (@Nombre_Comprobante,@Tipo_Comprobante,@Correlativo)
+go
+
+
+--Editar tipo de comprbante
+Create proc EditarTipoCompro
+@ID_Comprobante int,
+@Nombre_Comprobante varchar(50),
+@Tipo_Comprobante varchar(4),
+@Correlativo int
+as
+update TipoComprobante
+Set Nombre_Comprobante=@Nombre_Comprobante,Tipo_Comprobante=@Tipo_Comprobante,
+	Correlativo=@Correlativo
+Where ID_Comprobante=@ID_Comprobante
+go
+
+
+/*****************************************Usuario***************************************/
+----Para ingresar acceso con encriptado    45 me pase 64
+Create proc IngresarAcceso
+	@Nombre_Usuario varchar(50) ,
+	@Apellido_Usuario varchar(50) ,
+	@Usuario varchar(50) ,
+	@Password varchar(max) 
+as begin
+set @Password =( ENCRYPTBYPASSPHRASE(@Usuario,@Password));
+insert into Acceso(Nombre_Usuario,Apellido_Usuario,Usuario,Password)
+values (@Nombre_Usuario,@Apellido_Usuario,@Usuario,@Password)
+end
+GO
+
+-----------Para editar Acceso
+Create proc EditAcceso
+	@ID_Usuario int,
+	@Nombre_Usuario varchar(50) ,
+	@Apellido_Usuario varchar(50) ,
+	@Usuario varchar(50) ,
+	@Password varchar(max) 
+as
+update Acceso 
+set @Password =( ENCRYPTBYPASSPHRASE(@Usuario,@Password)),
+	Nombre_Usuario=@Nombre_Usuario,Apellido_Usuario=@Apellido_Usuario,
+	Usuario=@Usuario,Password=@Password
+where ID_Usuario=@ID_Usuario
+GO
+
+-----eliminar usuraio
+Create proc ElimAcceso
+@ID_Usuario int
+as
+delete from Acceso 
+where ID_Usuario=@ID_Usuario
+go
+
+------Visualizar login
+Create proc VisAcce
+as
+select * from Acceso
+go
+
+
+
+----para desencriptar usuario y constraseña
+Create proc DescAcceso
+@ID_Usuario int
+as
+select	Nombre_Usuario, Apellido_Usuario, Usuario, 
+		Password=CONVERT(varchar(max), DECRYPTBYPASSPHRASE(Usuario,Password)) 
+from Acceso 
+where @ID_Usuario=ID_Usuario
+go
+
+----para almacenar lo encriptado
+Create proc AccesoEncri
+@ID_Usuario int
+as
+select	Nombre_Usuario, Apellido_Usuario, Usuario, 
+		Password = ENCRYPTBYPASSPHRASE(Usuario,Password) 
+from Acceso 
+where @ID_Usuario=ID_Usuario
+go
+
+-----para desencriptar lo convertido en pocos datos
+Create Proc AccesoConverEncri
+@ID_Usuario int
+as
+select	Nombre_Usuario, Apellido_Usuario, Usuario, 
+		Password= DECRYPTBYPASSPHRASE(Usuario,Password) 
+from Acceso 
+where @ID_Usuario=ID_Usuario
+go
+
+
+
+
+
+
+
+
 
 
 

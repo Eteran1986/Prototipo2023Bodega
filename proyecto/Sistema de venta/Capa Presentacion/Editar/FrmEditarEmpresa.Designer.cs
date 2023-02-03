@@ -193,7 +193,6 @@
             this.TxtNomEmpresa.Location = new System.Drawing.Point(8, 33);
             this.TxtNomEmpresa.Multiline = true;
             this.TxtNomEmpresa.Name = "TxtNomEmpresa";
-            this.TxtNomEmpresa.ReadOnly = true;
             this.TxtNomEmpresa.Size = new System.Drawing.Size(173, 25);
             this.TxtNomEmpresa.TabIndex = 33;
             this.TxtNomEmpresa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNomEmpresa_KeyPress);

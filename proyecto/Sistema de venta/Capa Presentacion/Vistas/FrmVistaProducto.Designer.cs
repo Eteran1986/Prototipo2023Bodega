@@ -33,9 +33,6 @@
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.CboTipoBusqueda = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -79,52 +76,6 @@
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "Buscar";
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditar.BackColor = System.Drawing.Color.Azure;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Image = global::Capa_Presentacion.Properties.Resources.editar;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(264, 378);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(120, 30);
-            this.btnEditar.TabIndex = 11;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEliminar.BackColor = System.Drawing.Color.Azure;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Image = global::Capa_Presentacion.Properties.Resources.eliminar;
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(138, 378);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(120, 30);
-            this.btnEliminar.TabIndex = 10;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnNuevo.BackColor = System.Drawing.Color.Azure;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Image = global::Capa_Presentacion.Properties.Resources.agregar;
-            this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(12, 378);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnNuevo.Size = new System.Drawing.Size(120, 30);
-            this.btnNuevo.TabIndex = 9;
-            this.btnNuevo.Text = "Agregar";
-            this.btnNuevo.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
@@ -171,18 +122,12 @@
             this.Controls.Add(this.TxtBuscar);
             this.Controls.Add(this.CboTipoBusqueda);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FrmVistaProducto";
             this.Text = "Vista Producto";
             this.Load += new System.EventHandler(this.FrmVistaProducto_Load);
             this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
-            this.Controls.SetChildIndex(this.btnNuevo, 0);
-            this.Controls.SetChildIndex(this.btnEliminar, 0);
-            this.Controls.SetChildIndex(this.btnEditar, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.CboTipoBusqueda, 0);
             this.Controls.SetChildIndex(this.TxtBuscar, 0);
@@ -197,9 +142,6 @@
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.ComboBox CboTipoBusqueda;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button btnEditar;
-        public System.Windows.Forms.Button btnEliminar;
-        public System.Windows.Forms.Button btnNuevo;
         public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

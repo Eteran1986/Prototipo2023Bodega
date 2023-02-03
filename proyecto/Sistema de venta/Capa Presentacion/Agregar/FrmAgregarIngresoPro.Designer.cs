@@ -120,7 +120,7 @@
             this.DtpFechaIngreso.Name = "DtpFechaIngreso";
             this.DtpFechaIngreso.Size = new System.Drawing.Size(108, 22);
             this.DtpFechaIngreso.TabIndex = 32;
-            this.DtpFechaIngreso.Value = new System.DateTime(2023, 1, 28, 0, 0, 0, 0);
+            this.DtpFechaIngreso.Value = new System.DateTime(2023, 2, 2, 0, 0, 0, 0);
             // 
             // BtnBuscarProveedor
             // 
@@ -282,7 +282,8 @@
             this.DtpFechaCaducidad.Name = "DtpFechaCaducidad";
             this.DtpFechaCaducidad.Size = new System.Drawing.Size(102, 22);
             this.DtpFechaCaducidad.TabIndex = 34;
-            this.DtpFechaCaducidad.Value = new System.DateTime(2023, 1, 28, 0, 0, 0, 0);
+            this.DtpFechaCaducidad.Tag = "";
+            this.DtpFechaCaducidad.Value = new System.DateTime(2023, 2, 2, 0, 0, 0, 0);
             // 
             // TxtIdDetalleIngreso
             // 

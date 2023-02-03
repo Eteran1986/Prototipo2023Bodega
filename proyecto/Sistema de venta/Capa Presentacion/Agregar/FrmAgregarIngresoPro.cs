@@ -185,7 +185,6 @@ namespace Capa_Presentacion
             BtnAgregarProducto.Focus();
             ContFila++;
         }
-
         private void BtnBuscarProducto_Click(object sender, EventArgs e)
         {
             FrmVistaProducto VistaProducto = new FrmVistaProducto();
@@ -207,7 +206,6 @@ namespace Capa_Presentacion
                 MessageBox.Show("Debe seleccionar un Producto en la vista" + ex, "Seleccionar Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
         private void BtnEliminarProducto_Click(object sender, EventArgs e)
         {
             try
@@ -299,5 +297,6 @@ namespace Capa_Presentacion
             }
             return false;
         }
+        
     }
 }

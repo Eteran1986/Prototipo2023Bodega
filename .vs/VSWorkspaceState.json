@@ -4,8 +4,9 @@
     "\\proyecto",
     "\\proyecto\\Sistema de venta",
     "\\proyecto\\Sistema de venta\\Capa Presentacion",
-    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Agregar"
+    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End",
+    "\\proyecto\\Sistema de venta\\CapaDatos"
   ],
-  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\FrmVistaProducto.cs",
+  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End\\FrmCompras.cs",
   "PreviewInSolutionExplorer": false
 }

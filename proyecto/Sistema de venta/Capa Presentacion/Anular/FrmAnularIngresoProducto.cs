@@ -42,6 +42,7 @@ namespace Capa_Presentacion
 
         private void FrmAnularIngresoProducto_Load(object sender, EventArgs e)
         {
+            
             MostrarDetalleIngreso();
             MejorarVista();
             Procedimientos.FormatoMoneda(TxtTotalPagar);
@@ -75,5 +76,60 @@ namespace Capa_Presentacion
         {
             Editar();
         }
+
+        public override void Editar()
+        {
+            try
+            {
+                if (TxtIdIngreso.Text == "" || TxtNoIngreso.Text == "" || TxtIdProveedor.Text == "" ||
+                    TxtNomProveedor.Text == "" || TxtComprobante.Text == "")
+                {
+                    MessageBox.Show("Debe de llenar todo los campos", "Anular Ingreso Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    DialogResult Resultados = MessageBox.Show("Estás seguro que quieres eliminar este registro", "Anular Ingreso Producto", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+                    if (Resultados ==DialogResult.Yes)
+                    {
+                        Ingreso.ID_Ingreso = Convert.ToInt32(TxtIdIngreso.Text);
+                        Ingreso.No_Ingreso = TxtNoIngreso.Text;
+                        Ingreso.Id_Proveedor = Convert.ToInt32(TxtIdProveedor.Text);
+                        Ingreso.Fecha_Ingreso = Convert.ToDateTime(DtpFechaIngreso.Text);
+                        Ingreso.Comprobante = TxtComprobante.Text;
+                        Ingreso.Monto_Total = Convert.ToDecimal(TxtTotalPagar.Text);
+                        Ingreso.Estado = "Anular";
+
+
+                        foreach (DataGridViewRow row in dataGridView1.Rows)
+                        {
+                            DetalleIngreso.ID_Detalle = Convert.ToInt32(row.Cells[0].Value.ToString());
+                            DetalleIngreso.Id_Ingreso = Convert.ToInt32(TxtIdIngreso.Text);
+                            DetalleIngreso.Id_Producto = Convert.ToInt32(row.Cells[2].Value.ToString());
+                            TxtNombreProducto.Text = Convert.ToString(row.Cells[3].Value.ToString());
+                            DetalleIngreso.Cantidad = Convert.ToInt32(row.Cells[4].Value.ToString());
+                            DetalleIngreso.Costo_Unitario = Convert.ToDecimal(row.Cells[5].Value.ToString());
+                            DetalleIngreso.Sub_Total = Convert.ToDecimal(row.Cells[6].Value.ToString());
+                            DetalleIngreso.Fecha_caducidad = Convert.ToDateTime(row.Cells[7].Value.ToString());
+
+                            DetalleIngresos.AnularDetalleingreso(DetalleIngreso);
+                        }
+                        Ingresos.AnularIngreso(Ingreso);
+                        //MessageBox.Show("Se anularon los productos correctamente ", "Anular Ingreso Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                        Actualizar();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se puede Anular los Producto por: " + ex.Message, "Anular Ingreso Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
     }
 }

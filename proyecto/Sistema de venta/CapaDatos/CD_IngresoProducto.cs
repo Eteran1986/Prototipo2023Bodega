@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Capa_Entidad;
+using CapaDatos;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -31,18 +33,37 @@ namespace CapaDatos
 
         public void AnularIngreso(CE_IngresoProducto Ingresos)
         {
-            Cmd = new SqlCommand("Anular_Ing_Producto", Con.Abrir());
-            Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@No_Ingreso", Ingresos.No_Ingreso));
-            Cmd.Parameters.Add(new SqlParameter("@ID_Ingreso", Ingresos.ID_Ingreso));
-            Cmd.Parameters.Add(new SqlParameter("@Id_Proveedor", Ingresos.Id_Proveedor));
-            Cmd.Parameters.Add(new SqlParameter("@Fecha_Ingreso", Ingresos.Fecha_Ingreso));
-            Cmd.Parameters.Add(new SqlParameter("@Comprobante", Ingresos.Comprobante));
-            Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ingresos.Monto_Total));
-            Cmd.Parameters.Add(new SqlParameter("@Estado", Ingresos.Estado));
-            Cmd.ExecuteNonQuery();
+            string Estado = string.Empty;
+            Cmd = new SqlCommand("Select Estado From Ingreso_Producto Where ID_Ingreso =" + Ingresos.ID_Ingreso + "", Con.Abrir());
+            Cmd.CommandType = CommandType.Text;
 
-            Con.Cerrar();
+            SqlDataReader Dr = Cmd.ExecuteReader();
+            if (Dr.Read())
+            {
+                Estado = Dr["Estado"].ToString();
+            }
+            Dr.Close();
+
+            if (Estado == "Anular")
+            {
+                MessageBox.Show("Esta compra ya fue anulada, seleccione otro item en el sistema", "Anular Compra", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
+            {
+                Cmd = new SqlCommand("Anular_Ing_Producto", Con.Abrir());
+                Cmd.CommandType = CommandType.StoredProcedure;
+                Cmd.Parameters.Add(new SqlParameter("@No_Ingreso", Ingresos.No_Ingreso));
+                Cmd.Parameters.Add(new SqlParameter("@ID_Ingreso", Ingresos.ID_Ingreso));
+                Cmd.Parameters.Add(new SqlParameter("@Id_Proveedor", Ingresos.Id_Proveedor));
+                Cmd.Parameters.Add(new SqlParameter("@Fecha_Ingreso", Ingresos.Fecha_Ingreso));
+                Cmd.Parameters.Add(new SqlParameter("@Comprobante", Ingresos.Comprobante));
+                Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ingresos.Monto_Total));
+                Cmd.Parameters.Add(new SqlParameter("@Estado", Ingresos.Estado));
+                Cmd.ExecuteNonQuery();
+                MessageBox.Show("La compra fue eliminado de nuestro sistema", "Anular Compra", MessageBoxButtons.OK, MessageBoxIcon.Information/*,MessageBoxDefaultButton.Button2*/);
+                Con.Cerrar();
+            }
         }
         public DataTable MostrarIngProd()
         {

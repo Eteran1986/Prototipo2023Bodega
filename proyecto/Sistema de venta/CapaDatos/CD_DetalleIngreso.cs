@@ -30,7 +30,7 @@ namespace CapaDatos
 
         public void AnularDetalleIngreso(CE_DetalleIngreso Detalle)
         {
-            Cmd = new SqlCommand("Anular_Ing_Producto", Con.Abrir());
+            Cmd = new SqlCommand("Anular_Det_Producto", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
             Cmd.Parameters.Add(new SqlParameter("@ID_Detalle", Detalle.ID_Detalle));
             Cmd.Parameters.Add(new SqlParameter("@Id_Ingreso", Detalle.Id_Ingreso));
