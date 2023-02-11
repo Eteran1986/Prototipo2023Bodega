@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CD_Acceso.cs" />
+    <Compile Include="CD_Usuario.cs" />
     <Compile Include="CD_Clientes.cs" />
     <Compile Include="CD_Conexion.cs" />
     <Compile Include="CD_DetalleIngreso.cs" />

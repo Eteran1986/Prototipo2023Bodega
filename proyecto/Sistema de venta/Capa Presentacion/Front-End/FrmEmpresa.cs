@@ -122,7 +122,6 @@ namespace Capa_Presentacion
                         MemoryStream ms = new MemoryStream(i);
                         EditarEmpresa.PtbLogoAgregar.Image = Image.FromStream(ms);
                         PtbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
-
                         EditarEmpresa.ShowDialog();
                     }
                 }

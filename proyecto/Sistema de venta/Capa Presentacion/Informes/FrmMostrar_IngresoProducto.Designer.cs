@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.datos_Generales = new Capa_Presentacion.Informes.Datos_Generales();
             this.mostrarIngresoProductoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.datos_Generales = new Capa_Presentacion.Informes.Datos_Generales();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.mostrar_IngresoProductoTableAdapter = new Capa_Presentacion.Informes.Datos_GeneralesTableAdapters.Mostrar_IngresoProductoTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.datos_Generales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarIngresoProductoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datos_Generales)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mostrarIngresoProductoBindingSource
+            // 
+            this.mostrarIngresoProductoBindingSource.DataMember = "Mostrar_IngresoProducto";
+            this.mostrarIngresoProductoBindingSource.DataSource = this.datos_Generales;
+            // 
+            // datos_Generales
+            // 
+            this.datos_Generales.DataSetName = "Datos_Generales";
+            this.datos_Generales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -51,16 +61,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // datos_Generales
-            // 
-            this.datos_Generales.DataSetName = "Datos_Generales";
-            this.datos_Generales.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mostrarIngresoProductoBindingSource
-            // 
-            this.mostrarIngresoProductoBindingSource.DataMember = "Mostrar_IngresoProducto";
-            this.mostrarIngresoProductoBindingSource.DataSource = this.datos_Generales;
-            // 
             // mostrar_IngresoProductoTableAdapter
             // 
             this.mostrar_IngresoProductoTableAdapter.ClearBeforeFill = true;
@@ -72,10 +72,11 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
             this.Name = "FrmMostrar_IngresoProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Frm_Mostrar_IngresoProducto";
             this.Load += new System.EventHandler(this.Frm_Mostrar_IngresoProducto_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.datos_Generales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarIngresoProductoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datos_Generales)).EndInit();
             this.ResumeLayout(false);
 
         }

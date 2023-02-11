@@ -126,5 +126,19 @@ namespace CapaDatos
             Con.Cerrar();
             return Dt;
         }
+        public DataTable Buscar_Inventario_Nombre(CE_Productos productos)
+        {
+            Dt = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_Inventario_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", productos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
     }
 }

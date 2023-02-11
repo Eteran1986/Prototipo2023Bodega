@@ -1,4 +1,7 @@
-﻿namespace Capa_Presentacion
+﻿using static System.Net.WebRequestMethods;
+using System;
+
+namespace Capa_Presentacion
 {
     partial class FrmAgregarIngresoPro
     {
@@ -121,6 +124,7 @@
             this.DtpFechaIngreso.Size = new System.Drawing.Size(108, 22);
             this.DtpFechaIngreso.TabIndex = 32;
             this.DtpFechaIngreso.Value = new System.DateTime(2023, 2, 2, 0, 0, 0, 0);
+            this.DtpFechaIngreso.ValueChanged += new System.EventHandler(this.DtpFechaIngreso_ValueChanged);
             // 
             // BtnBuscarProveedor
             // 

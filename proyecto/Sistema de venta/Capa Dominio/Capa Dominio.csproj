@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CDo_Acceso.cs" />
+    <Compile Include="CDo_Usuario.cs" />
     <Compile Include="CDo_Clientes.cs" />
     <Compile Include="CDo_Empresas.cs" />
     <Compile Include="CDo_IngresoProducto.cs" />

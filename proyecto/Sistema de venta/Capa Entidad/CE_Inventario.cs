@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Capa_Entidad
 {
-    public class CE_Acceso
+    internal class CE_Inventario
     {
-
+        //buscador de inventario
     }
 }

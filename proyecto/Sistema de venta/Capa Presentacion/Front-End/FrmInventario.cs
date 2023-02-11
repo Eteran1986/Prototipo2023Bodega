@@ -22,6 +22,8 @@ namespace Capa_Presentacion
 
         CDo_Procedimientos procedimiento = new CDo_Procedimientos();
         public static decimal Total;// sumar los valores de mi inventario
+        CDo_Productos Productos = new CDo_Productos();
+        CE_Productos Producto = new CE_Productos();
 
         private void FrmInventario_Load(object sender, EventArgs e)
         {
@@ -64,6 +66,28 @@ namespace Capa_Presentacion
             }
             TxtMontoTotalinventario.Text = Total.ToString("N2");
 
+        }
+
+        public override void Buscar()
+        {
+            try
+            {
+                if (CboTipoBusqueda.Text == "Nombre")
+                {
+                    Producto.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Productos.Buscar_Inventario_Nombre(Producto);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El producto no fue encontrado : " + ex.Message, "Buscar Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void TxtBuscar_TextChanged_1(object sender, EventArgs e)
+        {
+            Buscar();
         }
     }
 }

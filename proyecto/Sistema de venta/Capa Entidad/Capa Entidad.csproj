@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CE_Acceso.cs" />
+    <Compile Include="Cache\InformacionUsuario.cs" />
+    <Compile Include="CE_Inventario.cs" />
+    <Compile Include="CE_Usuario.cs" />
     <Compile Include="CE_Clientes.cs" />
     <Compile Include="CE_DetalleIngreso.cs" />
     <Compile Include="CE_Empresas.cs" />

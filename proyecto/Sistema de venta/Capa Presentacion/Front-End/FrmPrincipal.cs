@@ -17,26 +17,17 @@ namespace Capa_Presentacion
             InitializeComponent();
         }
 
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tmTiempo_Tick(object sender, EventArgs e)
+/*        private void tmTiempo_Tick(object sender, EventArgs e)
         {
             lblfecha.Text = DateTime.Now.ToLongTimeString();
             lbldia.Text = DateTime.Now.ToLongDateString();
-        }
+        }*/
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProductos Productos= new FrmProductos();
             Productos.ShowDialog();
-        }
-
-        private void inventarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void inventarioToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -68,5 +59,20 @@ namespace Capa_Presentacion
             FrmCompras Compra = new FrmCompras();
             Compra.ShowDialog();
         }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUsuario Usuarios = new FrmUsuario();
+            Usuarios.ShowDialog();
+        }
+
+        private void FrmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmAcceso Acceso = new FrmAcceso();
+            Acceso.Show();
+            this.Hide();
+        }
+
+ 
     }
 }

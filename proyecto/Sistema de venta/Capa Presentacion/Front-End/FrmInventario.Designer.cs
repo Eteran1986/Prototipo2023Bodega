@@ -62,10 +62,8 @@
             this.CboTipoBusqueda.BackColor = System.Drawing.Color.GhostWhite;
             this.CboTipoBusqueda.FormattingEnabled = true;
             this.CboTipoBusqueda.Items.AddRange(new object[] {
-            "Código",
-            "Nombre",
-            "Descripción"});
-            this.CboTipoBusqueda.Location = new System.Drawing.Point(800, 25);
+            "Nombre"});
+            this.CboTipoBusqueda.Location = new System.Drawing.Point(800, 15);
             this.CboTipoBusqueda.Name = "CboTipoBusqueda";
             this.CboTipoBusqueda.Size = new System.Drawing.Size(149, 21);
             this.CboTipoBusqueda.TabIndex = 10;
@@ -75,7 +73,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(729, 26);
+            this.label1.Location = new System.Drawing.Point(729, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 9;
@@ -109,12 +107,12 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 74);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 52);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1332, 324);
+            this.dataGridView1.Size = new System.Drawing.Size(1332, 346);
             this.dataGridView1.TabIndex = 8;
             // 
             // label2
@@ -132,11 +130,12 @@
             // 
             this.TxtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TxtBuscar.BackColor = System.Drawing.Color.GhostWhite;
-            this.TxtBuscar.Location = new System.Drawing.Point(956, 25);
+            this.TxtBuscar.Location = new System.Drawing.Point(956, 15);
             this.TxtBuscar.Multiline = true;
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(389, 20);
             this.TxtBuscar.TabIndex = 13;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged_1);
             // 
             // FrmInventario
             // 

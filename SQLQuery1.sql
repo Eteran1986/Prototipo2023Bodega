@@ -20,9 +20,11 @@ go
 -------------------------------------------------------TABLAS-------------------------------------------------
 --CREAR LAS TABLAS NECESARIAS
 --TABLA DE PRODUCTO
+
+CREATE SEQUENCE Produ AS INT START WITH 1 NO CACHE;
 create table Productos
 (
-	ID_Producto int identity(1,1) primary key not null,
+	ID_Producto int PRIMARY KEY DEFAULT NEXT VALUE FOR produ,
 	Codigo varchar(15) not null,
 	Nombre varchar(50) not null,
 	Descripcion varchar(100) not null,
@@ -48,9 +50,10 @@ create table Inventarios
 go
 
 --TABLA DE PROVEEDORES
+CREATE SEQUENCE Provee AS INT START WITH 1 NO CACHE;
 create table Proveedores
 (
-	ID_Proveedor int identity(1,1) primary key not null,
+	ID_Proveedor int PRIMARY KEY DEFAULT NEXT VALUE FOR Provee,
 	Codigo varchar(15) not null,
 	Nombre varchar(50) not null,
 	RUC_Proveedor varchar(13) not null,
@@ -59,10 +62,12 @@ create table Proveedores
 	Email varchar(50) not null,
 )
 go
+
 --TABLA DE CLIENTES
+CREATE SEQUENCE Clien AS INT START WITH 1 NO CACHE;
 create table Clientes
 (
-	ID_Cliente int identity(1,1) primary key not null,
+	ID_Cliente int PRIMARY KEY DEFAULT NEXT VALUE FOR Clien,
 	Codigo varchar(15) not null,
 	Nombre varchar(50) not null,
 	RUC_Cliente varchar(13) not null,
@@ -74,22 +79,24 @@ create table Clientes
 go
 
 --TABLA DE EMPRESA
+CREATE SEQUENCE Empr AS INT START WITH 1 NO CACHE;
 create table Empresas
 (
-	ID_Empresa int identity(1,1) primary key not null,
+	ID_Empresa int PRIMARY KEY DEFAULT NEXT VALUE FOR Empr,
 	Nombre varchar(60) not null,
 	RUC_Empresa varchar(13) not null,
 	Direccion varchar(150) not null,
 	Telefono varchar(15) not null,
 	Email varchar(50) not null,
-	Logo image not null,
+	Logo image ,
 )
 go
 
 --TABLA INGRESAR PRODUCTO
+CREATE SEQUENCE Ing_pro AS INT START WITH 1 NO CACHE;
 create table Ingreso_Producto
 (
-	ID_Ingreso int identity(1,1) primary key not null,
+	ID_Ingreso int PRIMARY KEY DEFAULT NEXT VALUE FOR Ing_Pro,
 	No_Ingreso varchar(15) not null,
 	Id_Proveedor int not null,
 	Fecha_Ingreso date not null,
@@ -100,12 +107,12 @@ create table Ingreso_Producto
 go
 
 --DETALLE INGRESO
+CREATE SEQUENCE Det_pro AS INT START WITH 1 NO CACHE;
 create table Detalle_Producto
 (
-	ID_Detalle int identity(1,1) primary key not null,
+	ID_Detalle int PRIMARY KEY DEFAULT NEXT VALUE FOR Det_pro,
 	Id_Ingreso int not null,
 	Id_Producto int not null,
-	--Nombre varchar(100) not null,
 	Cantidad int not null,
 	Fecha_caducidad date not null,
 	Costo_Unitario decimal (12,2) not null,
@@ -113,32 +120,38 @@ create table Detalle_Producto
 )
 go
 
+--CANTIDAD POR FECHA DE CADUCIDAD
+create table Can_Detalle_Producto
+(
+	ID_Can_Detalle int not null,
+	Nombre varchar(50) not null,
+	Cantidad int not null,
+	Fecha_caducidad date not null,
+)
+go
+
 --TAbla tipo de comprobante
+CREATE SEQUENCE Tipcom AS INT START WITH 1 NO CACHE;
 create table TipoComprobante
 (
-	ID_Comprobante int identity(1,1) primary key not null,
+	ID_Comprobante int PRIMARY KEY DEFAULT NEXT VALUE FOR Tipcom,
 	Nombre_Comprobante varchar(50) not null,
 	Tipo_Comprobante varchar(4) not null,
 	Correlativo int not null
 )
 go
 
-
 --Tabla ususario
+CREATE SEQUENCE Acc AS INT START WITH 1 NO CACHE;
 create table Acceso
 (
-	ID_Usuario int identity(1,1) primary key not null,
+	ID_Usuario int PRIMARY KEY DEFAULT NEXT VALUE FOR Acc,
 	Nombre_Usuario varchar(50) not null,
 	Apellido_Usuario varchar(50) not null,
 	Usuario varchar(50) not null,
 	Password varchar(max) not null
 )
 go
-
-
-
-
-
 
 
 -------------------------------------------------------PROCEDURE-------------------------------------------------
@@ -373,6 +386,7 @@ Set Id_Ingreso=@Id_Ingreso,Id_Producto=@Id_Producto,
 Where ID_Detalle=@ID_Detalle
 go
 
+
 ----Mostrar detalles de los Ingreso proveedor
 create proc Mostrar_Ingreso
 as
@@ -381,6 +395,7 @@ select ing.ID_Ingreso, ing.Id_Proveedor, ing.No_Ingreso ,Pro.Nombre as 'Nombre P
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
 go
 
+
 --Mostrar Detalles de ingresos
 create proc MostrarDetalleIngresos
 @Id_Ingreso int
@@ -388,9 +403,8 @@ as
 Select DETPRO.ID_Detalle, DETPRO.Id_Ingreso, DETPRO.Id_Producto, PRO.Nombre, DETPRO.Cantidad,DETPRO.Costo_Unitario, 
 (DETPRO.Cantidad * DETPRO.Costo_Unitario) as 'SUB_TOTAL', DETPRO.Fecha_caducidad
 From Detalle_Producto DETPRO inner join Productos PRO on DETPRO.Id_Producto=PRO.ID_Producto
-Where Id_Ingreso=@Id_Ingreso
+Where Id_Ingreso=@Id_Ingreso 
 go
-
 
 --Mostrar entrada de productos
 create proc Mostrar_IngresoProducto
@@ -480,7 +494,7 @@ go
 
 
 
-----para desencriptar usuario y constraseña
+----para desencriptar constraseña
 Create proc DescAcceso
 @ID_Usuario int
 as
@@ -510,13 +524,22 @@ from Acceso
 where @ID_Usuario=ID_Usuario
 go
 
+/*
+exec DescAcceso 1
+EXEC AccesoLogin 'admin', 'admin'
+exec AccesoEncri 1
+exec AccesoConverEncri 1
+*/
 
-
-
-
-
-
-
+/*********************************************LOGIN***********************************************************/
+create proc AccesoLogin
+@Usuario varchar(30),
+@Password varchar(20)
+as
+Select * 
+from Acceso 
+where Usuario=@Usuario and @Password=CONVERT(varchar(max), DECRYPTBYPASSPHRASE(Usuario,Password))
+go
 
 
 
@@ -544,6 +567,12 @@ as
 select * from Productos where Descripcion like @Buscar + '%'
 go
 
+/***********************************************BUSQUEDA POR INVENTARIO***********************************************************/
+Create Proc Buscar_Inventario_Nombre
+@Buscar varchar(50)
+as
+select * from Inventarios where Nombre like @Buscar + '%'
+go
 
 --*****************************************BUSCADOR POR PROVEEDOR************************************************
 --Buscador mediante codigo
@@ -678,7 +707,6 @@ values(@ID_Inventario,@Codigo, @Nombre, @Cantidad,@Costo_Unitario, @Precio_Venta
 go
 
 --TABLA PRODUCTOS ACTUALIZAR INVENTARIO
-
 Create Trigger Tr_Editar_producto_inv
 on Productos for Update
 as
@@ -747,13 +775,109 @@ where Inventarios.ID_Inventario=@ID_Inventario
 go
 
 
+----Agregar Tabla Contador detalle producto
+CREATE Trigger Tr_Agregar_detalle_con
+on Detalle_Producto for Insert
+as
+Set nocount on
+declare @ID_Can_Detalle int
+declare @Nombre varchar (50)
+declare @Cantidad int
+declare @max int
+declare @Fecha_caducidad date
+select @ID_Can_Detalle=ID_Detalle, @Nombre= (select P.Nombre from Productos P inner join Detalle_Producto DP on dp.Id_Producto=p.ID_Producto where dp.ID_Detalle= p.ID_Producto),--OJO
+        @Cantidad=Cantidad,@Fecha_caducidad=Fecha_caducidad from inserted
+Insert Into Can_Detalle_Producto (ID_Can_Detalle,Nombre,Cantidad,Fecha_caducidad)
+values(@ID_Can_Detalle,@Nombre,@Cantidad,@Fecha_caducidad)
+update Can_Detalle_Producto set Nombre = (select P.Nombre from Productos P inner join Detalle_Producto DP on dp.Id_Producto=p.ID_Producto where dp.ID_Detalle= ID_Can_Detalle)
+go
 
 
+/******************************************IMGRESO DE DATOS MANUALMENTE************************************************************************/
 
+/******************************************ACCESO*************************/
+INSERT INTO [dbo].[Acceso]
+           ([Nombre_Usuario]
+           ,[Apellido_Usuario]
+           ,[Usuario]
+           ,[Password])
+     VALUES
+	 
+           ('Administrador','Administrador','admin','0x61646D696E')
+GO
 
+UPDATE [dbo].[Acceso]
+   SET Password = ENCRYPTBYPASSPHRASE('admin','admin')
+	where ID_Usuario=1
+GO
 
+/*****************************************PRODUCTOS*********************/
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000001','Galleta Oreo','Taco mayor','UNIDAD','0.83','0.90','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000002','Pasta','Espagueti 100lb','UNIDAD','0.75','2.15','Sin IVA')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000003','Ciclon','Detergente de 500gr.','UNIDAD','1.99','2.50','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000004','Deja','Detergente 1K','UNIDAD','2.80','3.50','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000005','Macho','Jabon 200gr','UNIDADI','0.80','1.02','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000006','ACEITE PALMA ORO','1 LITRO EN BOTELLA','UNIDAD','1.35','2.00','Sin IVA')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000007','POLLO COMPLETO MR. POLLO','SÚPER EXTRA GRANDE - PESO: 2,50 A 2,80KG','KG','1.89','2.10','Sin IVA')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000008','Galak','Galletas de 500gr','UNIDAD','1.35','2.15','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000009','Mayonesa','Botella 500g','UNIDAD','2.75','3.15','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000010','Salsa de Tomate','Galon','UNIDAD','8.00','9.25','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000011','Mostaza','Botella 250g','UNIDAD','2.15','2.75','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000012','Aliño','Sazonador 450g','UNIDAD','3.00','3.75','Iva 12%')
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
+     VALUES('PROD00000013','Ajo','Botella 250g','UNIDAD','1.15','1.75','Iva 12%')
+GO
 
+/******************************************PROVEEDORES*******************/
+INSERT INTO [dbo].[Proveedores]
+           ([Codigo],[Nombre],[RUC_Proveedor],[Direccion],[Telefono],[Email])
+	VALUES
+           ('PROV00000001','Nestle','0922281621001','santa teresita y carlos viteri 1050','098-241-7171','gusteran1@gmail.com'),
+		   ('PROV00000002','Pronaca','1208769541002','bucay','094-123-5647','Pronac_proveedor@gmail.com'),
+		   ('PROV00000003',	'Arca Continental','2308972654001','Milagro','152-755-4122','arcamilagro@continental.com'),
+		   ('PROV00000004','DEVIES CORP S.A.','0992231092001','Av. 17 de Septiembre 1105, Milagro','042-716-7000','devcorpmilagro@gmail.com')
+GO
 
+/*******************************************CLIENTES*********************/
+INSERT INTO [dbo].[Clientes]
+           ([Codigo],[Nombre],[RUC_Cliente],[Direccion],[Telefono],[Email],[Estado])
+     VALUES
+           ('CLI00000001','Eloisa Teran Baque','0941347840','cdla x marcos','042-977-3570','eteranb2@gmail.com','Activo'),
+		   ('CLI00000002','Arthur Teran','0941256522','amazonas y la huerta','125-415-4154','gusteran1@gmail.com','Activo')
+GO
+
+/*******************************************EMPRESA**************************/
+INSERT INTO [dbo].[Empresas]
+           ([Nombre],[RUC_Empresa],[Direccion],[Telefono],[Email],[Logo])
+     VALUES
+           ('Comercial Adrianita','0921845162001','Parroquia Virgen de fatima Yaguachi Viejo, Ecuador','098-562-2007','adrianitacomercialvf@hotmail.es',NULL)
+		   --MODIFICAR EL LOGO DE LA EMPRESA
+GO
 
 -------------------------------------------------------CONSULTA DE LAS TABLAS-------------------------------------------------
 --CONSULTAR
@@ -765,8 +889,14 @@ SELECT * FROM Proveedores
 SELECT * FROM Clientes
 SELECT * FROM Empresas
 SELECT * FROM Detalle_Producto 
+SELECT * FROM Can_Detalle_Producto
 SELECT * FROM Ingreso_Producto
+SELECT * FROM Acceso
+SELECT * FROM TipoComprobante
 
 SELECT PRO.Nombre, PROVEE.Nombre, DETPRO.Fecha_caducidad
 FROM Detalle_Producto DETPRO, Productos PRO, Ingreso_Producto ING, Proveedores PROVEE  
 where DETPRO.Id_Producto=pro.ID_Producto AND ING.Id_Proveedor=PROVEE.ID_Proveedor 
+
+
+

@@ -10,16 +10,18 @@ using System.Windows.Forms;//se agrego
 using Capa_Dominio;//se agrego
 using Capa_Entidad;//se agrego
 using CapaDatos;//se agrego
+using static System.Net.WebRequestMethods;
 
 namespace Capa_Presentacion
 {
     public partial class FrmAgregarIngresoPro : FormBase
     {
+        
         public FrmAgregarIngresoPro(FrmCompras Compras)
         {
             InitializeComponent();
         }
-
+        
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
         CDo_IngresoProducto Ingresos = new CDo_IngresoProducto();
         CE_IngresoProducto Ingreso = new CE_IngresoProducto();
@@ -32,6 +34,7 @@ namespace Capa_Presentacion
         public class UpdatedEventArgs : EventArgs
         {
             public string Data { get; set; }
+            
         }
 
         protected void Agregar()
@@ -297,6 +300,11 @@ namespace Capa_Presentacion
             }
             return false;
         }
-        
+
+        private void DtpFechaIngreso_ValueChanged(object sender, EventArgs e)
+        {
+            DtpFechaIngreso.Text = DateTime.Now.ToLongTimeString();
+        }
+
     }
 }

@@ -94,7 +94,7 @@ namespace Capa_Presentacion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Debe seleccionar un proveedor para editar", "Editar Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe seleccionar un proveedor para editar"+ex.Message, "Editar Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -132,7 +132,7 @@ namespace Capa_Presentacion
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Debe seleccionar un registro para eliminar", "Eliminar Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
