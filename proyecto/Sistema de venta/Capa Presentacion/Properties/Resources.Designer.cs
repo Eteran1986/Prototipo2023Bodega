@@ -223,6 +223,16 @@ namespace Capa_Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap informe_de_venta {
+            get {
+                object obj = ResourceManager.GetObject("informe-de-venta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap inventario {
             get {
                 object obj = ResourceManager.GetObject("inventario", resourceCulture);
@@ -256,6 +266,16 @@ namespace Capa_Presentacion.Properties {
         internal static System.Drawing.Bitmap no_tocar {
             get {
                 object obj = ResourceManager.GetObject("no-tocar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap presentacion {
+            get {
+                object obj = ResourceManager.GetObject("presentacion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

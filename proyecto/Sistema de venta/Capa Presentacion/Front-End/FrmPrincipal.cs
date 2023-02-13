@@ -73,6 +73,10 @@ namespace Capa_Presentacion
             this.Hide();
         }
 
- 
+        private void informesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_Fechacaducidad FechaCaduciada = new Frm_Fechacaducidad();
+            FechaCaduciada.Show();
+        }
     }
 }

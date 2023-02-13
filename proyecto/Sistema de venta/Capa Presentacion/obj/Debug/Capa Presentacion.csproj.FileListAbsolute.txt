@@ -123,3 +123,4 @@ E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proy
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmAgregarUsuario.resources
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmEditarUsuario.resources
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmAcceso.resources
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.Frm_Fechacaducidad.resources

@@ -76,6 +76,12 @@
     <Compile Include="Editar\FrmEditarUsuario.Designer.cs">
       <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Informes\Frm_Fechacaducidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Informes\Frm_Fechacaducidad.Designer.cs">
+      <DependentUpon>Frm_Fechacaducidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Front-End\FrmAcceso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,7 +249,11 @@
     <EmbeddedResource Include="Informes\FrmMostrar_IngresoProducto.resx">
       <DependentUpon>FrmMostrar_IngresoProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Informes\Frm_Fechacaducidad.resx">
+      <DependentUpon>Frm_Fechacaducidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Informes\Mostrar_IngresoProducto.rdlc" />
+    <EmbeddedResource Include="Informes\RptFechaCaducidad.rdlc" />
     <EmbeddedResource Include="Vistas\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -418,6 +428,8 @@
   <ItemGroup>
     <None Include="Resources\acceso usuarios.png" />
     <None Include="Resources\acceso.png" />
+    <None Include="Resources\informe-de-venta.png" />
+    <None Include="Resources\presentacion.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

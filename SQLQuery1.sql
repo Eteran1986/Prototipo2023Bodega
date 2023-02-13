@@ -422,6 +422,28 @@ cross join Empresas EMP
 where INGPRO.ID_Ingreso=@Id_Ingreso order by Fecha_caducidad
 go
 
+
+--Mostrar Detalle fecha caducidad General
+create proc Mostrar_InformeFechacaducidad
+
+as
+Select ID_Can_Detalle ,CDP.Nombre, CDP.Cantidad, CDP.Fecha_caducidad
+from Can_Detalle_Producto CDP cross join Empresas EMP 
+where CDP.Cantidad > 0  order by Fecha_caducidad
+go
+
+--Mostrar Detalle fecha caducidad rango de fechas
+create proc Mostrar_Inf_Fecha
+@Fecha_Inicio datetime,
+@Fecha_Final datetime
+as
+select Nombre,Cantidad, Fecha_caducidad 
+from Can_Detalle_Producto 
+where Fecha_caducidad>@Fecha_Inicio and Cantidad > 0 and Fecha_caducidad<@Fecha_Final order by Fecha_caducidad 
+go
+
+exec Mostrar_Inf_Fecha '2023-05-18','2023-12-18'
+
 /****************************************************TIPO DE COMPROBANTE*****************************************************************/
 
 --Agregar tipo de comprbante
@@ -792,7 +814,7 @@ values(@ID_Can_Detalle,@Nombre,@Cantidad,@Fecha_caducidad)
 update Can_Detalle_Producto set Nombre = (select P.Nombre from Productos P inner join Detalle_Producto DP on dp.Id_Producto=p.ID_Producto where dp.ID_Detalle= ID_Can_Detalle)
 go
 
-
+/*
 /******************************************IMGRESO DE DATOS MANUALMENTE************************************************************************/
 
 /******************************************ACCESO*************************/
@@ -878,7 +900,7 @@ INSERT INTO [dbo].[Empresas]
            ('Comercial Adrianita','0921845162001','Parroquia Virgen de fatima Yaguachi Viejo, Ecuador','098-562-2007','adrianitacomercialvf@hotmail.es',NULL)
 		   --MODIFICAR EL LOGO DE LA EMPRESA
 GO
-
+*/
 -------------------------------------------------------CONSULTA DE LAS TABLAS-------------------------------------------------
 --CONSULTAR
 USE DBSYSVENBOD
