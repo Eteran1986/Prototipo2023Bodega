@@ -20,6 +20,7 @@ namespace Capa_Presentacion
         public FrmAgregarIngresoPro(FrmCompras Compras)
         {
             InitializeComponent();
+            DtpFechaCaducidad.MinDate = DateTime.Now.AddDays(5);// Se agrego 5 dia por la empresa
         }
         
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
@@ -34,7 +35,6 @@ namespace Capa_Presentacion
         public class UpdatedEventArgs : EventArgs
         {
             public string Data { get; set; }
-            
         }
 
         protected void Agregar()
@@ -53,7 +53,6 @@ namespace Capa_Presentacion
         private void MejorarVista()
         {
             dataGridView1.Columns[0].Visible = false;//idproducto
-
             dataGridView1.Columns[1].Width = 350;//nombre del producto
             dataGridView1.Columns[2].Width = 150;//cantidad
             dataGridView1.Columns[3].Width = 150;//costo unitario
@@ -78,7 +77,6 @@ namespace Capa_Presentacion
         {
             FrmVistaProveedor VistaProveedor = new FrmVistaProveedor();
             VistaProveedor.ShowDialog();
-
             try
             {
                 if(VistaProveedor.DialogResult==DialogResult.OK)
@@ -157,8 +155,6 @@ namespace Capa_Presentacion
             {
                 MessageBox.Show("El producto no fue agregado" +ex,"Agregar Producto",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-
-
         }   
         
         private void LimpiarDetalle()
@@ -192,15 +188,14 @@ namespace Capa_Presentacion
         {
             FrmVistaProducto VistaProducto = new FrmVistaProducto();
             VistaProducto.ShowDialog();
-
             try
             {
                 if (VistaProducto.DialogResult == DialogResult.OK)
                 {
                     TxtIdProducto.Text = VistaProducto.dataGridView1.Rows[VistaProducto.dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
-                    TxtCodProducto.Text = VistaProducto.dataGridView1.Rows[VistaProducto.dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
-                    TxtNombreProducto.Text = VistaProducto.dataGridView1.Rows[VistaProducto.dataGridView1.CurrentRow.Index].Cells[2].Value.ToString();
-                    TxtCostoUnitario.Text = VistaProducto.dataGridView1.Rows[VistaProducto.dataGridView1.CurrentRow.Index].Cells[5].Value.ToString();
+                    TxtCodProducto.Text = VistaProducto.dataGridView1.Rows[VistaProducto.dataGridView1.CurrentRow.Index].Cells[2].Value.ToString();
+                    TxtNombreProducto.Text = VistaProducto.dataGridView1.Rows[VistaProducto.dataGridView1.CurrentRow.Index].Cells[3].Value.ToString();
+                    TxtCostoUnitario.Text = VistaProducto.dataGridView1.Rows[VistaProducto.dataGridView1.CurrentRow.Index].Cells[6].Value.ToString();
                     TxtCantidad.Focus();
                 }
             }
@@ -227,7 +222,6 @@ namespace Capa_Presentacion
                 MessageBox.Show("Debe seleccionar un Producto para eliminar" + ex, "Eliminar Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
         private void TxtComprobante_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar== Convert.ToChar(Keys.Enter))
@@ -236,7 +230,6 @@ namespace Capa_Presentacion
                 e.Handled= true;
             }
         }
-
         private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
@@ -250,7 +243,6 @@ namespace Capa_Presentacion
         {
             Guardar();
         }
-
         public override bool Guardar()
         {
             try
@@ -269,7 +261,6 @@ namespace Capa_Presentacion
                     Ingreso.Monto_Total = Convert.ToDecimal(TxtTotalPagar.Text);
                     Ingreso.Estado = "Emitir";
 
-
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         DetalleIngreso.Id_Ingreso = Convert.ToInt32(TxtIdIngreso.Text);
@@ -282,7 +273,7 @@ namespace Capa_Presentacion
 
                         DetalleIngresos.AgregarDetalleIngreso(DetalleIngreso);
                     }
-                    Ingresos.AgregarIngreso(Ingreso);
+                    Ingresos.AgregarIngreso(Ingreso);//Ingreso compras
                     MessageBox.Show("Se ingresaron los productos correctamente ", "Agregar Ingreso Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Procedimientos.LimpiarTexto(this);
                     TxtIdDetalleIngreso.Text= " ";
@@ -305,6 +296,5 @@ namespace Capa_Presentacion
         {
             DtpFechaIngreso.Text = DateTime.Now.ToLongTimeString();
         }
-
     }
 }

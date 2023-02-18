@@ -21,7 +21,8 @@ namespace Capa_Presentacion
         }
 
         CDo_Procedimientos Procedmientos = new CDo_Procedimientos();
-
+        CDo_Proveedores Proveedores = new CDo_Proveedores();
+        CE_Proveedores Proveedor = new CE_Proveedores();
         private void FrmVistaProveedor_Load(object sender, EventArgs e)
         {
             CargarDatos();
@@ -58,5 +59,37 @@ namespace Capa_Presentacion
                 Close();
             }
         }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+
+        public override void Buscar()
+        {
+            try
+            {
+                if (CboTipoBusqueda.Text == "Codigo")
+                {
+                    Proveedor.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Proveedores.Buscar_Prov_Codigo(Proveedor);
+                }
+                else if (CboTipoBusqueda.Text == "Nombre")
+                {
+                    Proveedor.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Proveedores.Buscar_Prov_Nombre(Proveedor);
+                }
+                else if (CboTipoBusqueda.Text == "RUC")
+                {
+                    Proveedor.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Proveedores.Buscar_Prov_RUC(Proveedor);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("La Compra no fue encontrado : " + ex.Message, "Buscar Compras", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
     }
 }

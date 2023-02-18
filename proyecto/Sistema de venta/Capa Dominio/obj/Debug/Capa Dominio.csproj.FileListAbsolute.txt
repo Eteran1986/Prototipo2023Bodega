@@ -20,3 +20,14 @@ E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proy
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.csproj.CopyComplete
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.dll
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\bin\Debug\Capa Dominio.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\bin\Debug\Capa Dominio.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\bin\Debug\Capa Entidad.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\bin\Debug\CapaDatos.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\bin\Debug\Capa Entidad.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\bin\Debug\CapaDatos.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.csproj.AssemblyReference.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.csproj.CoreCompileInputs.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.csproj.CopyComplete
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Dominio\obj\Debug\Capa Dominio.pdb

@@ -51,6 +51,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(389, 20);
             this.TxtBuscar.TabIndex = 21;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // CboTipoBusqueda
             // 

@@ -41,7 +41,6 @@ namespace Capa_Presentacion
             dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             procedimiento.AlternarColorFilaDataGridView(dataGridView1);
-
         }
         private void CargarDatos()
         {
@@ -101,7 +100,6 @@ namespace Capa_Presentacion
                 }
             }
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Eliminar();
@@ -141,7 +139,6 @@ namespace Capa_Presentacion
                 }
             }
         }
-
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
             Buscar();

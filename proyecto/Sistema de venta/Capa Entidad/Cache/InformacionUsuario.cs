@@ -14,6 +14,7 @@ namespace Capa_Entidad.Cache
         public static string Apellido_Usuario { get; set; }
         public static string Usuario { get; set; }
         public static string Password { get; set; }
-
+        public static string Fecha_Caducidad { get; set; }
+        public static int numeroFecha { get; set; }
     }
 }

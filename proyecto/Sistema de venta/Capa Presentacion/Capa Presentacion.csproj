@@ -253,6 +253,8 @@
       <DependentUpon>Frm_Fechacaducidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Informes\Mostrar_IngresoProducto.rdlc" />
+    <EmbeddedResource Include="Informes\Rpt_Informedias.rdlc" />
+    <EmbeddedResource Include="Informes\RPTRangoFecha.rdlc" />
     <EmbeddedResource Include="Informes\RptFechaCaducidad.rdlc" />
     <EmbeddedResource Include="Vistas\FormBase.resx">
       <DependentUpon>FormBase.cs</DependentUpon>

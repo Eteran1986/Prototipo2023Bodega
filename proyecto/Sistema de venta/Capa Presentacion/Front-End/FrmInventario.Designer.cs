@@ -62,7 +62,8 @@
             this.CboTipoBusqueda.BackColor = System.Drawing.Color.GhostWhite;
             this.CboTipoBusqueda.FormattingEnabled = true;
             this.CboTipoBusqueda.Items.AddRange(new object[] {
-            "Nombre"});
+            "Nombre",
+            "Categoria"});
             this.CboTipoBusqueda.Location = new System.Drawing.Point(800, 15);
             this.CboTipoBusqueda.Name = "CboTipoBusqueda";
             this.CboTipoBusqueda.Size = new System.Drawing.Size(149, 21);

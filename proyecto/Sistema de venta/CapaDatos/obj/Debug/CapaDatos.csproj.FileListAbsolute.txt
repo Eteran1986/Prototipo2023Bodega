@@ -16,3 +16,12 @@ E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proy
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.dll
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\bin\Debug\CapaDatos.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\bin\Debug\CapaDatos.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\bin\Debug\Capa Entidad.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\bin\Debug\Capa Entidad.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.dll
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\CapaDatos\obj\Debug\CapaDatos.pdb

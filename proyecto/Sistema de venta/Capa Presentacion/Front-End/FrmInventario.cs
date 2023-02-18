@@ -30,24 +30,25 @@ namespace Capa_Presentacion
             CargarDatos();
             SumarInventario();
             dataGridView1.Columns[0].Visible = false; //idInventario
-            dataGridView1.Columns[1].Width = 150; //codigo del producto
-            dataGridView1.Columns[2].Width = 300; //nombre del producto
-            dataGridView1.Columns[3].Width = 150; //cantidad del producto
-            dataGridView1.Columns[4].Width = 150; //costo unitario del producto
-            dataGridView1.Columns[5].Width = 150; //precio de venta
-            dataGridView1.Columns[6].Width = 150; //monto total
-            dataGridView1.Columns[7].Width = 150; //Tipo del producto
+            dataGridView1.Columns[1].Visible = false; //idCategoria
+            dataGridView1.Columns[2].Width = 150; //codigo del producto
+            dataGridView1.Columns[3].Width = 300; //nombre del producto
+            dataGridView1.Columns[4].Width = 100; //cantidad del producto
+            dataGridView1.Columns[5].Width = 130; //costo unitario del producto
+            dataGridView1.Columns[6].Width = 100; //precio de venta
+            dataGridView1.Columns[7].Width = 100; //monto total
+            dataGridView1.Columns[8].Width = 130; //Tipo del producto
 
-            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dataGridView1.Columns[4].DefaultCellStyle.Format = "#,##0.00";
             dataGridView1.Columns[5].DefaultCellStyle.Format = "#,##0.00";
             dataGridView1.Columns[6].DefaultCellStyle.Format = "#,##0.00";
+            dataGridView1.Columns[7].DefaultCellStyle.Format = "#,##0.00";
             procedimiento.AlternarColorFilaDataGridView(dataGridView1);
 
         }
@@ -62,10 +63,9 @@ namespace Capa_Presentacion
             Total = 0;
             foreach (DataGridViewRow Row in dataGridView1.Rows)
             {
-                Total += Convert.ToDecimal(Row.Cells[6].Value);
+                Total += Convert.ToDecimal(Row.Cells[7].Value);
             }
             TxtMontoTotalinventario.Text = Total.ToString("N2");
-
         }
 
         public override void Buscar()
@@ -77,7 +77,11 @@ namespace Capa_Presentacion
                     Producto.Buscar = TxtBuscar.Text.Trim();
                     dataGridView1.DataSource = Productos.Buscar_Inventario_Nombre(Producto);
                 }
-
+                else if (CboTipoBusqueda.Text == "Categoria")
+                {
+                    Producto.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Productos.Buscar_Inventario_Categoria(Producto);
+                }
             }
             catch (Exception ex)
             {

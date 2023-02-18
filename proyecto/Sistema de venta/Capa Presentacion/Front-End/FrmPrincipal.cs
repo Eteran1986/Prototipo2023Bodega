@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Capa_Presentacion
@@ -16,7 +15,6 @@ namespace Capa_Presentacion
         {
             InitializeComponent();
         }
-
 
 /*        private void tmTiempo_Tick(object sender, EventArgs e)
         {
@@ -78,5 +76,11 @@ namespace Capa_Presentacion
             Frm_Fechacaducidad FechaCaduciada = new Frm_Fechacaducidad();
             FechaCaduciada.Show();
         }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

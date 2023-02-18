@@ -60,7 +60,7 @@ namespace CapaDatos
             Cmd.CommandType = CommandType.StoredProcedure;
             Cmd.Parameters.Add(new SqlParameter("@Usuario", Login.Usuario));
             Cmd.Parameters.Add(new SqlParameter("@Password", Login.Password));
-
+            int a = 0;
             Dr=Cmd.ExecuteReader();
             if(Dr.Read())
             {
@@ -69,6 +69,7 @@ namespace CapaDatos
                 InformacionUsuario.Apellido_Usuario = Dr.GetString(2);
                 InformacionUsuario.Usuario = Dr.GetString(3);
                 InformacionUsuario.Password = Dr.GetString(4);
+                a++;
             }
             else
             {
@@ -76,6 +77,17 @@ namespace CapaDatos
             }
             Dr.Close();
             Con.Cerrar();
+            //Validación de credencial antes de la notificacion para el mensaje de los productos caducados
+            if(a==1)
+            {
+                Cmd = new SqlCommand("SELECT Top 1 Fecha_caducidad, count(*) as ProductoFecha FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad", Con.Abrir());
+                Cmd.CommandType = CommandType.Text;
+                SqlDataReader Da = Cmd.ExecuteReader();
+                Da.Read();
+                InformacionUsuario.Fecha_Caducidad = Da["Fecha_caducidad"].ToString();
+                InformacionUsuario.numeroFecha = Convert.ToInt32(Da["ProductoFecha"].ToString());
+                Da.Close();
+            }
         }
 
         private void Hide()

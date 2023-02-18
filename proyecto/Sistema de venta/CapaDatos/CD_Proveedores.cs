@@ -103,5 +103,51 @@ namespace CapaDatos
             Con.Cerrar();
             return Dt;
         }
+
+        //Buscar Compra por codigo
+        public DataTable Buscar_Compra_Codigo(CE_Proveedores Proveedores)
+        {
+            Dt = new DataTable("Codigo");
+            Cmd = new SqlCommand("Buscar_Compras_Codigo", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Proveedores.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
+        //Buscar Compra por Nombre
+        public DataTable Buscar_Compras_Nombre(CE_Proveedores Proveedores)
+        {
+            Dt = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_Compras_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Proveedores.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
+        //Buscar Compra por comprobante
+        public DataTable Buscar_Compras_Comprobante(CE_Proveedores Proveedores)
+        {
+            Dt = new DataTable("Comprobante");
+            Cmd = new SqlCommand("Buscar_Compras_Comprobante", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Proveedores.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
     }
 }

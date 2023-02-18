@@ -25,6 +25,7 @@ CREATE SEQUENCE Produ AS INT START WITH 1 NO CACHE;
 create table Productos
 (
 	ID_Producto int PRIMARY KEY DEFAULT NEXT VALUE FOR produ,
+	ID_Categoria int not null,
 	Codigo varchar(15) not null,
 	Nombre varchar(50) not null,
 	Descripcion varchar(100) not null,
@@ -35,10 +36,20 @@ create table Productos
 )
 go
 
+--TABLA DE CATEGORIA
+CREATE SEQUENCE Cat AS INT START WITH 1 NO CACHE;
+create table Categoria
+(
+	ID_Categoria int PRIMARY KEY DEFAULT NEXT VALUE FOR Cat,
+	Categoria varchar(25) not null
+)
+
+
 --TABLA DE INVENTARIO
 create table Inventarios
 (
 	ID_Inventario int not null,
+	ID_Categoria int not null,
 	Codigo varchar(15) not null,
 	Nombre varchar(50) not null,
 	Cantidad int not null,
@@ -160,17 +171,18 @@ go
 
 --*********************************PRODUCTO******************************
 --Crear Producto
-create proc AgregarProducto
+Create proc AgregarProducto
 @Codigo varchar(15),
 @Nombre varchar(50),
 @Descripcion varchar(100),
 @Presentacion varchar(10),
 @Costo_Unitario decimal(10,2),
 @Precio_venta decimal(10,2),
-@Tipo_Cargo varchar(10)
+@Tipo_Cargo varchar(10),
+@ID_Categoria int
 as
-Insert into Productos(Codigo,Nombre,Descripcion,Presentacion,Costo_Unitario,Precio_venta,Tipo_Cargo)
-values(@Codigo,@Nombre,@Descripcion,@Presentacion,@Costo_Unitario,@Precio_venta,@Tipo_Cargo)
+Insert into Productos(Codigo,Nombre,Descripcion,Presentacion,Costo_Unitario,Precio_venta,Tipo_Cargo,ID_Categoria)
+values(@Codigo,@Nombre,@Descripcion,@Presentacion,@Costo_Unitario,@Precio_venta,@Tipo_Cargo,@ID_Categoria)
 go
 
 --editar Producto
@@ -197,9 +209,6 @@ create proc EliminarProducto
 as
 delete from Productos where ID_Producto=@ID_Producto
 go
-
-
-
 
 --************************************PROVEEDOR**************************
 --Crear Proveedor
@@ -361,10 +370,8 @@ create proc Agregar_Det_Ingreso
 @Sub_Total decimal (12,2)
 as
 Insert into Detalle_Producto	
-			(Id_Ingreso,Id_Producto,Cantidad,
-			 Fecha_caducidad,Costo_Unitario,Sub_Total)
-values	(@Id_Ingreso,@Id_Producto,@Cantidad,@Fecha_caducidad,
-		 @Costo_Unitario,@Sub_Total)
+			(Id_Ingreso,Id_Producto,Cantidad,Fecha_caducidad,Costo_Unitario,Sub_Total)
+values	(@Id_Ingreso,@Id_Producto,@Cantidad,@Fecha_caducidad,@Costo_Unitario,@Sub_Total)
 
 go
 
@@ -442,7 +449,6 @@ from Can_Detalle_Producto
 where Fecha_caducidad>@Fecha_Inicio and Cantidad > 0 and Fecha_caducidad<@Fecha_Final order by Fecha_caducidad 
 go
 
-exec Mostrar_Inf_Fecha '2023-05-18','2023-12-18'
 
 /****************************************************TIPO DE COMPROBANTE*****************************************************************/
 
@@ -546,12 +552,7 @@ from Acceso
 where @ID_Usuario=ID_Usuario
 go
 
-/*
-exec DescAcceso 1
-EXEC AccesoLogin 'admin', 'admin'
-exec AccesoEncri 1
-exec AccesoConverEncri 1
-*/
+
 
 /*********************************************LOGIN***********************************************************/
 create proc AccesoLogin
@@ -593,8 +594,15 @@ go
 Create Proc Buscar_Inventario_Nombre
 @Buscar varchar(50)
 as
-select * from Inventarios where Nombre like @Buscar + '%'
+select I.Codigo,I.Nombre,I.Cantidad,I.Costo_Unitario,I.Precio_venta,I.Monto_Total,I.Tipo_Cargo, C.Categoria from Inventarios I inner join Categoria C on I.ID_Categoria=C.ID_Categoria where I.Nombre like @Buscar + '%'
 go
+
+Create Proc Buscar_Inventario_Categoria
+@Buscar varchar(50)
+as
+select I.Codigo,I.Nombre,I.Cantidad,I.Costo_Unitario,I.Precio_venta,I.Monto_Total,I.Tipo_Cargo, C.Categoria from Inventarios I inner join Categoria C on I.ID_Categoria=C.ID_Categoria where C.Categoria like @Buscar + '%'
+go
+
 
 --*****************************************BUSCADOR POR PROVEEDOR************************************************
 --Buscador mediante codigo
@@ -616,6 +624,36 @@ Create Proc Buscar_Proveedor_RUC
 @Buscar varchar(50)
 as
 select * from Proveedores where RUC_Proveedor like @Buscar + '%'
+go
+
+-----Buscar mediante codigo en las compras
+Create Proc Buscar_Compras_Codigo
+@Buscar varchar(50)
+as
+
+select p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
+from Ingreso_Producto P inner join Proveedores Pro on P.Id_Proveedor=Pro.ID_Proveedor 
+where p.No_Ingreso like @Buscar + '%'
+go
+
+-----Buscar mediante nombre en las compras
+Create Proc Buscar_Compras_Nombre
+@Buscar varchar(50)
+as
+
+select p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
+from Ingreso_Producto P inner join Proveedores Pro on P.Id_Proveedor=Pro.ID_Proveedor 
+where pro.Nombre like @Buscar + '%'
+go
+
+--Buscar mediante comprobantes en las compras
+Create Proc Buscar_Compras_Comprobante
+@Buscar varchar(50)
+as
+
+select p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
+from Ingreso_Producto P inner join Proveedores Pro on P.Id_Proveedor=Pro.ID_Proveedor 
+where p.Comprobante like @Buscar + '%'
 go
 
 --*****************************************BUSCADOR POR CLIENTE************************************************
@@ -719,14 +757,16 @@ declare @Costo_Unitario decimal(10,2)
 declare @Precio_Venta decimal(10,2)
 declare @Monto_Total decimal(10,2)
 declare @Tipo_Cargo varchar (10)
+declare @ID_Categoria int
 select @ID_Inventario=ID_Producto,@Codigo=Codigo, @Nombre=Nombre, @Cantidad=0,@Costo_Unitario=Costo_Unitario,
 		@Precio_Venta=Precio_venta,@Monto_Total=(@Cantidad*@Costo_Unitario), 
-		@Tipo_Cargo=Tipo_Cargo from inserted
+		@Tipo_Cargo=Tipo_Cargo, @ID_Categoria=ID_Categoria from inserted
 Insert Into Inventarios (ID_Inventario,Codigo,Nombre,Cantidad,Costo_Unitario,Precio_venta, 
-Monto_Total,Tipo_Cargo)
+Monto_Total,Tipo_Cargo, ID_Categoria)
 values(@ID_Inventario,@Codigo, @Nombre, @Cantidad,@Costo_Unitario, @Precio_Venta, @Monto_Total, 
-@Tipo_Cargo)
+@Tipo_Cargo,@ID_Categoria)
 go
+
 
 --TABLA PRODUCTOS ACTUALIZAR INVENTARIO
 Create Trigger Tr_Editar_producto_inv
@@ -741,11 +781,13 @@ declare @Costo_Unitario decimal(10,2)
 declare @Precio_Venta decimal(10,2)
 declare @Monto_Total decimal(10,2)
 declare @Tipo_Cargo varchar (10)
+declare @ID_Categoria int
 select @ID_Inventario=ID_Producto,@Codigo=Codigo, @Nombre=Nombre,@Costo_Unitario=Costo_Unitario,
-		@Precio_Venta=Precio_venta,	@Tipo_Cargo=Tipo_Cargo from inserted
+		@Precio_Venta=Precio_venta,	@Tipo_Cargo=Tipo_Cargo, @ID_Categoria=ID_Categoria from inserted
 select @Cantidad=Cantidad from Inventarios where ID_Inventario=@ID_Inventario
-update Inventarios set inventarios.Codigo=@Codigo,inventarios.Nombre=@Nombre,inventarios.Costo_Unitario=@Costo_Unitario,
-inventarios.Precio_venta=@Precio_Venta,inventarios.Monto_Total=(@Cantidad-@Costo_Unitario),inventarios.Tipo_Cargo=@Tipo_Cargo
+update Inventarios set	inventarios.Codigo=@Codigo,inventarios.Nombre=@Nombre,inventarios.Costo_Unitario=@Costo_Unitario,
+						inventarios.Precio_venta=@Precio_Venta,inventarios.Monto_Total=(@Cantidad-@Costo_Unitario),
+						inventarios.Tipo_Cargo=@Tipo_Cargo, inventarios.ID_Categoria=@ID_Categoria
 where ID_Inventario=@ID_Inventario
 go
 
@@ -814,68 +856,74 @@ values(@ID_Can_Detalle,@Nombre,@Cantidad,@Fecha_caducidad)
 update Can_Detalle_Producto set Nombre = (select P.Nombre from Productos P inner join Detalle_Producto DP on dp.Id_Producto=p.ID_Producto where dp.ID_Detalle= ID_Can_Detalle)
 go
 
-/*
+
+
 /******************************************IMGRESO DE DATOS MANUALMENTE************************************************************************/
 
+--ALTER SEQUENCE Empr RESTART WITH 0;
+--altera el numero de secuencia
+
 /******************************************ACCESO*************************/
+/*
 INSERT INTO [dbo].[Acceso]
-           ([Nombre_Usuario]
-           ,[Apellido_Usuario]
-           ,[Usuario]
-           ,[Password])
+           ([Nombre_Usuario],[Apellido_Usuario],[Usuario],[Password])
      VALUES
-	 
            ('Administrador','Administrador','admin','0x61646D696E')
 GO
-
 UPDATE [dbo].[Acceso]
    SET Password = ENCRYPTBYPASSPHRASE('admin','admin')
 	where ID_Usuario=1
 GO
-
+*/
 /*****************************************PRODUCTOS*********************/
+/*
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000001','Galleta Oreo','Taco mayor','UNIDAD','0.83','0.90','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000001','Galleta Oreo','Taco mayor','UNIDAD','0.83','0.90','Iva 12%',1)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000002','Pasta','Espagueti 100lb','UNIDAD','0.75','2.15','Sin IVA')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000002','Pasta','Espagueti 100lb','UNIDAD','0.75','2.15','Sin IVA',2)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000003','Ciclon','Detergente de 500gr.','UNIDAD','1.99','2.50','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000003','Ciclon','Detergente de 500gr.','UNIDAD','1.99','2.50','Iva 12%',3)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000004','Deja','Detergente 1K','UNIDAD','2.80','3.50','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000004','Deja','Detergente 1K','UNIDAD','2.80','3.50','Iva 12%',3)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000005','Macho','Jabon 200gr','UNIDADI','0.80','1.02','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000005','Macho','Jabon 200gr','UNIDADI','0.80','1.02','Iva 12%',3)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000006','ACEITE PALMA ORO','1 LITRO EN BOTELLA','UNIDAD','1.35','2.00','Sin IVA')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000006','ACEITE PALMA ORO','1 LITRO EN BOTELLA','UNIDAD','1.35','2.00','Sin IVA',2)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000007','POLLO COMPLETO MR. POLLO','SÚPER EXTRA GRANDE - PESO: 2,50 A 2,80KG','KG','1.89','2.10','Sin IVA')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000007','POLLO COMPLETO MR. POLLO','SÚPER EXTRA GRANDE - PESO: 2,50 A 2,80KG','KG','1.89','2.10','Sin IVA',2)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000008','Galak','Galletas de 500gr','UNIDAD','1.35','2.15','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000008','Galak','Galletas de 500gr','UNIDAD','1.35','2.15','Iva 12%',1)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000009','Mayonesa','Botella 500g','UNIDAD','2.75','3.15','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000009','Mayonesa','Botella 500g','UNIDAD','2.75','3.15','Iva 12%',2)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000010','Salsa de Tomate','Galon','UNIDAD','8.00','9.25','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000010','Salsa de Tomate','Galon','UNIDAD','8.00','9.25','Iva 12%',2)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000011','Mostaza','Botella 250g','UNIDAD','2.15','2.75','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000011','Mostaza','Botella 250g','UNIDAD','2.15','2.75','Iva 12%',2)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000012','Aliño','Sazonador 450g','UNIDAD','3.00','3.75','Iva 12%')
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000012','Aliño','Sazonador 450g','UNIDAD','3.00','3.75','Iva 12%',2)
 INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo])
-     VALUES('PROD00000013','Ajo','Botella 250g','UNIDAD','1.15','1.75','Iva 12%')
-GO
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000013','Ajo','Botella 250g','UNIDAD','1.15','1.75','Iva 12%',2)
+INSERT INTO [dbo].[Productos]
+           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
+     VALUES('PROD00000014','COCACOLA','3 LITROS RETONABLE','UNIDAD','2.05','2.75','Iva 12%',4)
 
+GO
+*/
 /******************************************PROVEEDORES*******************/
+/*
 INSERT INTO [dbo].[Proveedores]
            ([Codigo],[Nombre],[RUC_Proveedor],[Direccion],[Telefono],[Email])
 	VALUES
@@ -884,29 +932,49 @@ INSERT INTO [dbo].[Proveedores]
 		   ('PROV00000003',	'Arca Continental','2308972654001','Milagro','152-755-4122','arcamilagro@continental.com'),
 		   ('PROV00000004','DEVIES CORP S.A.','0992231092001','Av. 17 de Septiembre 1105, Milagro','042-716-7000','devcorpmilagro@gmail.com')
 GO
-
+*/
 /*******************************************CLIENTES*********************/
+/*
 INSERT INTO [dbo].[Clientes]
            ([Codigo],[Nombre],[RUC_Cliente],[Direccion],[Telefono],[Email],[Estado])
      VALUES
            ('CLI00000001','Eloisa Teran Baque','0941347840','cdla x marcos','042-977-3570','eteranb2@gmail.com','Activo'),
 		   ('CLI00000002','Arthur Teran','0941256522','amazonas y la huerta','125-415-4154','gusteran1@gmail.com','Activo')
 GO
+*/
+
+/*******************************************CATEGORIA***********************/
+/*
+INSERT INTO [dbo].[Categoria]
+           ([Categoria])
+     VALUES
+           ('GOLOSINAS'),
+		   ('COMESTIBLE'),
+		   ('LIMPIEZA DE HOGAR'),
+		   ('AGUAS Y BEBIDAS'),
+		   ('INSECTICIDAS'),
+		   ('LACTEOS'),
+		   ('BEBIDAS ALCOHOLICAS')
+GO
+
+*/
+
 
 /*******************************************EMPRESA**************************/
-INSERT INTO [dbo].[Empresas]
-           ([Nombre],[RUC_Empresa],[Direccion],[Telefono],[Email],[Logo])
-     VALUES
-           ('Comercial Adrianita','0921845162001','Parroquia Virgen de fatima Yaguachi Viejo, Ecuador','098-562-2007','adrianitacomercialvf@hotmail.es',NULL)
+
+           --('Comercial Adrianita','0921845162001','Parroquia Virgen de fatima Yaguachi Viejo, Ecuador','0985622007','adrianitacomercialvf@hotmail.es',NULL)
 		   --MODIFICAR EL LOGO DE LA EMPRESA
-GO
-*/
+
+
+
+
 -------------------------------------------------------CONSULTA DE LAS TABLAS-------------------------------------------------
 --CONSULTAR
 USE DBSYSVENBOD
 
 SELECT * FROM Inventarios
 SELECT * FROM Productos
+SELECT * FROM Categoria
 SELECT * FROM Proveedores
 SELECT * FROM Clientes
 SELECT * FROM Empresas
@@ -920,5 +988,5 @@ SELECT PRO.Nombre, PROVEE.Nombre, DETPRO.Fecha_caducidad
 FROM Detalle_Producto DETPRO, Productos PRO, Ingreso_Producto ING, Proveedores PROVEE  
 where DETPRO.Id_Producto=pro.ID_Producto AND ING.Id_Proveedor=PROVEE.ID_Proveedor 
 
-
+SELECT Top 1 Fecha_caducidad, count(*) as ProductoFecha FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad
 

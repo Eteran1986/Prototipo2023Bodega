@@ -22,6 +22,13 @@ namespace CapaDatos
 
         public void AgregarProducto(CE_Productos Productos)
         {
+            int Existencia = 0;
+            Cmd = new SqlCommand("select C.ID_Categoria from Categoria C where C.Categoria='" + Productos.Categoria + "'", Con.Abrir());
+            Cmd.CommandType = CommandType.Text;
+            SqlDataReader Dr = Cmd.ExecuteReader();
+            Dr.Read();
+            Existencia = Convert.ToInt32(Dr["ID_Categoria"].ToString());
+            Dr.Close();
             Cmd = new SqlCommand("AgregarProducto", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
             Cmd.Parameters.Add(new SqlParameter("@Codigo", Productos.Codigo));
@@ -31,7 +38,7 @@ namespace CapaDatos
             Cmd.Parameters.Add(new SqlParameter("@Costo_Unitario", Productos.Costo_Unitario));
             Cmd.Parameters.Add(new SqlParameter("@Precio_venta", Productos.Precio_venta));
             Cmd.Parameters.Add(new SqlParameter("@Tipo_Cargo", Productos.Tipo_Cargo));
-
+            Cmd.Parameters.Add(new SqlParameter("@ID_Categoria", Existencia));
             Cmd.ExecuteNonQuery();
             Con.Cerrar();
         }
@@ -51,6 +58,7 @@ namespace CapaDatos
             Cmd.ExecuteNonQuery();
             Con.Cerrar();
         }
+
         public void EliminarProducto(CE_Productos Productos)
         {
             int Existencia = 0;
@@ -139,6 +147,20 @@ namespace CapaDatos
             Con.Cerrar();
             return Dt;
         }
+        public DataTable Buscar_Inventario_Categoria(CE_Productos productos)
+        {
+            Dt = new DataTable("Categoria");
+            Cmd = new SqlCommand("Buscar_Inventario_Categoria", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", productos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
 
     }
 }

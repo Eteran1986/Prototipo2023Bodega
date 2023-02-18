@@ -49,5 +49,25 @@ namespace Capa_Dominio
         {
             return ObjProveedores.Buscar_Prov_Nombre(Proveedores);
         }
+
+        //Metodo permite buscar los compra por codigo
+        public DataTable Buscar_Compra_Codigo(CE_Proveedores Proveedores)
+        {
+            return ObjProveedores.Buscar_Compra_Codigo(Proveedores);
+        }
+        
+        //Metodo permite buscar los compra por nombre
+        public DataTable Buscar_Compras_Nombre(CE_Proveedores Proveedores)
+        {
+            return ObjProveedores.Buscar_Compras_Nombre(Proveedores);
+        }
+
+        //Metodo permite buscar los compra por comprobante
+        public DataTable Buscar_Compras_Comprobante(CE_Proveedores Proveedores)
+        {
+            return ObjProveedores.Buscar_Compras_Comprobante(Proveedores);
+        }
+
+
     }
 }

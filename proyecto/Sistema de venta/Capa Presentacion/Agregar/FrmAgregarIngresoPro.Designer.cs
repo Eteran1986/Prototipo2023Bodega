@@ -63,14 +63,14 @@ namespace Capa_Presentacion
             this.TxtCodProducto = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Costo_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha_Caducidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.TxtTotalPagar = new System.Windows.Forms.TextBox();
+            this.Id_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costo_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_Caducidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -283,11 +283,12 @@ namespace Capa_Presentacion
             this.DtpFechaCaducidad.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpFechaCaducidad.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DtpFechaCaducidad.Location = new System.Drawing.Point(370, 101);
+            this.DtpFechaCaducidad.MinDate = new System.DateTime(2022, 2, 13, 0, 0, 0, 0);
             this.DtpFechaCaducidad.Name = "DtpFechaCaducidad";
             this.DtpFechaCaducidad.Size = new System.Drawing.Size(102, 22);
             this.DtpFechaCaducidad.TabIndex = 34;
             this.DtpFechaCaducidad.Tag = "";
-            this.DtpFechaCaducidad.Value = new System.DateTime(2023, 2, 2, 0, 0, 0, 0);
+            this.DtpFechaCaducidad.Value = new System.DateTime(2023, 2, 13, 0, 0, 0, 0);
             // 
             // TxtIdDetalleIngreso
             // 
@@ -458,8 +459,8 @@ namespace Capa_Presentacion
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Producto,
             this.Nombre,
-            this.Costo_Unitario,
             this.Cantidad,
+            this.Costo_Unitario,
             this.Sub_Total,
             this.Fecha_Caducidad});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -478,42 +479,6 @@ namespace Capa_Presentacion
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(972, 280);
             this.dataGridView1.TabIndex = 35;
-            // 
-            // Id_Producto
-            // 
-            this.Id_Producto.HeaderText = "Id Producto";
-            this.Id_Producto.Name = "Id_Producto";
-            this.Id_Producto.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Costo_Unitario
-            // 
-            this.Costo_Unitario.HeaderText = "Costo_Unitario";
-            this.Costo_Unitario.Name = "Costo_Unitario";
-            this.Costo_Unitario.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // Sub_Total
-            // 
-            this.Sub_Total.HeaderText = "Sub Total";
-            this.Sub_Total.Name = "Sub_Total";
-            this.Sub_Total.ReadOnly = true;
-            // 
-            // Fecha_Caducidad
-            // 
-            this.Fecha_Caducidad.HeaderText = "Fecha_Caducidad";
-            this.Fecha_Caducidad.Name = "Fecha_Caducidad";
-            this.Fecha_Caducidad.ReadOnly = true;
             // 
             // label9
             // 
@@ -539,6 +504,42 @@ namespace Capa_Presentacion
             this.TxtTotalPagar.Size = new System.Drawing.Size(213, 26);
             this.TxtTotalPagar.TabIndex = 36;
             this.TxtTotalPagar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Id_Producto
+            // 
+            this.Id_Producto.HeaderText = "Id Producto";
+            this.Id_Producto.Name = "Id_Producto";
+            this.Id_Producto.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Costo_Unitario
+            // 
+            this.Costo_Unitario.HeaderText = "Costo_Unitario";
+            this.Costo_Unitario.Name = "Costo_Unitario";
+            this.Costo_Unitario.ReadOnly = true;
+            // 
+            // Sub_Total
+            // 
+            this.Sub_Total.HeaderText = "Sub Total";
+            this.Sub_Total.Name = "Sub_Total";
+            this.Sub_Total.ReadOnly = true;
+            // 
+            // Fecha_Caducidad
+            // 
+            this.Fecha_Caducidad.HeaderText = "Fecha_Caducidad";
+            this.Fecha_Caducidad.Name = "Fecha_Caducidad";
+            this.Fecha_Caducidad.ReadOnly = true;
             // 
             // FrmAgregarIngresoPro
             // 
@@ -607,8 +608,8 @@ namespace Capa_Presentacion
         public System.Windows.Forms.DateTimePicker DtpFechaCaducidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Costo_Unitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costo_Unitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sub_Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Caducidad;
     }

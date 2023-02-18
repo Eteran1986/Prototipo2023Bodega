@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAcceso));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +42,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnagregar = new System.Windows.Forms.Button();
+            this.NotFechaCaducidad = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -189,6 +192,15 @@
             this.btnagregar.UseVisualStyleBackColor = false;
             this.btnagregar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnagregar_KeyPress);
             // 
+            // NotFechaCaducidad
+            // 
+            this.NotFechaCaducidad.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.NotFechaCaducidad.BalloonTipText = "mundo";
+            this.NotFechaCaducidad.BalloonTipTitle = "Hola";
+            this.NotFechaCaducidad.Icon = ((System.Drawing.Icon)(resources.GetObject("NotFechaCaducidad.Icon")));
+            this.NotFechaCaducidad.Text = "notifyIcon1";
+            this.NotFechaCaducidad.Visible = true;
+            // 
             // FrmAcceso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,5 +247,6 @@
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.Button btnagregar;
+        private System.Windows.Forms.NotifyIcon NotFechaCaducidad;
     }
 }

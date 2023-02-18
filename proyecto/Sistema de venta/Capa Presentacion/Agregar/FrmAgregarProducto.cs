@@ -139,6 +139,7 @@ namespace Capa_Presentacion
                     producto.Costo_Unitario = Convert.ToDecimal(txtCostoUnitario.Text.Trim());//convertimos de texto a decimal o float
                     producto.Precio_venta = Convert.ToDecimal(txtPrecioVenta.Text.Trim());//convertimos de texto a decimal o float
                     producto.Tipo_Cargo = cboTipoCargo.Text.Trim();
+                    producto.Categoria = CboCategoria.Text.Trim();
 
                     productos.AgregarProducto(producto);
                     MessageBox.Show("El producto fue agregadon con exito", "Agregar Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);

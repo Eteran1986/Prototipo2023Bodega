@@ -25,6 +25,8 @@ namespace Capa_Presentacion
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
         CDo_IngresoProducto IngresoProductos = new CDo_IngresoProducto();
         CE_IngresoProducto IngresoProducto = new CE_IngresoProducto();
+        CDo_Proveedores Proveedores= new CDo_Proveedores();
+        CE_Proveedores Proveedor = new CE_Proveedores();
 
         private void FrmCompras_Load(object sender, EventArgs e)
         {
@@ -61,7 +63,6 @@ namespace Capa_Presentacion
         {
             CargaDatos();
         }
-
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -114,7 +115,36 @@ namespace Capa_Presentacion
             {
                 MessageBox.Show("No se pudo imprimir por este error: " + ex.Message, "Imprimir", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
+        }
 
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+        public override void Buscar()
+        {
+            try
+            {
+                if (CboTipoBusqueda.Text == "Codigo")
+                {
+                    Proveedor.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Proveedores.Buscar_Compra_Codigo(Proveedor);
+                }
+                else if (CboTipoBusqueda.Text == "Nombre")
+                {
+                    Proveedor.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Proveedores.Buscar_Compras_Nombre(Proveedor);
+                }
+                else if (CboTipoBusqueda.Text == "Comprobante")
+                {
+                    Proveedor.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Proveedores.Buscar_Compras_Comprobante(Proveedor);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("La Compra no fue encontrado : " + ex.Message, "Buscar Compras", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }
