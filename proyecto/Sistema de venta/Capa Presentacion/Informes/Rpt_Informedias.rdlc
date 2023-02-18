@@ -137,7 +137,7 @@
         <Top>0.14111cm</Top>
         <Left>0.3175cm</Left>
         <Height>0.6cm</Height>
-        <Width>16.08667cm</Width>
+        <Width>16.08666cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -162,7 +162,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>REPORTE POR FECHA DE CADUCIDAD POR DÍA</Value>
+                  <Value>REPORTE DE FECHA DE CADUCIDAD POR DÍA</Value>
                   <Style>
                     <FontSize>16pt</FontSize>
                     <FontWeight>Bold</FontWeight>

@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +76,12 @@
     </Compile>
     <Compile Include="Editar\FrmEditarUsuario.Designer.cs">
       <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Front-End\FrmDashboardcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Front-End\FrmDashboardcs.Designer.cs">
+      <DependentUpon>FrmDashboardcs.cs</DependentUpon>
     </Compile>
     <Compile Include="Informes\Frm_Fechacaducidad.cs">
       <SubType>Form</SubType>
@@ -239,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editar\FrmEditarUsuario.resx">
       <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Front-End\FrmDashboardcs.resx">
+      <DependentUpon>FrmDashboardcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Front-End\FrmAcceso.resx">
       <DependentUpon>FrmAcceso.cs</DependentUpon>

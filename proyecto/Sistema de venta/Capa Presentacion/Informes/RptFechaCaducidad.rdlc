@@ -162,7 +162,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>REPORTE POR FECHA DE CADUCIDAD</Value>
+                  <Value>REPORTE GENERAL POR FECHA DE CADUCIDAD</Value>
                   <Style>
                     <FontSize>16pt</FontSize>
                     <FontWeight>Bold</FontWeight>

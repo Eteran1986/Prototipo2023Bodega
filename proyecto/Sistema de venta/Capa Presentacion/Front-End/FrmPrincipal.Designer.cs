@@ -188,7 +188,7 @@
             // 
             this.empresasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.empresa;
             this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(156, 30);
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
             this.empresasToolStripMenuItem.Text = "Empresas";
             this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
             // 
@@ -196,7 +196,7 @@
             // 
             this.informesToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.informe_de_venta;
             this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
-            this.informesToolStripMenuItem.Size = new System.Drawing.Size(156, 30);
+            this.informesToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
             this.informesToolStripMenuItem.Text = "Informes";
             this.informesToolStripMenuItem.Click += new System.EventHandler(this.informesToolStripMenuItem_Click);
             // 
@@ -204,7 +204,7 @@
             // 
             this.usuariosToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.acceso_usuarios;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(156, 30);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
@@ -212,8 +212,9 @@
             // 
             this.dashboardToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.presentacion;
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(156, 30);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
+            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // tmTiempo
             // 
@@ -328,6 +329,7 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 

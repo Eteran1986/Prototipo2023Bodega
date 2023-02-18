@@ -15,7 +15,6 @@ namespace Capa_Presentacion
         {
             InitializeComponent();
         }
-
 /*        private void tmTiempo_Tick(object sender, EventArgs e)
         {
             lblfecha.Text = DateTime.Now.ToLongTimeString();
@@ -76,11 +75,15 @@ namespace Capa_Presentacion
             Frm_Fechacaducidad FechaCaduciada = new Frm_Fechacaducidad();
             FechaCaduciada.Show();
         }
-
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
 
         }
 
+        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmDashboardcs Dashboard = new FrmDashboardcs();
+            Dashboard.ShowDialog();
+        }
     }
 }

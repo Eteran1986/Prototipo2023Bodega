@@ -41,7 +41,6 @@ namespace Capa_Presentacion
                 e.Handled = true;
             }
         }
-
         private void TxtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
@@ -50,7 +49,6 @@ namespace Capa_Presentacion
                 e.Handled = true;
             }
         }
-
         private void FrmAcceso_MouseDown(object sender, MouseEventArgs e)
         {
             MovimientoGeneral();
@@ -96,37 +94,31 @@ namespace Capa_Presentacion
                             TxtUsuario.Focus();
                         }
                     }
-
                     else
                     {
                         Completar();
                         TxtPassword.Focus();
                     }
                 }
-
                 else
                 {
                     Completar();
                     TxtUsuario.Focus();
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No puede Ingresar al sistema " +ex.Message, "Ingreso al sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
          }
-
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             MovimientoGeneral();
         }
-
         private void FrmAcceso_Click(object sender, EventArgs e)
         {
             MovimientoGeneral();
         }
-
         private void MovimientoGeneral()
         {
             ReleaseCapture();
@@ -143,8 +135,6 @@ namespace Capa_Presentacion
            
             
         }
-
-
         /*private void pictureBox1_Click(object sender, EventArgs e)
         {
             FrmAgregarUsuario Usuario = new FrmAgregarUsuario();

@@ -219,3 +219,4 @@ E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.csproj.CopyComplete
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.exe
 E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\DB - copia\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa Presentacion.pdb
+E:\UNEMI\8 semestre\INTEGRACION CURRICULAR\git proyecto\Prototipo2023Bodega\proyecto\Sistema de venta\Capa Presentacion\obj\Debug\Capa_Presentacion.FrmDashboardcs.resources
