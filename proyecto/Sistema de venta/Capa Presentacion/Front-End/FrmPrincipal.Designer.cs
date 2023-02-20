@@ -61,8 +61,8 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Thistle;
-            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(113)))), ((int)(((byte)(97)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestiónProductoToolStripMenuItem,
@@ -74,7 +74,7 @@
             this.configuraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(747, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(739, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -84,14 +84,14 @@
             this.productosToolStripMenuItem});
             this.gestiónProductoToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.gestion_de_productos;
             this.gestiónProductoToolStripMenuItem.Name = "gestiónProductoToolStripMenuItem";
-            this.gestiónProductoToolStripMenuItem.Size = new System.Drawing.Size(157, 28);
+            this.gestiónProductoToolStripMenuItem.Size = new System.Drawing.Size(153, 28);
             this.gestiónProductoToolStripMenuItem.Text = "Gestión Producto";
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.productos;
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(149, 30);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(145, 30);
             this.productosToolStripMenuItem.Text = "Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
@@ -101,14 +101,14 @@
             this.proveedoresToolStripMenuItem});
             this.gestiónProveedoresToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.proveedores;
             this.gestiónProveedoresToolStripMenuItem.Name = "gestiónProveedoresToolStripMenuItem";
-            this.gestiónProveedoresToolStripMenuItem.Size = new System.Drawing.Size(177, 28);
+            this.gestiónProveedoresToolStripMenuItem.Size = new System.Drawing.Size(175, 28);
             this.gestiónProveedoresToolStripMenuItem.Text = "Gestión Proveedores";
             // 
             // proveedoresToolStripMenuItem
             // 
             this.proveedoresToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.proveedor;
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(164, 30);
+            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
             this.proveedoresToolStripMenuItem.Text = "Proveedores";
             this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
             // 
@@ -126,7 +126,7 @@
             // 
             this.clientesToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.cliente;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(135, 30);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
@@ -136,14 +136,14 @@
             this.comprasToolStripMenuItem});
             this.gestiónComprasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.Compras;
             this.gestiónComprasToolStripMenuItem.Name = "gestiónComprasToolStripMenuItem";
-            this.gestiónComprasToolStripMenuItem.Size = new System.Drawing.Size(157, 28);
+            this.gestiónComprasToolStripMenuItem.Size = new System.Drawing.Size(155, 28);
             this.gestiónComprasToolStripMenuItem.Text = "Gestión Compras";
             // 
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.smartphone;
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
-            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(144, 30);
+            this.comprasToolStripMenuItem.Size = new System.Drawing.Size(141, 30);
             this.comprasToolStripMenuItem.Text = "Compras";
             this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
@@ -153,14 +153,14 @@
             this.inventarioToolStripMenuItem1});
             this.inventarioToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.inventario;
             this.inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
-            this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(109, 28);
+            this.inventarioToolStripMenuItem.Size = new System.Drawing.Size(108, 28);
             this.inventarioToolStripMenuItem.Text = "Inventario";
             // 
             // inventarioToolStripMenuItem1
             // 
             this.inventarioToolStripMenuItem1.Image = global::Capa_Presentacion.Properties.Resources.inventario__1_;
             this.inventarioToolStripMenuItem1.Name = "inventarioToolStripMenuItem1";
-            this.inventarioToolStripMenuItem1.Size = new System.Drawing.Size(154, 30);
+            this.inventarioToolStripMenuItem1.Size = new System.Drawing.Size(153, 30);
             this.inventarioToolStripMenuItem1.Text = "Inventarios";
             this.inventarioToolStripMenuItem1.Click += new System.EventHandler(this.inventarioToolStripMenuItem1_Click);
             // 
@@ -168,7 +168,7 @@
             // 
             this.ventasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.ventas;
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(88, 28);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(87, 28);
             this.ventasToolStripMenuItem.Text = "Ventas";
             this.ventasToolStripMenuItem.Visible = false;
             // 
@@ -181,14 +181,14 @@
             this.dashboardToolStripMenuItem});
             this.configuraciónToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.configuracion;
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(137, 28);
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(136, 28);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
             // empresasToolStripMenuItem
             // 
             this.empresasToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.empresa;
             this.empresasToolStripMenuItem.Name = "empresasToolStripMenuItem";
-            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.empresasToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
             this.empresasToolStripMenuItem.Text = "Empresas";
             this.empresasToolStripMenuItem.Click += new System.EventHandler(this.empresasToolStripMenuItem_Click);
             // 
@@ -196,7 +196,7 @@
             // 
             this.informesToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.informe_de_venta;
             this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
-            this.informesToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.informesToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
             this.informesToolStripMenuItem.Text = "Informes";
             this.informesToolStripMenuItem.Click += new System.EventHandler(this.informesToolStripMenuItem_Click);
             // 
@@ -204,7 +204,7 @@
             // 
             this.usuariosToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.acceso_usuarios;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
@@ -212,7 +212,7 @@
             // 
             this.dashboardToolStripMenuItem.Image = global::Capa_Presentacion.Properties.Resources.presentacion;
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(154, 30);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -222,19 +222,22 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(113, 174);
+            this.label1.Location = new System.Drawing.Point(122, 206);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(498, 36);
             this.label1.TabIndex = 1;
             this.label1.Text = "Proyecto Prototipo de Bodega";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblfecha
             // 
+            this.lblfecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblfecha.AutoSize = true;
             this.lblfecha.Font = new System.Drawing.Font("Century", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblfecha.Location = new System.Drawing.Point(270, 385);
+            this.lblfecha.Location = new System.Drawing.Point(285, 431);
             this.lblfecha.Name = "lblfecha";
             this.lblfecha.Size = new System.Drawing.Size(173, 44);
             this.lblfecha.TabIndex = 2;
@@ -242,9 +245,10 @@
             // 
             // lbldia
             // 
+            this.lbldia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbldia.AutoSize = true;
             this.lbldia.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldia.Location = new System.Drawing.Point(278, 423);
+            this.lbldia.Location = new System.Drawing.Point(299, 469);
             this.lbldia.Name = "lbldia";
             this.lbldia.Size = new System.Drawing.Size(144, 16);
             this.lbldia.TabIndex = 3;
@@ -252,13 +256,14 @@
             // 
             // button3
             // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button3.BackColor = System.Drawing.Color.Khaki;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.Image = global::Capa_Presentacion.Properties.Resources.informe_de_venta;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(384, 48);
+            this.button3.Location = new System.Drawing.Point(373, 51);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(160, 110);
             this.button3.TabIndex = 7;
@@ -270,13 +275,14 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.BackColor = System.Drawing.Color.Khaki;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Image = global::Capa_Presentacion.Properties.Resources.productos;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(201, 48);
+            this.button2.Location = new System.Drawing.Point(190, 51);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(160, 110);
             this.button2.TabIndex = 6;
@@ -288,13 +294,14 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.Khaki;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::Capa_Presentacion.Properties.Resources.Compras;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(17, 48);
+            this.button1.Location = new System.Drawing.Point(6, 51);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 110);
             this.button1.TabIndex = 5;
@@ -306,22 +313,24 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox1.Image = global::Capa_Presentacion.Properties.Resources.LOGO_WEB_AZUL1;
-            this.pictureBox1.Location = new System.Drawing.Point(111, 213);
+            this.pictureBox1.Location = new System.Drawing.Point(121, 245);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(505, 183);
+            this.pictureBox1.Size = new System.Drawing.Size(500, 183);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
             // button4
             // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button4.BackColor = System.Drawing.Color.Khaki;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.Image = global::Capa_Presentacion.Properties.Resources.presentacion;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(564, 48);
+            this.button4.Location = new System.Drawing.Point(553, 51);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(160, 110);
             this.button4.TabIndex = 8;
@@ -336,7 +345,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(747, 450);
+            this.ClientSize = new System.Drawing.Size(739, 499);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.lbldia);
             this.Controls.Add(this.lblfecha);
@@ -350,6 +359,7 @@
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prototipo Bodega";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);

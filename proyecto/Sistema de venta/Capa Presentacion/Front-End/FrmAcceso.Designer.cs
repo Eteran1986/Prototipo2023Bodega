@@ -190,7 +190,6 @@
             this.btnagregar.TabIndex = 11;
             this.btnagregar.Text = "Ingresar";
             this.btnagregar.UseVisualStyleBackColor = false;
-            this.btnagregar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnagregar_KeyPress);
             // 
             // NotFechaCaducidad
             // 

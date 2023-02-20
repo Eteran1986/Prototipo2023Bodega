@@ -130,15 +130,5 @@ namespace Capa_Presentacion
             MovimientoGeneral();
         }
 
-        private void btnagregar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-            
-        }
-        /*private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            FrmAgregarUsuario Usuario = new FrmAgregarUsuario();
-            Usuario.ShowDialog();
-        }*/
     }
 }

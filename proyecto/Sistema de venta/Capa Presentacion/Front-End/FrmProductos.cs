@@ -99,7 +99,7 @@ namespace Capa_Presentacion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Debe seleccionar un producto para editar","Editar Producto", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe seleccionar un producto para editar","Editar Producto" + ex.Message, MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -136,14 +136,13 @@ namespace Capa_Presentacion
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Debe seleccionar un registro para eliminar", "Eliminar Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe seleccionar un registro para eliminar", "Eliminar Producto" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
         private void TxtBuscar_TextChanged(object sender, EventArgs e)
         {
             Buscar();
-
         }
 
         public override void Buscar()

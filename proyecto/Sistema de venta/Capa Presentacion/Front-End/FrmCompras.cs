@@ -92,7 +92,7 @@ namespace Capa_Presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Debe se seleccionar un registro", "Anular", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Debe se seleccionar un registro", "Anular" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

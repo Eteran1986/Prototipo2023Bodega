@@ -728,11 +728,46 @@ select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fec
 where Comprobante like @Buscar + '%' 
 go
 
+------------------------------------------------DASHBOARD----------------------------------------------------------
+Create Proc DashboardDatos
+@ComprasT int out,
+@Productos int out,
+@Usuarios int out,
+@Proveedores int out,
+@categorias int out
+as
+set @ComprasT=( select count(ID_Ingreso) from Ingreso_Producto)
+set @Productos =( select count(ID_Producto) as CanProducto from Productos )
+set @Usuarios =(select count(ID_Usuario) as CanCliente from Acceso)
+set @Proveedores =(select count(ID_Proveedor) as CanProveedor from Proveedores)
+set @categorias =(select count(ID_Categoria) as CanCategoria from Categoria)
+go
 
+Create Proc ProducFecha
+as
+select c.Categoria, count(P.nombre) as CantProductos from Categoria C
+inner join Productos P on c.ID_Categoria=p.ID_Categoria
+inner join Detalle_Producto DP on Dp.Id_Producto=p.ID_Producto
+group by C.Categoria
+order by count(2)
+go
 
+Create Proc ProducCategoria
+as
+select Categoria, count(Nombre) as Nombre from Inventarios I
+inner join Categoria C on I.ID_Categoria=C.ID_Categoria where Cantidad>0
+group by C.Categoria
+order by count(2)
+go
 
-
-
+Create Proc FechaCadProduc1
+as
+select P.Nombre,COUNT(P.Nombre) as CanFechaCaducidad, C.Categoria from Detalle_Producto DP
+inner join Productos P on P.ID_Producto=DP.Id_Producto
+inner join Categoria C on C.ID_Categoria = p.ID_Categoria 
+group by P.Nombre, C.Categoria
+order by count(2)
+go
 
 
 
@@ -858,113 +893,6 @@ go
 
 
 
-/******************************************IMGRESO DE DATOS MANUALMENTE************************************************************************/
-
---ALTER SEQUENCE Empr RESTART WITH 0;
---altera el numero de secuencia
-
-/******************************************ACCESO*************************/
-/*
-INSERT INTO [dbo].[Acceso]
-           ([Nombre_Usuario],[Apellido_Usuario],[Usuario],[Password])
-     VALUES
-           ('Administrador','Administrador','admin','0x61646D696E')
-GO
-UPDATE [dbo].[Acceso]
-   SET Password = ENCRYPTBYPASSPHRASE('admin','admin')
-	where ID_Usuario=1
-GO
-*/
-/*****************************************PRODUCTOS*********************/
-/*
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000001','Galleta Oreo','Taco mayor','UNIDAD','0.83','0.90','Iva 12%',1)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000002','Pasta','Espagueti 100lb','UNIDAD','0.75','2.15','Sin IVA',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000003','Ciclon','Detergente de 500gr.','UNIDAD','1.99','2.50','Iva 12%',3)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000004','Deja','Detergente 1K','UNIDAD','2.80','3.50','Iva 12%',3)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000005','Macho','Jabon 200gr','UNIDADI','0.80','1.02','Iva 12%',3)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000006','ACEITE PALMA ORO','1 LITRO EN BOTELLA','UNIDAD','1.35','2.00','Sin IVA',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000007','POLLO COMPLETO MR. POLLO','SÚPER EXTRA GRANDE - PESO: 2,50 A 2,80KG','KG','1.89','2.10','Sin IVA',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000008','Galak','Galletas de 500gr','UNIDAD','1.35','2.15','Iva 12%',1)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000009','Mayonesa','Botella 500g','UNIDAD','2.75','3.15','Iva 12%',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000010','Salsa de Tomate','Galon','UNIDAD','8.00','9.25','Iva 12%',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000011','Mostaza','Botella 250g','UNIDAD','2.15','2.75','Iva 12%',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000012','Aliño','Sazonador 450g','UNIDAD','3.00','3.75','Iva 12%',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000013','Ajo','Botella 250g','UNIDAD','1.15','1.75','Iva 12%',2)
-INSERT INTO [dbo].[Productos]
-           ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000014','COCACOLA','3 LITROS RETONABLE','UNIDAD','2.05','2.75','Iva 12%',4)
-
-GO
-*/
-/******************************************PROVEEDORES*******************/
-/*
-INSERT INTO [dbo].[Proveedores]
-           ([Codigo],[Nombre],[RUC_Proveedor],[Direccion],[Telefono],[Email])
-	VALUES
-           ('PROV00000001','Nestle','0922281621001','santa teresita y carlos viteri 1050','098-241-7171','gusteran1@gmail.com'),
-		   ('PROV00000002','Pronaca','1208769541002','bucay','094-123-5647','Pronac_proveedor@gmail.com'),
-		   ('PROV00000003',	'Arca Continental','2308972654001','Milagro','152-755-4122','arcamilagro@continental.com'),
-		   ('PROV00000004','DEVIES CORP S.A.','0992231092001','Av. 17 de Septiembre 1105, Milagro','042-716-7000','devcorpmilagro@gmail.com')
-GO
-*/
-/*******************************************CLIENTES*********************/
-/*
-INSERT INTO [dbo].[Clientes]
-           ([Codigo],[Nombre],[RUC_Cliente],[Direccion],[Telefono],[Email],[Estado])
-     VALUES
-           ('CLI00000001','Eloisa Teran Baque','0941347840','cdla x marcos','042-977-3570','eteranb2@gmail.com','Activo'),
-		   ('CLI00000002','Arthur Teran','0941256522','amazonas y la huerta','125-415-4154','gusteran1@gmail.com','Activo')
-GO
-*/
-
-/*******************************************CATEGORIA***********************/
-/*
-INSERT INTO [dbo].[Categoria]
-           ([Categoria])
-     VALUES
-           ('GOLOSINAS'),
-		   ('COMESTIBLE'),
-		   ('LIMPIEZA DE HOGAR'),
-		   ('AGUAS Y BEBIDAS'),
-		   ('INSECTICIDAS'),
-		   ('LACTEOS'),
-		   ('BEBIDAS ALCOHOLICAS')
-GO
-
-*/
-
-
-/*******************************************EMPRESA**************************/
-
-           --('Comercial Adrianita','0921845162001','Parroquia Virgen de fatima Yaguachi Viejo, Ecuador','0985622007','adrianitacomercialvf@hotmail.es',NULL)
-		   --MODIFICAR EL LOGO DE LA EMPRESA
-
 
 
 
@@ -988,5 +916,4 @@ SELECT PRO.Nombre, PROVEE.Nombre, DETPRO.Fecha_caducidad
 FROM Detalle_Producto DETPRO, Productos PRO, Ingreso_Producto ING, Proveedores PROVEE  
 where DETPRO.Id_Producto=pro.ID_Producto AND ING.Id_Proveedor=PROVEE.ID_Proveedor 
 
-SELECT Top 1 Fecha_caducidad, count(*) as ProductoFecha FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad
-
+SELECT  Fecha_caducidad, count(*) as ProductoFecha FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad

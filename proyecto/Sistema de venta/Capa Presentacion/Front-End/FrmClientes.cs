@@ -96,7 +96,7 @@ namespace Capa_Presentacion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Debe seleccionar un cliente para editar", "Editar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe seleccionar un cliente para editar", "Editar Cliente" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace Capa_Presentacion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Debe seleccionar un registro para eliminar", "Eliminar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Debe seleccionar un registro para eliminar", "Eliminar Cliente" + ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }

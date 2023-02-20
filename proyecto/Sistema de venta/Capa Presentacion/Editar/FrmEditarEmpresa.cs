@@ -20,13 +20,11 @@ namespace Capa_Presentacion
             InitializeComponent();
         }
 
-        CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
+        //CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
         CDo_Empresas Empresas = new CDo_Empresas();
         CE_Empresas Empresa = new CE_Empresas();
         //perimte las carpetas agregar nuestras imagenes en empresas
         OpenFileDialog examinar = new OpenFileDialog();
-        internal object PtbLogo;
-
         public delegate void UpdateDelegate(object sender, UpdatedEventArgs args);
         public event UpdateDelegate UpdatedEventHandler;
 
@@ -70,7 +68,6 @@ namespace Capa_Presentacion
                 e.Handled = true;
             }
         }
-
         private void TxtRUCEmpresa_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
