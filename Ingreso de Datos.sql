@@ -1,9 +1,9 @@
 /******************************************ACCESO*************************/
 
 INSERT INTO [dbo].[Acceso]
-           ([Nombre_Usuario],[Apellido_Usuario],[Usuario],[Password])
+           ([Nombre_Usuario],[Apellido_Usuario],[Usuario],[Password],[Administrador])
      VALUES
-           ('Administrador','Administrador','admin','0x61646D696E')
+           ('Administrador','Administrador','admin','0x61646D696E',1)
 GO
 UPDATE [dbo].[Acceso]
    SET Password = ENCRYPTBYPASSPHRASE('admin','admin')
@@ -29,46 +29,46 @@ GO
 
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000001','Galleta Oreo','Taco mayor','UNIDAD','0.83','0.90','Iva 12%',1)
+     VALUES('PROD00000001','Galleta Oreo','Taco mayor','UNIDAD','0.83','0.90','IVA',1)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000002','Pasta','Espagueti 100lb','UNIDAD','0.75','2.15','Sin IVA',2)
+     VALUES('PROD00000002','Pasta','Espagueti 100lb','UNIDAD','0.75','2.15','SIN IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000003','Ciclon','Detergente de 500gr.','UNIDAD','1.99','2.50','Iva 12%',3)
+     VALUES('PROD00000003','Ciclon','Detergente de 500gr.','UNIDAD','1.99','2.50','IVA',3)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000004','Deja','Detergente 1K','UNIDAD','2.80','3.50','Iva 12%',3)
+     VALUES('PROD00000004','Deja','Detergente 1K','UNIDAD','2.80','3.50','IVA',3)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000005','Macho','Jabon 200gr','UNIDADI','0.80','1.02','Iva 12%',3)
+     VALUES('PROD00000005','Macho','Jabon 200gr','UNIDAD','0.80','1.02','IVA',3)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000006','ACEITE PALMA ORO','1 LITRO EN BOTELLA','UNIDAD','1.35','2.00','Sin IVA',2)
+     VALUES('PROD00000006','ACEITE PALMA ORO','1 LITRO EN BOTELLA','UNIDAD','1.35','2.00','SIN IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000007','POLLO COMPLETO MR. POLLO','SÚPER EXTRA GRANDE - PESO: 2,50 A 2,80KG','KG','1.89','2.10','Sin IVA',2)
+     VALUES('PROD00000007','POLLO COMPLETO MR. POLLO','SÚPER EXTRA GRANDE - PESO: 2,50 A 2,80KG','KG','1.89','2.10','SIN IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000008','Galak','Galletas de 500gr','UNIDAD','1.35','2.15','Iva 12%',1)
+     VALUES('PROD00000008','Galak','Galletas de 500gr','UNIDAD','1.35','2.15','IVA',1)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000009','Mayonesa','Botella 500g','UNIDAD','2.75','3.15','Iva 12%',2)
+     VALUES('PROD00000009','Mayonesa','Botella 500g','UNIDAD','2.75','3.15','IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000010','Salsa de Tomate','Galon','UNIDAD','8.00','9.25','Iva 12%',2)
+     VALUES('PROD00000010','Salsa de Tomate','Galon','UNIDAD','8.00','9.25','IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000011','Mostaza','Botella 250g','UNIDAD','2.15','2.75','Iva 12%',2)
+     VALUES('PROD00000011','Mostaza','Botella 250g','UNIDAD','2.15','2.75','IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000012','Aliño','Sazonador 450g','UNIDAD','3.00','3.75','Iva 12%',2)
+     VALUES('PROD00000012','Aliño','Sazonador 450g','UNIDAD','3.00','3.75','IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000013','Ajo','Botella 250g','UNIDAD','1.15','1.75','Iva 12%',2)
+     VALUES('PROD00000013','Ajo','Botella 250g','UNIDAD','1.15','1.75','IVA',2)
 INSERT INTO [dbo].[Productos]
            ([Codigo],[Nombre],[Descripcion],[Presentacion],[Costo_Unitario],[Precio_venta],[Tipo_Cargo],[ID_Categoria])
-     VALUES('PROD00000014','COCACOLA','3 LITROS RETONABLE','UNIDAD','2.05','2.75','Iva 12%',4)
+     VALUES('PROD00000014','COCACOLA','3 LITROS RETONABLE','UNIDAD','2.05','2.75','IVA',4)
 
 GO
 

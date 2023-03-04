@@ -77,6 +77,54 @@
     <Compile Include="Editar\FrmEditarUsuario.Designer.cs">
       <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Agregar\FrmAgregarComponentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregar\FrmAgregarComponentes.Designer.cs">
+      <DependentUpon>FrmAgregarComponentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar\FrmEditarComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar\FrmEditarComprobante.Designer.cs">
+      <DependentUpon>FrmEditarComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agregar\FrmAgregarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregar\FrmAgregarVentas.Designer.cs">
+      <DependentUpon>FrmAgregarVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaProduVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaProduVentas.Designer.cs">
+      <DependentUpon>FrmVistaProduVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Front-End\FrmFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Front-End\FrmFacturacion.Designer.cs">
+      <DependentUpon>FrmFacturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FrmVistaCliente.Designer.cs">
+      <DependentUpon>FrmVistaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Front-End\FrmTipoComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Front-End\FrmTipoComprobante.Designer.cs">
+      <DependentUpon>FrmTipoComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Front-End\FrmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Front-End\FrmVentas.Designer.cs">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Front-End\FrmDashboardcs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +295,24 @@
     <EmbeddedResource Include="Editar\FrmEditarUsuario.resx">
       <DependentUpon>FrmEditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Agregar\FrmAgregarComponentes.resx">
+      <DependentUpon>FrmAgregarComponentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar\FrmEditarComprobante.resx">
+      <DependentUpon>FrmEditarComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agregar\FrmAgregarVentas.resx">
+      <DependentUpon>FrmAgregarVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Front-End\FrmFacturacion.resx">
+      <DependentUpon>FrmFacturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Front-End\FrmTipoComprobante.resx">
+      <DependentUpon>FrmTipoComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Front-End\FrmVentas.resx">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Front-End\FrmDashboardcs.resx">
       <DependentUpon>FrmDashboardcs.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,8 +350,14 @@
     <EmbeddedResource Include="Anular\FrmAnularIngresoProducto.resx">
       <DependentUpon>FrmAnularIngresoProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FrmVistaCliente.resx">
+      <DependentUpon>FrmVistaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\FrmVistaProducto.resx">
       <DependentUpon>FrmVistaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FrmVistaProduVentas.resx">
+      <DependentUpon>FrmVistaProduVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\FrmVistaProveedor.resx">
       <DependentUpon>FrmVistaProveedor.cs</DependentUpon>
@@ -442,6 +514,14 @@
     <None Include="Resources\acceso.png" />
     <None Include="Resources\informe-de-venta.png" />
     <None Include="Resources\presentacion.png" />
+    <None Include="Resources\Facturación.png" />
+    <None Include="Resources\comprobante.png" />
+    <None Include="Resources\tablero.png" />
+    <None Include="Resources\productos %281%29.png" />
+    <None Include="Resources\carrito-de-compras %281%29.png" />
+    <None Include="Resources\compras1.png" />
+    <None Include="Resources\informe-de-negocio.png" />
+    <None Include="Resources\barra-de-menus.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

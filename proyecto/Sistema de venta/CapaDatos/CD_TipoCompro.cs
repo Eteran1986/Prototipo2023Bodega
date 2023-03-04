@@ -31,7 +31,7 @@ namespace CapaDatos
         {
             Cmd = new SqlCommand("EditarTipoCompro", Con.Abrir());
             Cmd.CommandType = CommandType.StoredProcedure;
-            Cmd.Parameters.Add(new SqlParameter("@Correlativo", Comprobante.ID_Comprobante));
+            Cmd.Parameters.Add(new SqlParameter("@ID_Comprobante", Comprobante.ID_Comprobante));
             Cmd.Parameters.Add(new SqlParameter("@Nombre_Comprobante", Comprobante.Nombre_Comprobante));
             Cmd.Parameters.Add(new SqlParameter("@Tipo_Comprobante", Comprobante.Tipo_Comprobante));
             Cmd.Parameters.Add(new SqlParameter("@Correlativo", Comprobante.Correlativo));

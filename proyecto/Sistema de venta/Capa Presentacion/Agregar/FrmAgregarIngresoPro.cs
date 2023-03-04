@@ -10,7 +10,6 @@ using System.Windows.Forms;//se agrego
 using Capa_Dominio;//se agrego
 using Capa_Entidad;//se agrego
 using CapaDatos;//se agrego
-using static System.Net.WebRequestMethods;
 
 namespace Capa_Presentacion
 {
@@ -20,7 +19,7 @@ namespace Capa_Presentacion
         public FrmAgregarIngresoPro(FrmCompras Compras)
         {
             InitializeComponent();
-            DtpFechaCaducidad.MinDate = DateTime.Now.AddDays(5);// Se agrego 5 dia por la empresa
+            DtpFechaCaducidad.MinDate = DateTime.Now.AddDays(15);// Se agrego 5 dia por la empresa
         }
         
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_DetalleVentas.cs" />
     <Compile Include="CD_Usuario.cs" />
     <Compile Include="CD_Clientes.cs" />
     <Compile Include="CD_Conexion.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="CD_Productos.cs" />
     <Compile Include="CD_Proveedores.cs" />
     <Compile Include="CD_TipoCompro.cs" />
+    <Compile Include="CD_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

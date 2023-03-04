@@ -85,7 +85,10 @@ namespace Capa_Presentacion
                             FrmPrincipal FormularioPrincipal = new FrmPrincipal();
                             FormularioPrincipal.Show();
                             this.Hide();
-                            this.NotFechaCaducidad.ShowBalloonTip(1000, "Productos pronto a Caducar", "Tiene " + InformacionUsuario.numeroFecha + " Productos con fecha: " + InformacionUsuario.Fecha_Caducidad, ToolTipIcon.Info);
+                            if(InformacionUsuario.Administrador==1)
+                            {
+                                this.NotFechaCaducidad.ShowBalloonTip(1000, "Productos pronto a Caducar", "Tiene " + InformacionUsuario.numeroFecha + " Productos con fecha: " + InformacionUsuario.Fecha_Caducidad, ToolTipIcon.Info);
+                            }
                         }
                         else
                         {

@@ -28,6 +28,7 @@ namespace CapaDatos
             Cmd.Parameters.Add(new SqlParameter("@Apellido_Usuario", Accesos.Apellido_Usuario));
             Cmd.Parameters.Add(new SqlParameter("@Usuario", Accesos.Usuario));
             Cmd.Parameters.Add(new SqlParameter("@Password", Accesos.Password));
+            Cmd.Parameters.Add(new SqlParameter("@Administrador", "0"));
             Cmd.ExecuteNonQuery();
             Con.Cerrar();
         }
@@ -40,6 +41,7 @@ namespace CapaDatos
             Cmd.Parameters.Add(new SqlParameter("@Apellido_Usuario", Accesos.Apellido_Usuario));
             Cmd.Parameters.Add(new SqlParameter("@Usuario", Accesos.Usuario));
             Cmd.Parameters.Add(new SqlParameter("@Password", Accesos.Password));
+            Cmd.Parameters.Add(new SqlParameter("@Administrador", Accesos.Administrador));
             Cmd.ExecuteNonQuery();
             Con.Cerrar();
         }
@@ -69,6 +71,7 @@ namespace CapaDatos
                 InformacionUsuario.Apellido_Usuario = Dr.GetString(2);
                 InformacionUsuario.Usuario = Dr.GetString(3);
                 InformacionUsuario.Password = Dr.GetString(4);
+                InformacionUsuario.Administrador = Dr.GetInt32(5);
                 a++;
             }
             else

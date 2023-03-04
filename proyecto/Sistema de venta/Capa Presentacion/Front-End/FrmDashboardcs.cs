@@ -15,7 +15,7 @@ using Capa_Entidad.Cache;
 using CapaDatos;
 namespace Capa_Presentacion
 {
-    public partial class FrmDashboardcs : Form
+    public partial class FrmDashboardcs : FormBase
     {
         public FrmDashboardcs()
         {

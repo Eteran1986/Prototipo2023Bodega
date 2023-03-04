@@ -3,9 +3,9 @@
     "",
     "\\proyecto",
     "\\proyecto\\Sistema de venta",
-    "\\proyecto\\Sistema de venta\\Capa Presentacion",
-    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End"
+    "\\proyecto\\Sistema de venta\\Capa Entidad",
+    "\\proyecto\\Sistema de venta\\Capa Presentacion"
   ],
-  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End\\FrmPrincipal.cs",
+  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Entidad\\CE_DetalleIngreso.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -160,9 +160,46 @@ create table Acceso
 	Nombre_Usuario varchar(50) not null,
 	Apellido_Usuario varchar(50) not null,
 	Usuario varchar(50) not null,
-	Password varchar(max) not null
+	Password varchar(max) not null,
+	Administrador int not null
 )
 go
+
+--TABLA DE VENTAS
+CREATE SEQUENCE Ven AS INT START WITH 1 NO CACHE;
+create table Ventas
+(
+	ID_Venta int PRIMARY KEY DEFAULT NEXT VALUE FOR Ven,
+	ID_Cliente int not null,
+	ID_Usuario int not null,
+	No_Factura nvarchar(15) not null,
+	Fecha_Venta date not null,
+	Comprobante nvarchar(20) not null,
+	Sub_Total decimal(12,2) not null,
+	Descuento decimal(12,2) not null,
+	IVA decimal(12,2) not null,
+	Monto_Total decimal(12,2) not null,
+	Estado varchar(10) not null
+)
+go
+
+--TABLA DE DETALLE DE VENTAS
+CREATE SEQUENCE DetVen AS INT START WITH 1 NO CACHE;
+create table Detalle_Ventas
+(
+	ID_DetalleVentas int PRIMARY KEY DEFAULT NEXT VALUE FOR DetVen,
+	ID_Venta int not null,
+	ID_Producto int not null,
+	Presentacion varchar(10) not null,
+	Cantidad int not null,
+	Precio_Venta decimal(12,2) not null,
+	Sub_Total decimal(12,2) not null,
+	Descuento decimal(12,2) not null,
+	IVA decimal(12,2) not null,
+	Monto_Total decimal(12,2) not null,
+)
+go
+
 
 
 -------------------------------------------------------PROCEDURE-------------------------------------------------
@@ -483,11 +520,12 @@ Create proc IngresarAcceso
 	@Nombre_Usuario varchar(50) ,
 	@Apellido_Usuario varchar(50) ,
 	@Usuario varchar(50) ,
-	@Password varchar(max) 
+	@Password varchar(max),
+	@Administrador int
 as begin
 set @Password =( ENCRYPTBYPASSPHRASE(@Usuario,@Password));
-insert into Acceso(Nombre_Usuario,Apellido_Usuario,Usuario,Password)
-values (@Nombre_Usuario,@Apellido_Usuario,@Usuario,@Password)
+insert into Acceso(Nombre_Usuario,Apellido_Usuario,Usuario,Password,Administrador)
+values (@Nombre_Usuario,@Apellido_Usuario,@Usuario,@Password,@Administrador)
 end
 GO
 
@@ -497,7 +535,7 @@ Create proc EditAcceso
 	@Nombre_Usuario varchar(50) ,
 	@Apellido_Usuario varchar(50) ,
 	@Usuario varchar(50) ,
-	@Password varchar(max) 
+	@Password varchar(max)
 as
 update Acceso 
 set @Password =( ENCRYPTBYPASSPHRASE(@Usuario,@Password)),
@@ -532,6 +570,7 @@ from Acceso
 where @ID_Usuario=ID_Usuario
 go
 
+
 ----para almacenar lo encriptado
 Create proc AccesoEncri
 @ID_Usuario int
@@ -563,6 +602,109 @@ Select *
 from Acceso 
 where Usuario=@Usuario and @Password=CONVERT(varchar(max), DECRYPTBYPASSPHRASE(Usuario,Password))
 go
+
+/***********************************************VENTAS - DETALLES VENTAS***********************************************************/
+/*********Agregar las Ventas***********/
+Create Proc AgregarVentas
+@ID_Cliente int,
+@ID_Usuario int,
+@No_Factura nvarchar(15),
+@Fecha_Venta date,
+@Comprobante nvarchar(20),
+@Sub_Total decimal(12,2),
+@Descuento decimal(12,2),
+@IVA decimal(12,2),
+@Monto_Total decimal(12,2),
+@Estado varchar(10)
+as
+Insert into Ventas (ID_Cliente,ID_Usuario,No_Factura,Fecha_Venta,Comprobante,Sub_Total,Descuento,IVA,Monto_Total,Estado)
+values(@ID_Cliente,@ID_Usuario,@No_Factura,@Fecha_Venta,@Comprobante,@Sub_Total,@Descuento,@IVA,@Monto_Total,@Estado)
+go
+
+
+/***************Anular ventas***********************/
+Create Proc Anular_Ventas
+@ID_Venta int,
+@ID_Cliente int,
+@ID_Usuario int,
+@No_Factura nvarchar(15),
+@Fecha_Venta date,
+@Comprobante nvarchar(20),
+@Sub_Total decimal(12,2),
+@Descuento decimal(12,2),
+@IVA decimal(12,2),
+@Monto_Total decimal(12,2),
+@Estado varchar(10)
+as
+Update Ventas Set	ID_Cliente=@ID_Cliente,ID_Usuario=@ID_Usuario,No_Factura=@No_Factura,
+					Fecha_Venta=@Fecha_Venta,Comprobante=@Comprobante,Sub_Total=@Sub_Total,
+					Descuento=@Descuento,IVA=@IVA,Monto_Total=@Monto_Total,Estado=@Estado
+			  where ID_Venta=@ID_Venta
+go
+
+/*********Agregar Detalles las Ventas***********/
+Create proc Agregar_DetalleVentas
+@ID_Venta int,
+@ID_Producto int,
+@Presentacion varchar(10),
+@Cantidad int,
+@Precio_Venta decimal(12,2),
+@Sub_Total decimal(12,2),
+@Descuento decimal(12,2),
+@IVA decimal(12,2),
+@Monto_Total decimal(12,2)
+as
+insert into Detalle_Ventas (ID_Venta, ID_Producto,Presentacion,Cantidad,Precio_Venta,Sub_Total,Descuento,IVA,Monto_Total)
+values(@ID_Venta, @ID_Producto,@Presentacion,@Cantidad,@Precio_Venta,@Sub_Total,@Descuento,@IVA,@Monto_Total)
+go
+
+/******************Anular Detalle de ventas******************/
+Create proc Anular_DetalleVentas
+@ID_DetalleVentas int,
+@ID_Venta int,
+@ID_Producto int,
+@Presentacion varchar(10),
+@Cantidad int,
+@Precio_Venta decimal(12,2),
+@Sub_Total decimal(12,2),
+@Descuento decimal(12,2),
+@IVA decimal(12,2),
+@Monto_Total decimal(12,2)
+as
+update Detalle_Ventas set	ID_Venta=@ID_Venta, ID_Producto=@ID_Producto,Presentacion=@Presentacion,
+							Cantidad=@Cantidad,Precio_Venta=@Precio_Venta,Sub_Total=@Sub_Total,
+							Descuento=@Descuento,IVA=@IVA,Monto_Total=@Monto_Total
+where ID_DetalleVentas=@ID_DetalleVentas
+go
+
+
+/********************************Mostrar detalle ventas*******************************************/
+Create Proc Mostrar_DetalleVentas
+@ID_Ventas int
+as
+select	dv.ID_DetalleVentas, p.Nombre, dv.Presentacion,dv.Cantidad,dv.Precio_Venta,dv.Descuento,
+		dv.IVA,(dv.Cantidad*dv.Precio_Venta) as 'Sub Total'
+from Detalle_Ventas DV inner join Productos P on DV.ID_Producto=P.ID_Producto
+where DV.ID_Venta=@ID_Ventas
+
+--Mostrar venta de productos
+Create proc Mostrar_VentasProducto
+@ID_Ventas int
+as
+select	V.No_Factura, V.Fecha_Venta,V.Comprobante, V.Sub_Total as 'Sub Total', V.Descuento,
+		V.IVA,V.Monto_Total,V.Estado,A.Usuario, P.Nombre, DV.Presentacion, DV.Cantidad,
+		DV.Precio_Venta as 'Precio',DV.Sub_Total as 'Sub Total',DV.Descuento,DV.IVA,
+		DV.Monto_Total as 'Total',C.Nombre,C.RUC_Cliente,C.Direccion,E.Nombre,E.RUC_Empresa,
+		E.Direccion,E.Telefono,E.Email,E.Logo
+from Ventas V
+inner join Detalle_Ventas DV on V.ID_Venta=DV.ID_Venta
+inner join Productos P on DV.ID_Producto=P.ID_Producto
+inner join Clientes C on V.ID_Cliente=C.ID_Cliente
+inner join Acceso A on V.ID_Usuario=A.ID_Usuario
+cross join Empresas E
+where V.ID_Venta = @ID_Ventas
+go
+
 
 
 
@@ -728,6 +870,52 @@ select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fec
 where Comprobante like @Buscar + '%' 
 go
 
+/******************************************VENTAS PRODUCTOS********************************************/
+--Buscar ventas clientes
+Create proc Buscar_Venta_Cliente
+@Buscar nvarchar(100)
+as
+select  C.Nombre, V.No_Factura, V.Fecha_Venta, V.Comprobante, V.Sub_Total, v.Descuento, v.IVA, v.Monto_Total,
+		A.Usuario
+		From Ventas V 
+inner join Clientes C on V.ID_Cliente=C.ID_Cliente
+inner join Acceso A on A.ID_Usuario=V.ID_Usuario
+where C.Nombre like @Buscar + '%' 
+go
+
+--Buscar ventas comprobantes
+Create proc Buscar_VentaComprobante
+@Buscar nvarchar(100)
+as
+select  C.Nombre, V.No_Factura, V.Fecha_Venta, V.Comprobante, V.Sub_Total, v.Descuento, v.IVA, v.Monto_Total,
+		A.Usuario
+		From Ventas V 
+inner join Clientes C on V.ID_Cliente=C.ID_Cliente
+inner join Acceso A on A.ID_Usuario=V.ID_Usuario
+where V.Comprobante like @Buscar + '%' 
+go
+
+--Mostrar ventas generales
+create proc Mostrar_ventas
+as
+select	V.ID_Venta, V.No_Factura, C.Nombre, V.Fecha_Venta, V.Comprobante, V.Sub_Total, v.Descuento, 
+		v.IVA, v.Monto_Total,A.Usuario
+		From Ventas V 
+inner join Clientes C on V.ID_Cliente=C.ID_Cliente
+inner join Acceso A on A.ID_Usuario=V.ID_Usuario
+go
+
+-------------------------------------------------------pRODUCTOS-VENTAS-----------------------------------------------------------------------------
+
+Create proc Mostrar_ProduVentas
+as
+select	P.ID_Producto, P.Codigo, P.Nombre as 'Nombre Producto', P.Tipo_Cargo as 'Tipo Cargo', 
+		P.Precio_venta as 'Precio Venta', I.Cantidad, P.Presentacion 
+
+from Productos P inner join Inventarios I on P.ID_Producto=I.ID_Inventario
+go
+
+
 ------------------------------------------------DASHBOARD----------------------------------------------------------
 Create Proc DashboardDatos
 @ComprasT int out,
@@ -891,9 +1079,38 @@ values(@ID_Can_Detalle,@Nombre,@Cantidad,@Fecha_caducidad)
 update Can_Detalle_Producto set Nombre = (select P.Nombre from Productos P inner join Detalle_Producto DP on dp.Id_Producto=p.ID_Producto where dp.ID_Detalle= ID_Can_Detalle)
 go
 
+/*************************************VENTAS***********************************************/
+Create Trigger Tr_DisminuirProductoInventario
+on Detalle_Ventas for insert
+as
+set nocount on
+Declare @ID_Inventario int
+Declare @Cantidad int
+Declare @Stock_Actual int
+Declare @Costo_Unitario decimal(12,2)
+Declare @Monto_Total decimal(12,2)
+Declare @Balance_Actual decimal(12,2)
+select @ID_Inventario=ID_Producto,@Cantidad=Cantidad from inserted
+select @Stock_Actual=Cantidad, @Costo_Unitario=Costo_Unitario, @Balance_Actual=Monto_Total from Inventarios where ID_Inventario =@ID_Inventario
+update Inventarios Set Inventarios.Cantidad=@Stock_Actual-@Cantidad, Inventarios.Monto_Total=@Balance_Actual-@Cantidad*@Costo_Unitario
+where Inventarios.ID_Inventario=@ID_Inventario
+go
 
-
-
+Create Trigger Tr_Aumentar_producto_inventario
+on Detalle_Ventas for update
+as
+set nocount on
+Declare @ID_Inventario int
+Declare @Cantidad int
+Declare @Stock_Actual int
+Declare @Costo_Unitario decimal(12,2)
+Declare @Monto_Total decimal(12,2)
+Declare @Balance_Actual decimal(12,2)
+select @ID_Inventario=ID_Producto,@Cantidad=Cantidad from inserted
+select @Stock_Actual=Cantidad, @Costo_Unitario=Costo_Unitario, @Balance_Actual=Monto_Total from Inventarios where ID_Inventario =@ID_Inventario
+update Inventarios set Inventarios.Cantidad=@Stock_Actual+@Cantidad,Inventarios.Monto_Total=@Balance_Actual+@Cantidad*@Costo_Unitario
+where Inventarios.ID_Inventario=@ID_Inventario
+go
 
 
 -------------------------------------------------------CONSULTA DE LAS TABLAS-------------------------------------------------

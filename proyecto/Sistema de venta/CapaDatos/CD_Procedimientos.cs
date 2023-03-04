@@ -145,7 +145,7 @@ namespace CapaDatos
         //metodo para llenar textbox
         public void LlenarComboBox(string Tabla, string Nombre, ComboBox xCBox)
         {
-            Cmd = new SqlCommand("Select * from", Con.Abrir());
+            Cmd = new SqlCommand("Select * From "+Tabla, Con.Abrir());
             Cmd.CommandType = CommandType.Text;
 
             Dr= Cmd.ExecuteReader();
@@ -153,6 +153,54 @@ namespace CapaDatos
             {
                 xCBox.Items.Add(Dr[Nombre].ToString());
             }
+        }
+
+        //Metodo que permite generar codigo
+        public String GenerarCodigoFact(string Campo)
+        {
+            string Codigo = string.Empty;
+            int Total = 0;
+            Cmd = new SqlCommand("Select * from TipoComprobante where ID_Comprobante = " + Campo, Con.Abrir());
+            Cmd.CommandType = CommandType.Text;
+
+            Dr = Cmd.ExecuteReader();
+
+            if (Dr.Read())
+            {
+                Total = Convert.ToInt32(Dr[3]) + 1;
+            }
+            Dr.Close();
+
+            if (Total < 10)
+            {
+                Codigo = "0000000" + Total;
+            }
+            else if (Total < 100)
+            {
+                Codigo = "000000" + Total;
+            }
+            else if (Total < 1000)
+            {
+                Codigo = "00000" + Total;
+            }
+            else if (Total < 10000)
+            {
+                Codigo = "0000" + Total;
+            }
+            else if (Total < 100000)
+            {
+                Codigo = "000" + Total;
+            }
+            else if (Total < 1000000)
+            {
+                Codigo = "00" + Total;
+            }
+            else if (Total < 10000000)
+            {
+                Codigo = "0" + Total;
+            }
+            Con.Cerrar();
+            return Codigo;
         }
 
     }

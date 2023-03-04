@@ -27,7 +27,6 @@ namespace CapaDatos
             Cmd.Parameters.Add(new SqlParameter("@Monto_Total", Ingresos.Monto_Total));
             Cmd.Parameters.Add(new SqlParameter("@Estado", Ingresos.Estado));
             Cmd.ExecuteNonQuery();
-
             Con.Cerrar();
         }
 
@@ -77,6 +76,5 @@ namespace CapaDatos
             Dr.Close();
             return Dt;
         }
-
     }
 }

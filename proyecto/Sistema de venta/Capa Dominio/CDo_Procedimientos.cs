@@ -56,6 +56,11 @@ namespace Capa_Dominio
         {
             ObjProcedimientos.LlenarComboBox(Tabla, Nombre, xCBox);
         }
+        //Codigo Facturacion
+        public String GenerarCodigoFact(string Campo)
+        {
+            return ObjProcedimientos.GenerarCodigoFact(Campo);
+        }
 
     }
 }
