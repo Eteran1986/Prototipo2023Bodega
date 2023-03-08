@@ -26,14 +26,14 @@ namespace Capa_Presentacion
             CargarDatos();
             dataGridView1.Columns[0].Visible= false;
             dataGridView1.Columns[1].Width = 100; //No. Factura
-            dataGridView1.Columns[2].Width = 250; //Nombre
+            dataGridView1.Columns[2].Width = 150; //Nombre
             dataGridView1.Columns[3].Width = 150; //fechaventa
-            dataGridView1.Columns[4].Width = 200; //comprobante
-            dataGridView1.Columns[5].Width = 150;//subtotal
-            dataGridView1.Columns[6].Width = 150;//descuento
-            dataGridView1.Columns[7].Width = 150;//iva
+            dataGridView1.Columns[4].Width = 100; //comprobante
+            dataGridView1.Columns[5].Width = 80;//subtotal
+            dataGridView1.Columns[6].Width = 80;//descuento
+            dataGridView1.Columns[7].Width = 80;//iva
             dataGridView1.Columns[8].Width = 150;//montototal
-            dataGridView1.Columns[9].Width = 150;//usuario
+            dataGridView1.Columns[9].Width = 80;//usuario
 
             Procedimientos.AlternarColorFilaDataGridView(dataGridView1);
 

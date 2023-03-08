@@ -23,5 +23,9 @@ namespace Capa_Dominio
         {
             ObjTipoCompro.EditarTipoCompro(Comprobante);
         }
+        public void ActComprobante(CE_Tipo_Comprobante Comprobante)
+        {
+            ObjTipoCompro.ActComprobante(Comprobante);
+        }
     }
 }

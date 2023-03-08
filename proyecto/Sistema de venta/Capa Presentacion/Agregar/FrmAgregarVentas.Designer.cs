@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TxtTotalPagar = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ID_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Presentacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPresentacion = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -45,11 +54,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.TxtTipoCargo = new System.Windows.Forms.TextBox();
             this.TxtCodBarra = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.TxtIdDetalleventas = new System.Windows.Forms.TextBox();
-            this.BtnAgregarProducto = new System.Windows.Forms.Button();
-            this.BtnEliminarProducto = new System.Windows.Forms.Button();
+            this.BtnAgregarVentas = new System.Windows.Forms.Button();
+            this.BtnEliminarVentas = new System.Windows.Forms.Button();
             this.BtnBuscarProducto = new System.Windows.Forms.Button();
             this.TxtIdProducto = new System.Windows.Forms.TextBox();
             this.TxtCantidad = new System.Windows.Forms.TextBox();
@@ -60,6 +69,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtIdUsuario = new System.Windows.Forms.TextBox();
             this.TxtNoCOmprobnte = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.CboTipoCOmprobante = new System.Windows.Forms.ComboBox();
@@ -73,20 +83,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtTotalIva = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.TxtDescuent = new System.Windows.Forms.TextBox();
+            this.TxtDescuentoTotal = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.TxtSubTotal = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.TxtValorIva = new System.Windows.Forms.TextBox();
-            this.ID_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Presentacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -132,14 +133,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Producto,
@@ -160,6 +161,60 @@
             this.dataGridView1.Size = new System.Drawing.Size(753, 316);
             this.dataGridView1.TabIndex = 41;
             // 
+            // ID_Producto
+            // 
+            this.ID_Producto.HeaderText = "ID_Producto";
+            this.ID_Producto.Name = "ID_Producto";
+            this.ID_Producto.ReadOnly = true;
+            // 
+            // Nombre_Producto
+            // 
+            this.Nombre_Producto.HeaderText = "Nombre Producto";
+            this.Nombre_Producto.Name = "Nombre_Producto";
+            this.Nombre_Producto.ReadOnly = true;
+            // 
+            // Presentacion
+            // 
+            this.Presentacion.HeaderText = "Presentacion";
+            this.Presentacion.Name = "Presentacion";
+            this.Presentacion.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Precio_Venta
+            // 
+            this.Precio_Venta.HeaderText = "Precio Venta";
+            this.Precio_Venta.Name = "Precio_Venta";
+            this.Precio_Venta.ReadOnly = true;
+            // 
+            // Sub_Total
+            // 
+            this.Sub_Total.HeaderText = "Sub Total";
+            this.Sub_Total.Name = "Sub_Total";
+            this.Sub_Total.ReadOnly = true;
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            // 
+            // IVA
+            // 
+            this.IVA.HeaderText = "IVA";
+            this.IVA.Name = "IVA";
+            this.IVA.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.LemonChiffon;
@@ -175,11 +230,11 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.TxtTipoCargo);
             this.groupBox2.Controls.Add(this.TxtCodBarra);
-            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.TxtIdDetalleventas);
-            this.groupBox2.Controls.Add(this.BtnAgregarProducto);
-            this.groupBox2.Controls.Add(this.BtnEliminarProducto);
+            this.groupBox2.Controls.Add(this.BtnAgregarVentas);
+            this.groupBox2.Controls.Add(this.BtnEliminarVentas);
             this.groupBox2.Controls.Add(this.BtnBuscarProducto);
             this.groupBox2.Controls.Add(this.TxtIdProducto);
             this.groupBox2.Controls.Add(this.TxtCantidad);
@@ -203,6 +258,7 @@
             this.txtPresentacion.Location = new System.Drawing.Point(606, 103);
             this.txtPresentacion.Multiline = true;
             this.txtPresentacion.Name = "txtPresentacion";
+            this.txtPresentacion.ReadOnly = true;
             this.txtPresentacion.Size = new System.Drawing.Size(87, 26);
             this.txtPresentacion.TabIndex = 50;
             // 
@@ -220,9 +276,10 @@
             // TxtIvaProducto
             // 
             this.TxtIvaProducto.BackColor = System.Drawing.Color.Linen;
-            this.TxtIvaProducto.Location = new System.Drawing.Point(512, 103);
+            this.TxtIvaProducto.Location = new System.Drawing.Point(360, 103);
             this.TxtIvaProducto.Multiline = true;
             this.TxtIvaProducto.Name = "TxtIvaProducto";
+            this.TxtIvaProducto.ReadOnly = true;
             this.TxtIvaProducto.Size = new System.Drawing.Size(87, 26);
             this.TxtIvaProducto.TabIndex = 48;
             // 
@@ -231,7 +288,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label14.Location = new System.Drawing.Point(540, 84);
+            this.label14.Location = new System.Drawing.Point(388, 84);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 16);
             this.label14.TabIndex = 47;
@@ -240,19 +297,21 @@
             // TxtDescuento
             // 
             this.TxtDescuento.BackColor = System.Drawing.Color.Linen;
-            this.TxtDescuento.Location = new System.Drawing.Point(419, 103);
+            this.TxtDescuento.Location = new System.Drawing.Point(97, 103);
             this.TxtDescuento.Multiline = true;
             this.TxtDescuento.Name = "TxtDescuento";
             this.TxtDescuento.Size = new System.Drawing.Size(87, 26);
             this.TxtDescuento.TabIndex = 46;
             this.TxtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDescuento_KeyPress);
+            this.TxtDescuento.Leave += new System.EventHandler(this.TxtDescuento_Leave);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label12.Location = new System.Drawing.Point(422, 84);
+            this.label12.Location = new System.Drawing.Point(100, 84);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(81, 16);
             this.label12.TabIndex = 45;
@@ -261,9 +320,10 @@
             // TxtPrecioVenta
             // 
             this.TxtPrecioVenta.BackColor = System.Drawing.Color.Linen;
-            this.TxtPrecioVenta.Location = new System.Drawing.Point(325, 103);
+            this.TxtPrecioVenta.Location = new System.Drawing.Point(267, 103);
             this.TxtPrecioVenta.Multiline = true;
             this.TxtPrecioVenta.Name = "TxtPrecioVenta";
+            this.TxtPrecioVenta.ReadOnly = true;
             this.TxtPrecioVenta.Size = new System.Drawing.Size(87, 26);
             this.TxtPrecioVenta.TabIndex = 44;
             this.TxtPrecioVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -273,7 +333,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label13.Location = new System.Drawing.Point(320, 84);
+            this.label13.Location = new System.Drawing.Point(262, 84);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(96, 16);
             this.label13.TabIndex = 43;
@@ -282,9 +342,10 @@
             // TxtStock
             // 
             this.TxtStock.BackColor = System.Drawing.Color.Linen;
-            this.TxtStock.Location = new System.Drawing.Point(249, 103);
+            this.TxtStock.Location = new System.Drawing.Point(191, 103);
             this.TxtStock.Multiline = true;
             this.TxtStock.Name = "TxtStock";
+            this.TxtStock.ReadOnly = true;
             this.TxtStock.Size = new System.Drawing.Size(66, 26);
             this.TxtStock.TabIndex = 42;
             this.TxtStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -294,7 +355,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label5.Location = new System.Drawing.Point(259, 84);
+            this.label5.Location = new System.Drawing.Point(201, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 16);
             this.label5.TabIndex = 41;
@@ -303,9 +364,10 @@
             // TxtTipoCargo
             // 
             this.TxtTipoCargo.BackColor = System.Drawing.Color.Linen;
-            this.TxtTipoCargo.Location = new System.Drawing.Point(7, 103);
+            this.TxtTipoCargo.Location = new System.Drawing.Point(454, 103);
             this.TxtTipoCargo.Multiline = true;
             this.TxtTipoCargo.Name = "TxtTipoCargo";
+            this.TxtTipoCargo.ReadOnly = true;
             this.TxtTipoCargo.Size = new System.Drawing.Size(148, 26);
             this.TxtTipoCargo.TabIndex = 40;
             // 
@@ -319,6 +381,17 @@
             this.TxtCodBarra.TabIndex = 37;
             this.TxtCodBarra.Visible = false;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label11.Location = new System.Drawing.Point(475, 84);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(107, 16);
+            this.label11.TabIndex = 39;
+            this.label11.Text = "Tipo de Cargo";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -331,17 +404,6 @@
             this.label10.Text = "Barra Producto";
             this.label10.Visible = false;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label11.Location = new System.Drawing.Point(28, 84);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 16);
-            this.label11.TabIndex = 39;
-            this.label11.Text = "Tipo de Cargo";
-            // 
             // TxtIdDetalleventas
             // 
             this.TxtIdDetalleventas.BackColor = System.Drawing.Color.Linen;
@@ -353,31 +415,33 @@
             this.TxtIdDetalleventas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtIdDetalleventas.Visible = false;
             // 
-            // BtnAgregarProducto
+            // BtnAgregarVentas
             // 
-            this.BtnAgregarProducto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAgregarProducto.BackColor = System.Drawing.Color.Azure;
-            this.BtnAgregarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAgregarProducto.Image = global::Capa_Presentacion.Properties.Resources.agregar;
-            this.BtnAgregarProducto.Location = new System.Drawing.Point(713, 40);
-            this.BtnAgregarProducto.Name = "BtnAgregarProducto";
-            this.BtnAgregarProducto.Size = new System.Drawing.Size(30, 26);
-            this.BtnAgregarProducto.TabIndex = 35;
-            this.BtnAgregarProducto.UseVisualStyleBackColor = false;
+            this.BtnAgregarVentas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAgregarVentas.BackColor = System.Drawing.Color.Azure;
+            this.BtnAgregarVentas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnAgregarVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAgregarVentas.Image = global::Capa_Presentacion.Properties.Resources.agregar;
+            this.BtnAgregarVentas.Location = new System.Drawing.Point(713, 40);
+            this.BtnAgregarVentas.Name = "BtnAgregarVentas";
+            this.BtnAgregarVentas.Size = new System.Drawing.Size(30, 26);
+            this.BtnAgregarVentas.TabIndex = 35;
+            this.BtnAgregarVentas.UseVisualStyleBackColor = false;
+            this.BtnAgregarVentas.Click += new System.EventHandler(this.BtnAgregarVentas_Click);
             // 
-            // BtnEliminarProducto
+            // BtnEliminarVentas
             // 
-            this.BtnEliminarProducto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnEliminarProducto.BackColor = System.Drawing.Color.Azure;
-            this.BtnEliminarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnEliminarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnEliminarProducto.Image = global::Capa_Presentacion.Properties.Resources.cancelar;
-            this.BtnEliminarProducto.Location = new System.Drawing.Point(713, 74);
-            this.BtnEliminarProducto.Name = "BtnEliminarProducto";
-            this.BtnEliminarProducto.Size = new System.Drawing.Size(30, 26);
-            this.BtnEliminarProducto.TabIndex = 34;
-            this.BtnEliminarProducto.UseVisualStyleBackColor = false;
+            this.BtnEliminarVentas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnEliminarVentas.BackColor = System.Drawing.Color.Azure;
+            this.BtnEliminarVentas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnEliminarVentas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEliminarVentas.Image = global::Capa_Presentacion.Properties.Resources.cancelar;
+            this.BtnEliminarVentas.Location = new System.Drawing.Point(713, 74);
+            this.BtnEliminarVentas.Name = "BtnEliminarVentas";
+            this.BtnEliminarVentas.Size = new System.Drawing.Size(30, 26);
+            this.BtnEliminarVentas.TabIndex = 34;
+            this.BtnEliminarVentas.UseVisualStyleBackColor = false;
+            this.BtnEliminarVentas.Click += new System.EventHandler(this.BtnEliminarVentas_Click);
             // 
             // BtnBuscarProducto
             // 
@@ -406,19 +470,21 @@
             // TxtCantidad
             // 
             this.TxtCantidad.BackColor = System.Drawing.Color.Linen;
-            this.TxtCantidad.Location = new System.Drawing.Point(164, 103);
+            this.TxtCantidad.Location = new System.Drawing.Point(13, 103);
             this.TxtCantidad.Multiline = true;
             this.TxtCantidad.Name = "TxtCantidad";
             this.TxtCantidad.Size = new System.Drawing.Size(78, 26);
             this.TxtCantidad.TabIndex = 5;
             this.TxtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtCantidad.TextChanged += new System.EventHandler(this.TxtCantidad_TextChanged);
+            this.TxtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCantidad_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label6.Location = new System.Drawing.Point(169, 84);
+            this.label6.Location = new System.Drawing.Point(18, 84);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 16);
             this.label6.TabIndex = 4;
@@ -485,6 +551,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LemonChiffon;
+            this.groupBox1.Controls.Add(this.TxtIdUsuario);
             this.groupBox1.Controls.Add(this.TxtNoCOmprobnte);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.CboTipoCOmprobante);
@@ -504,6 +571,17 @@
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de Producto";
+            // 
+            // TxtIdUsuario
+            // 
+            this.TxtIdUsuario.BackColor = System.Drawing.Color.Linen;
+            this.TxtIdUsuario.Location = new System.Drawing.Point(139, 0);
+            this.TxtIdUsuario.Multiline = true;
+            this.TxtIdUsuario.Name = "TxtIdUsuario";
+            this.TxtIdUsuario.Size = new System.Drawing.Size(24, 26);
+            this.TxtIdUsuario.TabIndex = 40;
+            this.TxtIdUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtIdUsuario.Visible = false;
             // 
             // TxtNoCOmprobnte
             // 
@@ -649,18 +727,18 @@
             this.label16.TabIndex = 43;
             this.label16.Text = "IVA";
             // 
-            // TxtDescuent
+            // TxtDescuentoTotal
             // 
-            this.TxtDescuent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtDescuent.BackColor = System.Drawing.Color.Linen;
-            this.TxtDescuent.Enabled = false;
-            this.TxtDescuent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtDescuent.Location = new System.Drawing.Point(552, 651);
-            this.TxtDescuent.Multiline = true;
-            this.TxtDescuent.Name = "TxtDescuent";
-            this.TxtDescuent.Size = new System.Drawing.Size(213, 26);
-            this.TxtDescuent.TabIndex = 46;
-            this.TxtDescuent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtDescuentoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TxtDescuentoTotal.BackColor = System.Drawing.Color.Linen;
+            this.TxtDescuentoTotal.Enabled = false;
+            this.TxtDescuentoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDescuentoTotal.Location = new System.Drawing.Point(552, 651);
+            this.TxtDescuentoTotal.Multiline = true;
+            this.TxtDescuentoTotal.Name = "TxtDescuentoTotal";
+            this.TxtDescuentoTotal.Size = new System.Drawing.Size(213, 26);
+            this.TxtDescuentoTotal.TabIndex = 46;
+            this.TxtDescuentoTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label17
             // 
@@ -710,60 +788,6 @@
             this.TxtValorIva.TabIndex = 49;
             this.TxtValorIva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ID_Producto
-            // 
-            this.ID_Producto.HeaderText = "ID_Producto";
-            this.ID_Producto.Name = "ID_Producto";
-            this.ID_Producto.ReadOnly = true;
-            // 
-            // Nombre_Producto
-            // 
-            this.Nombre_Producto.HeaderText = "Nombre Producto";
-            this.Nombre_Producto.Name = "Nombre_Producto";
-            this.Nombre_Producto.ReadOnly = true;
-            // 
-            // Presentacion
-            // 
-            this.Presentacion.HeaderText = "Presentacion";
-            this.Presentacion.Name = "Presentacion";
-            this.Presentacion.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // Precio_Venta
-            // 
-            this.Precio_Venta.HeaderText = "Precio Venta";
-            this.Precio_Venta.Name = "Precio_Venta";
-            this.Precio_Venta.ReadOnly = true;
-            // 
-            // Sub_Total
-            // 
-            this.Sub_Total.HeaderText = "Sub Total";
-            this.Sub_Total.Name = "Sub_Total";
-            this.Sub_Total.ReadOnly = true;
-            // 
-            // Descuento
-            // 
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            this.Descuento.ReadOnly = true;
-            // 
-            // IVA
-            // 
-            this.IVA.HeaderText = "IVA";
-            this.IVA.Name = "IVA";
-            this.IVA.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
             // FrmAgregarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -772,7 +796,7 @@
             this.Controls.Add(this.TxtValorIva);
             this.Controls.Add(this.TxtSubTotal);
             this.Controls.Add(this.label18);
-            this.Controls.Add(this.TxtDescuent);
+            this.Controls.Add(this.TxtDescuentoTotal);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.TxtTotalIva);
             this.Controls.Add(this.label16);
@@ -795,7 +819,7 @@
             this.Controls.SetChildIndex(this.label16, 0);
             this.Controls.SetChildIndex(this.TxtTotalIva, 0);
             this.Controls.SetChildIndex(this.label17, 0);
-            this.Controls.SetChildIndex(this.TxtDescuent, 0);
+            this.Controls.SetChildIndex(this.TxtDescuentoTotal, 0);
             this.Controls.SetChildIndex(this.label18, 0);
             this.Controls.SetChildIndex(this.TxtSubTotal, 0);
             this.Controls.SetChildIndex(this.TxtValorIva, 0);
@@ -816,8 +840,8 @@
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.TextBox TxtIdDetalleventas;
-        public System.Windows.Forms.Button BtnAgregarProducto;
-        public System.Windows.Forms.Button BtnEliminarProducto;
+        public System.Windows.Forms.Button BtnAgregarVentas;
+        public System.Windows.Forms.Button BtnEliminarVentas;
         public System.Windows.Forms.Button BtnBuscarProducto;
         public System.Windows.Forms.TextBox TxtIdProducto;
         public System.Windows.Forms.TextBox TxtCantidad;
@@ -855,7 +879,7 @@
         private System.Windows.Forms.Label label15;
         public System.Windows.Forms.TextBox TxtTotalIva;
         private System.Windows.Forms.Label label16;
-        public System.Windows.Forms.TextBox TxtDescuent;
+        public System.Windows.Forms.TextBox TxtDescuentoTotal;
         private System.Windows.Forms.Label label17;
         public System.Windows.Forms.TextBox TxtSubTotal;
         private System.Windows.Forms.Label label18;
@@ -869,5 +893,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn IVA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        public System.Windows.Forms.TextBox TxtIdUsuario;
     }
 }

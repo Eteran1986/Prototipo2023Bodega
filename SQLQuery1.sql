@@ -513,6 +513,13 @@ Set Nombre_Comprobante=@Nombre_Comprobante,Tipo_Comprobante=@Tipo_Comprobante,
 Where ID_Comprobante=@ID_Comprobante
 go
 
+---Actualizar Comprobante
+Create proc ActComprobante
+@ID_Comprobante int,
+@Correlativo int
+as
+update TipoComprobante set Correlativo = @Correlativo where ID_Comprobante=@ID_Comprobante
+go
 
 /*****************************************Usuario***************************************/
 ----Para ingresar acceso con encriptado    45 me pase 64
@@ -902,8 +909,11 @@ select	V.ID_Venta, V.No_Factura, C.Nombre, V.Fecha_Venta, V.Comprobante, V.Sub_T
 		v.IVA, v.Monto_Total,A.Usuario
 		From Ventas V 
 inner join Clientes C on V.ID_Cliente=C.ID_Cliente
-inner join Acceso A on A.ID_Usuario=V.ID_Usuario
+inner join Acceso A on A.ID_Usuario=V.ID_Usuario 
 go
+
+select * from Detalle_Ventas
+
 
 -------------------------------------------------------pRODUCTOS-VENTAS-----------------------------------------------------------------------------
 
@@ -912,7 +922,7 @@ as
 select	P.ID_Producto, P.Codigo, P.Nombre as 'Nombre Producto', P.Tipo_Cargo as 'Tipo Cargo', 
 		P.Precio_venta as 'Precio Venta', I.Cantidad, P.Presentacion 
 
-from Productos P inner join Inventarios I on P.ID_Producto=I.ID_Inventario
+from Productos P inner join Inventarios I on P.ID_Producto=I.ID_Inventario where Cantidad > 0
 go
 
 
@@ -1094,6 +1104,22 @@ select @ID_Inventario=ID_Producto,@Cantidad=Cantidad from inserted
 select @Stock_Actual=Cantidad, @Costo_Unitario=Costo_Unitario, @Balance_Actual=Monto_Total from Inventarios where ID_Inventario =@ID_Inventario
 update Inventarios Set Inventarios.Cantidad=@Stock_Actual-@Cantidad, Inventarios.Monto_Total=@Balance_Actual-@Cantidad*@Costo_Unitario
 where Inventarios.ID_Inventario=@ID_Inventario
+go
+
+Create Trigger Tr_DisminuirProductoCan
+on Detalle_Ventas for insert
+as
+set nocount on
+Declare @ID_Inventario int
+Declare @Cantidad int
+Declare @Stock_Actual int
+Declare @idcan int
+Declare @nombre varchar(50)
+select @ID_Inventario=ID_Producto,@Cantidad=Cantidad from inserted
+select @nombre=(select nombre from Productos P where P.ID_Producto=@ID_Inventario)
+select @Stock_Actual=Cantidad, @idcan=ID_Can_Detalle from Can_Detalle_Producto where Cantidad>0 and Nombre=@nombre order by Fecha_caducidad desc
+update Can_Detalle_Producto Set Can_Detalle_Producto.Cantidad=@Stock_Actual-@Cantidad
+where @idcan=Can_Detalle_Producto.ID_Can_Detalle
 go
 
 Create Trigger Tr_Aumentar_producto_inventario

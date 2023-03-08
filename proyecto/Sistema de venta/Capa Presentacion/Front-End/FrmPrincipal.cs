@@ -1,5 +1,6 @@
 ﻿using Capa_Entidad.Cache;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace Capa_Presentacion
     public partial class FrmPrincipal : Form
     {
         bool MenuExpandir;
+        private int menu = 0;
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -26,9 +28,6 @@ namespace Capa_Presentacion
             {
                 MenuPanel.Width -= 10;
                 LbPrototipo.Visible = false;
-                lblfecha.Visible = false;
-                lbldia.Visible = false;
-                //BtnCompras.Visible = true;
                 if (MenuPanel.Width == MenuPanel.MinimumSize.Width)
                 {
                     MenuExpandir = false;
@@ -37,24 +36,27 @@ namespace Capa_Presentacion
             }
             else
             {
-                MenuPanel.Width += 10;
-                //BtnCompras.Visible = false;
-                if (MenuPanel.Width == MenuPanel.MaximumSize.Width)
+                if(menu==0)
                 {
-                    MenuExpandir = true;
+                    MenuPanel.Width -= 150;
+                    LbPrototipo.Visible = false;
+                    MenuExpandir = false;
                     MenuTimer.Stop();
-                    LbPrototipo.Visible = true;
-                    lblfecha.Visible = true;
-                    lbldia.Visible = true;
+                    menu++;
                 }
+                else
+                {
+                    MenuPanel.Width += 10;
+                    if (MenuPanel.Width == MenuPanel.MaximumSize.Width)
+                    {
+                        MenuExpandir = true;
+                        MenuTimer.Stop();
+                        LbPrototipo.Visible = true;
+                    }
+                }
+                
             }
         }
-        /*        private void tmTiempo_Tick(object sender, EventArgs e)
-                {
-                    lblfecha.Text = DateTime.Now.ToLongTimeString();
-                    lbldia.Text = DateTime.Now.ToLongDateString();
-                }*/
-
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProductos Productos= new FrmProductos();
@@ -111,12 +113,18 @@ namespace Capa_Presentacion
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            menuStrip1.Visible = true;
-            /*if (InformacionUsuario.Administrador == 1)
+            LUsuario.Text = InformacionUsuario.Nombre_Usuario;
+            if (InformacionUsuario.Administrador == 1)
             {
                 menuStrip1.Visible = true;
-            }*/
-            
+            }
+            else
+            {
+                PDashboard.Visible= false;
+                PCompras.Visible= false;
+                PReportes.Visible= false;
+                PProductos.Visible= false;
+            }
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)

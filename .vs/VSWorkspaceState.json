@@ -3,9 +3,10 @@
     "",
     "\\proyecto",
     "\\proyecto\\Sistema de venta",
-    "\\proyecto\\Sistema de venta\\Capa Entidad",
-    "\\proyecto\\Sistema de venta\\Capa Presentacion"
+    "\\proyecto\\Sistema de venta\\Capa Presentacion",
+    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Agregar",
+    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End"
   ],
-  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Entidad\\CE_DetalleIngreso.cs",
+  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Agregar\\FrmAgregarVentas.cs",
   "PreviewInSolutionExplorer": false
 }

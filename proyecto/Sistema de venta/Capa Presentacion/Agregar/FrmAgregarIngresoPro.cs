@@ -255,7 +255,7 @@ namespace Capa_Presentacion
                 {
                     Ingreso.No_Ingreso = TxtNoIngreso.Text;
                     Ingreso.Id_Proveedor = Convert.ToInt32(TxtIdProveedor.Text);
-                    Ingreso.Fecha_Ingreso = Convert.ToDateTime(DtpFechaIngreso.Text);
+                    Ingreso.Fecha_Ingreso = DateTime.Now;
                     Ingreso.Comprobante = TxtComprobante.Text;
                     Ingreso.Monto_Total = Convert.ToDecimal(TxtTotalPagar.Text);
                     Ingreso.Estado = "Emitir";
@@ -269,7 +269,6 @@ namespace Capa_Presentacion
                         DetalleIngreso.Costo_Unitario = Convert.ToDecimal(row.Cells[3].Value.ToString());
                         DetalleIngreso.Sub_Total = Convert.ToDecimal(row.Cells[4].Value.ToString());
                         DetalleIngreso.Fecha_caducidad = Convert.ToDateTime(row.Cells[5].Value.ToString());
-
                         DetalleIngresos.AgregarDetalleIngreso(DetalleIngreso);
                     }
                     Ingresos.AgregarIngreso(Ingreso);//Ingreso compras
@@ -289,11 +288,6 @@ namespace Capa_Presentacion
                 MessageBox.Show("El ingreso de Producto no fue agregado por: " + ex.Message, "Agregar Ingreso Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
-        }
-
-        private void DtpFechaIngreso_ValueChanged(object sender, EventArgs e)
-        {
-            DtpFechaIngreso.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }

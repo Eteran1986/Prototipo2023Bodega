@@ -38,5 +38,16 @@ namespace CapaDatos
             Cmd.ExecuteNonQuery();
             Con.Cerrar();
         }
+
+        public void ActComprobante(CE_Tipo_Comprobante Comprobante)
+        {
+            Cmd = new SqlCommand("ActComprobante", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Correlativo", Comprobante.Correlativo));
+            Cmd.Parameters.Add(new SqlParameter("@ID_Comprobante", Comprobante.ID_Comprobante));
+            Cmd.ExecuteNonQuery();
+
+            Con.Cerrar();
+        }
     }
 }
