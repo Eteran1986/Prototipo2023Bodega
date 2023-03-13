@@ -60,19 +60,22 @@ namespace Capa_Presentacion
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProductos Productos= new FrmProductos();
-            Productos.ShowDialog();
+            Productos.Show();
+            this.Hide();
         }
 
         private void inventarioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmInventario Inventarios = new FrmInventario();
-            Inventarios.ShowDialog();
+            Inventarios.Show();
+            this.Hide();
         }
 
         private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProveedores Proveedores = new FrmProveedores();
-            Proveedores.ShowDialog();
+            Proveedores.Show();
+            this.Hide();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,7 +93,8 @@ namespace Capa_Presentacion
         private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCompras Compra = new FrmCompras();
-            Compra.ShowDialog();
+            Compra.Show();
+            this.Hide();
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,11 +114,12 @@ namespace Capa_Presentacion
         {
             Frm_Fechacaducidad FechaCaduciada = new Frm_Fechacaducidad();
             FechaCaduciada.Show();
+            this.Hide();
         }
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             LUsuario.Text = InformacionUsuario.Nombre_Usuario;
-            if (InformacionUsuario.Administrador == 1)
+            if (InformacionUsuario.Administrador != 1)
             {
                 menuStrip1.Visible = true;
             }
@@ -142,13 +147,15 @@ namespace Capa_Presentacion
         private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FrmVentas Ventas = new FrmVentas();
-            Ventas.ShowDialog();
+            Ventas.Show();
+            this.Hide();
         }
 
         private void facturaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmFacturacion Fac = new FrmFacturacion();
-            Fac.ShowDialog();
+            Fac.Show();
+            this.Hide();
         }
 
         private void IconoMenu_Click(object sender, EventArgs e)

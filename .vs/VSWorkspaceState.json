@@ -4,9 +4,8 @@
     "\\proyecto",
     "\\proyecto\\Sistema de venta",
     "\\proyecto\\Sistema de venta\\Capa Presentacion",
-    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Agregar",
-    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End"
+    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Informes"
   ],
-  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Agregar\\FrmAgregarVentas.cs",
+  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Informes\\Frm_Fechacaducidad.cs",
   "PreviewInSolutionExplorer": false
 }

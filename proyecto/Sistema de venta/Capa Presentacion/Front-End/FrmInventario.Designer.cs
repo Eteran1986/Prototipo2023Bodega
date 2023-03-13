@@ -17,6 +17,8 @@
             {
                 components.Dispose();
             }
+            FrmPrincipal principal = new FrmPrincipal();
+            principal.Show();
             base.Dispose(disposing);
         }
 
@@ -47,9 +49,9 @@
             // 
             // TxtMontoTotalinventario
             // 
-            this.TxtMontoTotalinventario.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.TxtMontoTotalinventario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.TxtMontoTotalinventario.BackColor = System.Drawing.Color.GhostWhite;
-            this.TxtMontoTotalinventario.Location = new System.Drawing.Point(115, 423);
+            this.TxtMontoTotalinventario.Location = new System.Drawing.Point(122, 439);
             this.TxtMontoTotalinventario.Multiline = true;
             this.TxtMontoTotalinventario.Name = "TxtMontoTotalinventario";
             this.TxtMontoTotalinventario.Size = new System.Drawing.Size(180, 20);
@@ -113,15 +115,15 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1332, 346);
+            this.dataGridView1.Size = new System.Drawing.Size(1332, 377);
             this.dataGridView1.TabIndex = 8;
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 423);
+            this.label2.Location = new System.Drawing.Point(12, 439);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 20);
             this.label2.TabIndex = 12;
@@ -150,8 +152,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = true;
             this.Name = "FrmInventario";
             this.Text = "Inventario de Productos (Kardex)";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmInventario_Load);
             this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);

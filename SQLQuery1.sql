@@ -912,10 +912,17 @@ inner join Clientes C on V.ID_Cliente=C.ID_Cliente
 inner join Acceso A on A.ID_Usuario=V.ID_Usuario 
 go
 
-select * from Detalle_Ventas
+
+------------------------------------------------------REPORTE CORREO ELECTRONICO------------------------------------------------
+create proc InformeReporte
+as
+declare @san datetime
+set @san = (SELECT Top 1 Fecha_caducidad FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad) 
+select Cantidad, Nombre, Fecha_caducidad from Can_Detalle_Producto where Cantidad > 0 and Fecha_caducidad=@san order by Fecha_caducidad 
+go
 
 
--------------------------------------------------------pRODUCTOS-VENTAS-----------------------------------------------------------------------------
+-------------------------------------------------------PRODUCTOS-VENTAS-----------------------------------------------------------------------------
 
 Create proc Mostrar_ProduVentas
 as
@@ -958,18 +965,23 @@ group by C.Categoria
 order by count(2)
 go
 
-Create Proc FechaCadProduc1
+/*Create Proc FechaCadProduc1
 as
 select P.Nombre,COUNT(P.Nombre) as CanFechaCaducidad, C.Categoria from Detalle_Producto DP
 inner join Productos P on P.ID_Producto=DP.Id_Producto
 inner join Categoria C on C.ID_Categoria = p.ID_Categoria 
 group by P.Nombre, C.Categoria
 order by count(2)
+go*/
+
+Create Proc FechaCadProduc1
+as
+select cdp.Nombre,COUNT(cdp.Nombre) as CanFechaCaducidad, C.Categoria from Inventarios DP
+inner join Categoria C on C.ID_Categoria = DP.ID_Categoria 
+inner join Can_Detalle_Producto CDP on DP.Nombre =CDP.Nombre where CDP.Cantidad>0
+group by cdp.Nombre, C.Categoria 
+order by count(2)
 go
-
-
-
-
 
 
 
