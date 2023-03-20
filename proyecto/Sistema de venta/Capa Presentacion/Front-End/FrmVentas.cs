@@ -26,7 +26,7 @@ namespace Capa_Presentacion
             CargarDatos();
             dataGridView1.Columns[0].Visible= false;
             dataGridView1.Columns[1].Width = 100; //No. Factura
-            dataGridView1.Columns[2].Width = 150; //Nombre
+            dataGridView1.Columns[2].Width = 250; //Nombre
             dataGridView1.Columns[3].Width = 150; //fechaventa
             dataGridView1.Columns[4].Width = 100; //comprobante
             dataGridView1.Columns[5].Width = 80;//subtotal
@@ -36,7 +36,6 @@ namespace Capa_Presentacion
             dataGridView1.Columns[9].Width = 80;//usuario
 
             Procedimientos.AlternarColorFilaDataGridView(dataGridView1);
-
         }
 
         private void CargarDatos()
@@ -55,6 +54,36 @@ namespace Capa_Presentacion
             FrmAgregarVentas Agregarventas = new FrmAgregarVentas(this);
             Agregarventas.UpdatedEventHandler += AgVent_UpdateEventHandler;
             Agregarventas.Show();
+        }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+        public override void Buscar()
+        {
+            try
+            {
+                if (CboTipoBusqueda.Text == "Usuario")
+                {
+                    Venta.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Ventas.Buscar_Ventas_Usuario(Venta);
+                }
+                else if (CboTipoBusqueda.Text == "Cliente")
+                {
+                    Venta.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Ventas.Buscar_Ventas_Nombre(Venta);
+                }
+                else if (CboTipoBusqueda.Text == "Comprobante")
+                {
+                    Venta.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Ventas.Buscar_Ventas_Comprobante(Venta);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("La Compra no fue encontrado : " + ex.Message, "Buscar Compras", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
     }
 }

@@ -166,7 +166,6 @@
                   <Style>
                     <FontSize>16pt</FontSize>
                     <FontWeight>Bold</FontWeight>
-                    <Color>White</Color>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -490,7 +489,7 @@
         <Border>
           <Style>None</Style>
         </Border>
-        <BackgroundColor>LightSteelBlue</BackgroundColor>
+        <BackgroundColor>Khaki</BackgroundColor>
       </Style>
     </PageHeader>
     <PageFooter>

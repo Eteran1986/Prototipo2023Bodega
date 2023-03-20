@@ -19,7 +19,6 @@ namespace CapaDatos
         DataTable Dt;
 
         //metodo que me permita agregar, editar y eliminar un producto a la base de datos
-
         public void AgregarProducto(CE_Productos Productos)
         {
             int Existencia = 0;
@@ -54,7 +53,6 @@ namespace CapaDatos
             Cmd.Parameters.Add(new SqlParameter("@Costo_Unitario", Productos.Costo_Unitario));
             Cmd.Parameters.Add(new SqlParameter("@Precio_venta", Productos.Precio_venta));
             Cmd.Parameters.Add(new SqlParameter("@Tipo_Cargo", Productos.Tipo_Cargo));
-
             Cmd.ExecuteNonQuery();
             Con.Cerrar();
         }
@@ -84,10 +82,8 @@ namespace CapaDatos
                 Cmd.Parameters.Add(new SqlParameter("@ID_Producto", Productos.ID_Producto));
                 Cmd.ExecuteNonQuery();
                 MessageBox.Show("El producto fue eliminado de nuestro sistema", "Eliminar Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
                 Con.Cerrar();
             }
-            
         }
 
         //Buscar un producto por codigo
@@ -160,7 +156,31 @@ namespace CapaDatos
             Con.Cerrar();
             return Dt;
         }
+        public DataTable Buscar_ProductoVentas_Codigo(CE_Productos productos)
+        {
+            Dt = new DataTable("Codigo");
+            Cmd = new SqlCommand("Buscar_ProductoVentas_Codigo", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", productos.Buscar));
 
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
 
+            Con.Cerrar();
+            return Dt;
+        }
+        public DataTable Buscar_ProductoVentas_Nombre(CE_Productos productos)
+        {
+            Dt = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_ProductoVentas_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", productos.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
     }
 }

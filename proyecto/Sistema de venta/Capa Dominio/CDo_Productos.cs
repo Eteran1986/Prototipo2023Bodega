@@ -59,6 +59,14 @@ namespace Capa_Dominio
         {
             return ObjProductos.Buscar_Inventario_Categoria(productos);
         }
+        public DataTable Buscar_ProductoVentas_Codigo(CE_Productos productos)
+        {
+            return ObjProductos.Buscar_ProductoVentas_Codigo(productos);
+        }
+        public DataTable Buscar_ProductoVentas_Nombre(CE_Productos productos)
+        {
+            return ObjProductos.Buscar_ProductoVentas_Nombre(productos);
+        }
 
     }
 }

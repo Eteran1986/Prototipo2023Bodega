@@ -28,6 +28,7 @@ namespace Capa_Presentacion
             {
                 MenuPanel.Width -= 10;
                 LbPrototipo.Visible = false;
+                LUsuario.Visible = false;
                 if (MenuPanel.Width == MenuPanel.MinimumSize.Width)
                 {
                     MenuExpandir = false;
@@ -41,6 +42,7 @@ namespace Capa_Presentacion
                     MenuPanel.Width -= 150;
                     LbPrototipo.Visible = false;
                     MenuExpandir = false;
+                    LUsuario.Visible = false;
                     MenuTimer.Stop();
                     menu++;
                 }
@@ -50,11 +52,11 @@ namespace Capa_Presentacion
                     if (MenuPanel.Width == MenuPanel.MaximumSize.Width)
                     {
                         MenuExpandir = true;
+                        LUsuario.Visible = true;
                         MenuTimer.Stop();
                         LbPrototipo.Visible = true;
                     }
                 }
-                
             }
         }
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,19 +121,24 @@ namespace Capa_Presentacion
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             LUsuario.Text = InformacionUsuario.Nombre_Usuario;
-            if (InformacionUsuario.Administrador != 1)
+            if (InformacionUsuario.Administrador == 1)//administrador
             {
                 menuStrip1.Visible = true;
             }
-            else
+            if (InformacionUsuario.Administrador == 0)//ventas
             {
                 PDashboard.Visible= false;
                 PCompras.Visible= false;
                 PReportes.Visible= false;
                 PProductos.Visible= false;
             }
+            if (InformacionUsuario.Administrador == 2)//bodega
+            {
+                PDashboard.Visible = false;
+                PReportes.Visible = false;
+                Pventas.Visible= false;
+            }
         }
-
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmDashboardcs Dashboard = new FrmDashboardcs();
@@ -150,14 +157,12 @@ namespace Capa_Presentacion
             Ventas.Show();
             this.Hide();
         }
-
         private void facturaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmFacturacion Fac = new FrmFacturacion();
             Fac.Show();
             this.Hide();
         }
-
         private void IconoMenu_Click(object sender, EventArgs e)
         {
             MenuTimer.Start();

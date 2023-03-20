@@ -4,8 +4,8 @@
     "\\proyecto",
     "\\proyecto\\Sistema de venta",
     "\\proyecto\\Sistema de venta\\Capa Presentacion",
-    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Informes"
+    "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End"
   ],
-  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Informes\\Frm_Fechacaducidad.cs",
+  "SelectedNode": "\\proyecto\\Sistema de venta\\Capa Presentacion\\Front-End\\FrmDashboardcs.cs",
   "PreviewInSolutionExplorer": false
 }

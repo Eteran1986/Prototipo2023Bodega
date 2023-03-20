@@ -17,7 +17,9 @@ using System.Configuration;
 using Capa_Presentacion.Informes.Datos_GeneralesTableAdapters;
 using System.CodeDom.Compiler;
 using System.Net.Mail;
-
+using System.Security.Policy;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
 
 namespace Capa_Presentacion
 {
@@ -34,7 +36,6 @@ namespace Capa_Presentacion
         {
 
         }
-
         private int PDF1=0;
         private DateTime _Fecha_Inicio;
         private DateTime _Fecha_Final;
@@ -84,13 +85,12 @@ namespace Capa_Presentacion
             PDF();
             PDF1 = 0;
         }
-
         private void PDF()
         {
             try
             {
                 FileStream FS = new FileStream(@"C:\Users\Public\Documents\Reporte.pdf", FileMode.Create);
-                Document DOC = new Document(PageSize.LETTER, 13, 13, 13, 13);
+                Document DOC = new Document(PageSize.LETTER, 13, 13, 30, 30);
                 PdfWriter PW = PdfWriter.GetInstance(DOC, FS);
 
                 DOC.Open();
@@ -98,23 +98,39 @@ namespace Capa_Presentacion
                 DOC.AddTitle("Crear PDF");
 
                 iTextSharp.text.Font standarfont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                iTextSharp.text.Font standarfont1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 18, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
 
-                DOC.Add(new Paragraph("Informe de Productos por caducar"));
-                DOC.Add(new Paragraph("Fecha: "+ DateTime.Now.ToShortDateString()));
-                DOC.Add(new Paragraph("Hora: " + DateTime.Now.ToShortTimeString()));
+  
+                DOC.Add(new Paragraph("                            INFORME DE PRODUCTOS POR CADUCAR", standarfont1));
                 DOC.Add(Chunk.NEWLINE);
-                PdfPTable InformeReporte = new PdfPTable(3);
-                InformeReporte.WidthPercentage = 100;
 
-                PdfPCell Cant = new PdfPCell(new Phrase("Cantidad", standarfont));
+                PdfPTable Portada = new PdfPTable(2);
+                Portada.WidthPercentage = 90;
+
+                PdfPCell Inf = new PdfPCell(new Phrase( "Fecha: " + DateTime.Now.ToShortDateString() + "\nHora: " + DateTime.Now.ToShortTimeString(), standarfont1));
+                Inf.BorderWidth = 0;
+                Portada.AddCell(Inf);
+
+                iTextSharp.text.Image image1 = iTextSharp.text.Image.GetInstance("E:\\UNEMI\\8 semestre\\INTEGRACION CURRICULAR\\git proyecto\\Prototipo2023Bodega\\proyecto\\Sistema de venta\\Capa Presentacion\\Resources\\CA.png");
+                image1.ScalePercent(15f);
+                PdfPCell Images = new PdfPCell(image1);
+                Images.BorderWidth = 0;
+
+                Portada.AddCell(Images);
+                DOC.Add(Portada);
+
+                PdfPTable InformeReporte = new PdfPTable(3);
+                InformeReporte.WidthPercentage = 90;
+
+                PdfPCell Cant = new PdfPCell(new Phrase("\nCantidad", standarfont));
                 Cant.BorderWidth = 0;
                 Cant.BorderWidthBottom = 0.75f;
 
-                PdfPCell Nom = new PdfPCell(new Phrase("Nombre", standarfont));
+                PdfPCell Nom = new PdfPCell(new Phrase("\nNombre del Producto", standarfont));
                 Nom.BorderWidth = 0;
                 Nom.BorderWidthBottom = 0.75f;
 
-                PdfPCell Fechcad = new PdfPCell(new Phrase("Fecha de Caducidad", standarfont));
+                PdfPCell Fechcad = new PdfPCell(new Phrase("\nFecha de Caducidad", standarfont));
                 Fechcad.BorderWidth = 0;
                 Fechcad.BorderWidthBottom = 0.75f;
 
@@ -143,7 +159,14 @@ namespace Capa_Presentacion
                     InformeReporte.AddCell(Nom);
                     InformeReporte.AddCell(Fechcad);
                 }
+
                 DOC.Add(InformeReporte);
+                
+                var Resonsable = new Paragraph("\n \n RESPONSABLES DEL PROTOTIPO\n \n Edgar Terán y Jordan Yanez", standarfont1);
+
+                Resonsable.Alignment = Element.ALIGN_CENTER;
+                DOC.Add(Resonsable);
+                
                 Conexion.Close();
                 Dr.Close();
                 DOC.Close();
@@ -151,7 +174,8 @@ namespace Capa_Presentacion
                 FS.Close();
                 if(PDF1==1)
                 {
-                    MessageBox.Show("Se creo el pdf con EXITO, Se guardo en el la dirección C:\\Users\\Public\\Documents\\Reporte.pdf", "ReportePDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se creo el pdf con EXITO", "ReportePDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Process.Start(@"C:\\Users\\Public\\Documents\\Reporte.pdf");
                 }
             }
             catch (Exception)
@@ -159,12 +183,10 @@ namespace Capa_Presentacion
                 MessageBox.Show("Debe de cerrar el pdf", "ReportePDF", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
-
         private void Correo()
         {
             string EmailOrigen = "eteranb@unemi.edu.ec";
-            string EmailDestino = "gusteran1@gmail.com"; //string EmailDestino = "gusteran1@gmail.com, eteranb@unemi.edu.ec"; para dos o mas correos
+            string EmailDestino = "gusteran1@gmail.com,jyanezc2@unemi.edu.ec"; //string EmailDestino = "gusteran1@gmail.com, eteranb@unemi.edu.ec"; para dos o mas correos
             string Contraseña = "vuvhaymzdkjnwzfu";
             string DocumentPDF = @"C:\Users\Public\Documents\Reporte.pdf";
 
@@ -183,7 +205,6 @@ namespace Capa_Presentacion
             Mensaje.Dispose();
             MessageBox.Show("Se envió el correo con EXITO", "Correo Electrónico", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void BtnCorreo_Click(object sender, EventArgs e)
         {
             PDF();

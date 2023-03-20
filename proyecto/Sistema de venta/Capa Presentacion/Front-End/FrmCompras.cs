@@ -46,7 +46,6 @@ namespace Capa_Presentacion
             dataGridView1.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[5].DefaultCellStyle.Format = "#,##0.00";
-
         }
 
         private void CargaDatos()

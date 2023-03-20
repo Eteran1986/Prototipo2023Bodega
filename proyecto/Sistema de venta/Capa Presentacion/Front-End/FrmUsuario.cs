@@ -84,14 +84,43 @@ namespace Capa_Presentacion
                         EditarUsuario.TxtContrasena.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
                         EditarUsuario.ShowDialog();
                     }
-
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show("No hay registro para editar el usuario"+ ex, "Editar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-
         }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+        public override void Buscar()
+        {
+            try
+            {
+                if (CboTipoBusqueda.Text == "Nombre")
+                {
+                    Acceso.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Accesos.Buscar_Adm_Nombre(Acceso);
+                }
+                else if (CboTipoBusqueda.Text == "Apellido")
+                {
+                    Acceso.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Accesos.Buscar_Adm_Apellido(Acceso);
+                }
+                else if (CboTipoBusqueda.Text == "Usuario")
+                {
+                    Acceso.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Accesos.Buscar_Admi_Usuario(Acceso);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("La Compra no fue encontrado : " + ex.Message, "Buscar Compras", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
     }
 }

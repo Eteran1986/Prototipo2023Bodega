@@ -16,10 +16,10 @@ namespace CapaDatos
         CD_Conexion Con = new CD_Conexion();
         SqlCommand Cmd;
         SqlDataReader Dr;
-        //DataTable Dt;
+        DataTable Dt;
+        SqlDataAdapter Da;
 
         //metodo que me permita agregar, editar y eliminar un usuario a la base de datos
-
         public void IngresarAcceso(CE_Usuario Accesos)
         {
             Cmd = new SqlCommand("IngresarAcceso", Con.Abrir());
@@ -92,10 +92,53 @@ namespace CapaDatos
                 Da.Close();
             }
         }
-
         private void Hide()
         {
             throw new NotImplementedException();
+        }
+        //Buscar Usuario por nombre
+        public DataTable Buscar_Adm_Nombre(CE_Usuario Login)
+        {
+            Dt = new DataTable("Nombre");
+            Cmd = new SqlCommand("Buscar_Adm_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Login.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
+        //Buscar Usuario por apellido
+        public DataTable Buscar_Adm_Apellido(CE_Usuario Login)
+        {
+            Dt = new DataTable("Apellido");
+            Cmd = new SqlCommand("Buscar_Adm_Apellido", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Login.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
+        //Buscar Usuario por user
+        public DataTable Buscar_Admi_Usuario(CE_Usuario Login)
+        {
+            Dt = new DataTable("Usuario");
+            Cmd = new SqlCommand("Buscar_Admi_Usuario", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Login.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
         }
     }
 }

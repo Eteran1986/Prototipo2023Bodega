@@ -1,4 +1,5 @@
 ﻿using Capa_Dominio;
+using Capa_Entidad;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,8 @@ namespace Capa_Presentacion
         }
         CDo_Procedimientos Procedimientos = new CDo_Procedimientos();
         CDo_Ventas Ventas =new CDo_Ventas();
-
+        CDo_Productos Productos = new CDo_Productos();
+        CE_Productos Producto = new CE_Productos();
 
         private void FrmVistaProduVentas_Load(object sender, EventArgs e)
         {
@@ -58,6 +60,32 @@ namespace Capa_Presentacion
             {
                 DialogResult = DialogResult.OK;
                 Close();
+            }
+        }
+
+        private void TxtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            Buscar();
+        }
+
+        public override void Buscar()
+        {
+            try
+            {
+                if (CboTipoBusqueda.Text == "Código")
+                {
+                    Producto.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Productos.Buscar_ProductoVentas_Codigo(Producto);
+                }
+                else if (CboTipoBusqueda.Text == "Nombre")
+                {
+                    Producto.Buscar = TxtBuscar.Text.Trim();
+                    dataGridView1.DataSource = Productos.Buscar_ProductoVentas_Nombre(Producto);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El producto no fue encontrado : " + ex.Message, "Buscar Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

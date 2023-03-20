@@ -19,7 +19,7 @@ namespace Capa_Entidad
         private decimal _IVA;
         private decimal _Monto_Total;
         private string _Estado;
-        private int _Buscar;
+        private string _Buscar;
 
         public int ID_Ventas { get => _ID_Ventas; set => _ID_Ventas = value; }
         public int ID_Cliente { get => _ID_Cliente; set => _ID_Cliente = value; }
@@ -32,6 +32,6 @@ namespace Capa_Entidad
         public decimal IVA { get => _IVA; set => _IVA = value; }
         public decimal Monto_Total { get => _Monto_Total; set => _Monto_Total = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
-        public int Buscar { get => _Buscar; set => _Buscar = value; }
+        public string Buscar { get => _Buscar; set => _Buscar = value; }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestiónProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,7 +103,7 @@
             this.configuraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1139, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(1064, 32);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
@@ -286,11 +287,11 @@
             this.MenuPanel.Controls.Add(this.Pventas);
             this.MenuPanel.Controls.Add(this.PReportes);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MenuPanel.Location = new System.Drawing.Point(0, 32);
+            this.MenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuPanel.MaximumSize = new System.Drawing.Size(203, 1067);
             this.MenuPanel.MinimumSize = new System.Drawing.Size(63, 267);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(203, 581);
+            this.MenuPanel.Size = new System.Drawing.Size(203, 613);
             this.MenuPanel.TabIndex = 10;
             // 
             // panel2
@@ -468,7 +469,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(223, 62);
             this.button9.TabIndex = 11;
-            this.button9.Text = "                                                Ventas";
+            this.button9.Text = "                                                  Facturación";
             this.button9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.facturaciónToolStripMenuItem_Click);
@@ -512,7 +513,7 @@
             this.BtnVentas.ForeColor = System.Drawing.Color.Black;
             this.BtnVentas.Image = global::Capa_Presentacion.Properties.Resources.ventas;
             this.BtnVentas.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnVentas.Location = new System.Drawing.Point(922, 35);
+            this.BtnVentas.Location = new System.Drawing.Point(878, 3);
             this.BtnVentas.Name = "BtnVentas";
             this.BtnVentas.Size = new System.Drawing.Size(160, 110);
             this.BtnVentas.TabIndex = 9;
@@ -532,7 +533,7 @@
             this.BtnDashboard.ForeColor = System.Drawing.Color.Black;
             this.BtnDashboard.Image = global::Capa_Presentacion.Properties.Resources.presentacion;
             this.BtnDashboard.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnDashboard.Location = new System.Drawing.Point(756, 35);
+            this.BtnDashboard.Location = new System.Drawing.Point(712, 3);
             this.BtnDashboard.Name = "BtnDashboard";
             this.BtnDashboard.Size = new System.Drawing.Size(160, 110);
             this.BtnDashboard.TabIndex = 8;
@@ -552,7 +553,7 @@
             this.BtnReportes.ForeColor = System.Drawing.Color.Black;
             this.BtnReportes.Image = global::Capa_Presentacion.Properties.Resources.informe_de_venta;
             this.BtnReportes.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnReportes.Location = new System.Drawing.Point(576, 35);
+            this.BtnReportes.Location = new System.Drawing.Point(544, 3);
             this.BtnReportes.Name = "BtnReportes";
             this.BtnReportes.Size = new System.Drawing.Size(160, 110);
             this.BtnReportes.TabIndex = 7;
@@ -572,7 +573,7 @@
             this.BtnProductos.ForeColor = System.Drawing.Color.Black;
             this.BtnProductos.Image = global::Capa_Presentacion.Properties.Resources.productos;
             this.BtnProductos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnProductos.Location = new System.Drawing.Point(393, 35);
+            this.BtnProductos.Location = new System.Drawing.Point(376, 3);
             this.BtnProductos.Name = "BtnProductos";
             this.BtnProductos.Size = new System.Drawing.Size(160, 110);
             this.BtnProductos.TabIndex = 6;
@@ -592,7 +593,7 @@
             this.BtnCompras.ForeColor = System.Drawing.Color.Black;
             this.BtnCompras.Image = global::Capa_Presentacion.Properties.Resources.Compras;
             this.BtnCompras.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BtnCompras.Location = new System.Drawing.Point(209, 35);
+            this.BtnCompras.Location = new System.Drawing.Point(209, 3);
             this.BtnCompras.Name = "BtnCompras";
             this.BtnCompras.Size = new System.Drawing.Size(160, 110);
             this.BtnCompras.TabIndex = 5;
@@ -608,7 +609,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(1139, 613);
+            this.ClientSize = new System.Drawing.Size(1064, 613);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.BtnVentas);
             this.Controls.Add(this.BtnDashboard);
@@ -616,6 +617,7 @@
             this.Controls.Add(this.BtnProductos);
             this.Controls.Add(this.BtnCompras);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

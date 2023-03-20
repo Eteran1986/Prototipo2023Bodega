@@ -193,9 +193,6 @@
             // 
             // NotFechaCaducidad
             // 
-            this.NotFechaCaducidad.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.NotFechaCaducidad.BalloonTipText = "mundo";
-            this.NotFechaCaducidad.BalloonTipTitle = "Hola";
             this.NotFechaCaducidad.Icon = ((System.Drawing.Icon)(resources.GetObject("NotFechaCaducidad.Icon")));
             this.NotFechaCaducidad.Text = "notifyIcon1";
             this.NotFechaCaducidad.Visible = true;
@@ -214,6 +211,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAcceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAcceso";

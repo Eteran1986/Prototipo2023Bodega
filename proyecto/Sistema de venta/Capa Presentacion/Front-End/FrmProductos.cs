@@ -27,8 +27,8 @@ namespace Capa_Presentacion
             dataGridView1.Columns[0].Visible= false; //idproducto
             dataGridView1.Columns[1].Visible = false; //idcategoria
             dataGridView1.Columns[2].Width = 130; //codigo del producto
-            dataGridView1.Columns[3].Width = 260; //nombre del producto
-            dataGridView1.Columns[4].Width = 300; //descripcion del producto
+            dataGridView1.Columns[3].Width = 300; //nombre del producto
+            dataGridView1.Columns[4].Width = 350; //descripcion del producto
             dataGridView1.Columns[5].Width = 150; //presentacion del producto
             dataGridView1.Columns[6].Width = 140; //costo unitario del producto
             dataGridView1.Columns[7].Width = 140; //precio del producto
@@ -87,13 +87,13 @@ namespace Capa_Presentacion
                         FrmEditarProducto editarProducto = new FrmEditarProducto(this);
                         editarProducto.UpdatedEventHandler += EdPro_UpdateEventHandler;
                         editarProducto.txtID_Productos.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-                        editarProducto.txtCodProducto.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                        editarProducto.txtNomProducto.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-                        editarProducto.txtDescripcionProducto.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-                        editarProducto.txtPresentacion.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                        editarProducto.txtCostoUnitario.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-                        editarProducto.txtPrecioVenta.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
-                        editarProducto.cboTipoCargo.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+                        editarProducto.txtCodProducto.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                        editarProducto.txtNomProducto.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                        editarProducto.txtDescripcionProducto.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                        editarProducto.txtPresentacion.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+                        editarProducto.txtCostoUnitario.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+                        editarProducto.txtPrecioVenta.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
+                        editarProducto.cboTipoCargo.Text = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
                         editarProducto.ShowDialog();
                     }
                 }

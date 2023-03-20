@@ -222,6 +222,8 @@ Insert into Productos(Codigo,Nombre,Descripcion,Presentacion,Costo_Unitario,Prec
 values(@Codigo,@Nombre,@Descripcion,@Presentacion,@Costo_Unitario,@Precio_venta,@Tipo_Cargo,@ID_Categoria)
 go
 
+SELECT * FROM Productos
+
 --editar Producto
 create proc EditarProducto
 @ID_Producto int,
@@ -712,9 +714,6 @@ cross join Empresas E
 where V.ID_Venta = @ID_Ventas
 go
 
-
-
-
 --*********************************************BUSCADORES********************************************
 
 --*****************************************BUSCADOR POR PRODUCTO*************************************************
@@ -722,34 +721,55 @@ go
 Create Proc Buscar_Producto_Codigo
 @Buscar varchar(50)
 as
-select * from Productos where Codigo like @Buscar + '%'
+select * from Productos where Codigo like @Buscar + '%' or Codigo like '%' + @Buscar + '%' or Codigo like '%' + @Buscar
 go
 
 --Buscador mediante Nombre
 Create Proc Buscar_Producto_Nombre
 @Buscar varchar(50)
 as
-select * from Productos where Nombre like @Buscar + '%'
+select * from Productos where Nombre like @Buscar + '%' or Nombre like '%' + @Buscar + '%' or Nombre like '%' + @Buscar
 go
 
 --Buscador mediante Descripcion
 Create Proc Buscar_Producto_Descripcion
 @Buscar varchar(50)
 as
-select * from Productos where Descripcion like @Buscar + '%'
+select * from Productos where Descripcion like @Buscar + '%' or Descripcion like '%' + @Buscar + '%' or Descripcion like '%' + @Buscar
 go
+
+---------------------------------------BUSCAR PRODUCTO EN VENTAS--------------------------------------------------------
+Create Proc Buscar_ProductoVentas_Codigo
+@Buscar varchar(50)
+as
+select P.Codigo,P.Nombre as 'Nombre Producto',P.Tipo_Cargo as 'Cargo', P.Precio_venta as 'Precio Ventas', I.Cantidad, P.Presentacion from Productos P 
+inner join Inventarios I on I.Nombre=P.Nombre
+where P.Codigo like @Buscar + '%' or P.Codigo like '%' + @Buscar + '%' or P.Codigo like '%' + @Buscar
+go
+
+--Buscador mediante Nombre
+Create Proc Buscar_ProductoVentas_Nombre
+@Buscar varchar(50)
+as
+select P.Codigo,P.Nombre as 'Nombre Producto',P.Tipo_Cargo as 'Cargo', P.Precio_venta as 'Precio Ventas', I.Cantidad, P.Presentacion from Productos P 
+inner join Inventarios I on I.Nombre=P.Nombre
+where P.Nombre like @Buscar + '%' or P.Nombre like '%' + @Buscar + '%' or P.Nombre like '%' + @Buscar
+go
+
 
 /***********************************************BUSQUEDA POR INVENTARIO***********************************************************/
 Create Proc Buscar_Inventario_Nombre
 @Buscar varchar(50)
 as
-select I.Codigo,I.Nombre,I.Cantidad,I.Costo_Unitario,I.Precio_venta,I.Monto_Total,I.Tipo_Cargo, C.Categoria from Inventarios I inner join Categoria C on I.ID_Categoria=C.ID_Categoria where I.Nombre like @Buscar + '%'
+select I.Codigo,I.Nombre,I.Cantidad,I.Costo_Unitario,I.Precio_venta,I.Monto_Total,I.Tipo_Cargo, C.Categoria from Inventarios I 
+inner join Categoria C on I.ID_Categoria=C.ID_Categoria where I.Nombre like @Buscar + '%' or I.Nombre like '%' + @Buscar + '%' or I.Nombre like '%' + @Buscar
 go
 
 Create Proc Buscar_Inventario_Categoria
 @Buscar varchar(50)
 as
-select I.Codigo,I.Nombre,I.Cantidad,I.Costo_Unitario,I.Precio_venta,I.Monto_Total,I.Tipo_Cargo, C.Categoria from Inventarios I inner join Categoria C on I.ID_Categoria=C.ID_Categoria where C.Categoria like @Buscar + '%'
+select I.Codigo,I.Nombre,I.Cantidad,I.Costo_Unitario,I.Precio_venta,I.Monto_Total,I.Tipo_Cargo, C.Categoria from Inventarios I 
+inner join Categoria C on I.ID_Categoria=C.ID_Categoria where C.Categoria like @Buscar + '%' or C.Categoria like '%' + @Buscar + '%' or C.Categoria like '%' + @Buscar
 go
 
 
@@ -758,73 +778,127 @@ go
 Create Proc Buscar_Proveedor_Codigo
 @Buscar varchar(50)
 as
-select * from Proveedores where Codigo like @Buscar + '%'
+select * from Proveedores where Codigo like @Buscar + '%' or Codigo like '%' + @Buscar + '%' or Codigo like '%' + @Buscar
 go
 
 --Buscador mediante Nombre
 Create Proc Buscar_Proveedor_Nombre
 @Buscar varchar(50)
 as
-select * from Proveedores where Nombre like @Buscar + '%'
+select * from Proveedores where Nombre like @Buscar + '%' or Nombre like '%' + @Buscar + '%' or Nombre like '%' + @Buscar
 go
 
 --Buscador mediante RUC
 Create Proc Buscar_Proveedor_RUC
 @Buscar varchar(50)
 as
-select * from Proveedores where RUC_Proveedor like @Buscar + '%'
+select * from Proveedores where RUC_Proveedor like @Buscar + '%' or RUC_Proveedor like '%' + @Buscar + '%' or RUC_Proveedor like '%' + @Buscar
 go
+
+---------------------------------------------------------------BUSCAR COMPRAS-----------------------------------------------------------------
 
 -----Buscar mediante codigo en las compras
 Create Proc Buscar_Compras_Codigo
 @Buscar varchar(50)
 as
-
-select p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
+select p.ID_Ingreso, p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
 from Ingreso_Producto P inner join Proveedores Pro on P.Id_Proveedor=Pro.ID_Proveedor 
-where p.No_Ingreso like @Buscar + '%'
+where p.No_Ingreso like @Buscar + '%' or p.No_Ingreso like '%' + @Buscar + '%' or p.No_Ingreso like '%' + @Buscar
 go
 
 -----Buscar mediante nombre en las compras
 Create Proc Buscar_Compras_Nombre
 @Buscar varchar(50)
 as
-
-select p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
+select p.ID_Ingreso, p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
 from Ingreso_Producto P inner join Proveedores Pro on P.Id_Proveedor=Pro.ID_Proveedor 
-where pro.Nombre like @Buscar + '%'
+where pro.Nombre like @Buscar + '%' or pro.Nombre like '%' + @Buscar + '%' or pro.Nombre like '%' + @Buscar
 go
 
 --Buscar mediante comprobantes en las compras
 Create Proc Buscar_Compras_Comprobante
 @Buscar varchar(50)
 as
-
-select p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
+select p.ID_Ingreso, p.No_Ingreso, pro.Nombre as 'Nombre Proveedor',p.Fecha_Ingreso,p.Comprobante,p.Monto_Total, p.Estado  
 from Ingreso_Producto P inner join Proveedores Pro on P.Id_Proveedor=Pro.ID_Proveedor 
-where p.Comprobante like @Buscar + '%'
+where p.Comprobante like @Buscar + '%' or p.Comprobante like '%' + @Buscar + '%' or p.Comprobante like '%' + @Buscar
 go
+
+--------------------------------------------------------BUSCAR VENTAS-------------------------------------------------------------------------------------
+---Buscar mediante codigo en las compras
+Create Proc Buscar_Ventas_Usuario
+@Buscar varchar(50)
+as
+select V.No_Factura, C.Nombre as Cliente, V.Fecha_Venta,V.Comprobante,V.Sub_Total, V.Descuento, V.IVA, V.Monto_Total, A.Usuario from Ventas V 
+inner join Clientes C on C.ID_Cliente= V.ID_Cliente
+inner join Acceso A on A.ID_Usuario=V.ID_Usuario
+where A.Usuario like @Buscar + '%' or A.Usuario like '%' + @Buscar + '%' or A.Usuario like '%' + @Buscar
+go
+
+
+-----Buscar mediante nombre en las compras
+Create Proc Buscar_Ventas_Nombre
+@Buscar varchar(50)
+as
+select V.No_Factura, C.Nombre as Cliente, V.Fecha_Venta,V.Comprobante,V.Sub_Total, V.Descuento, V.IVA, V.Monto_Total, A.Usuario from Ventas V 
+inner join Clientes C on C.ID_Cliente= V.ID_Cliente
+inner join Acceso A on A.ID_Usuario=V.ID_Usuario
+where C.Nombre like @Buscar + '%' or C.Nombre like '%' + @Buscar + '%' or C.Nombre like '%' + @Buscar
+go
+
+--Buscar mediante comprobantes en las compras
+Create Proc Buscar_Ventas_Comprobante
+@Buscar varchar(50)
+as
+select V.No_Factura, C.Nombre as Cliente, V.Fecha_Venta,V.Comprobante,V.Sub_Total, V.Descuento, V.IVA, V.Monto_Total, A.Usuario from Ventas V 
+inner join Clientes C on C.ID_Cliente= V.ID_Cliente
+inner join Acceso A on A.ID_Usuario=V.ID_Usuario
+where V.Comprobante like @Buscar + '%' or V.Comprobante like '%' + @Buscar + '%' or V.Comprobante like '%' + @Buscar
+go
+
+--------------------------------------------------ADMINISTRADORES--------------------------------------------
+Create Proc Buscar_Adm_Nombre
+@Buscar varchar(50)
+as
+select Nombre_Usuario, Apellido_Usuario, Usuario from Acceso
+where Nombre_Usuario like @Buscar + '%' or Nombre_Usuario like '%' + @Buscar + '%' or Nombre_Usuario like '%' + @Buscar
+go
+
+Create Proc Buscar_Adm_Apellido
+@Buscar varchar(50)
+as
+select Nombre_Usuario, Apellido_Usuario, Usuario from Acceso
+where Apellido_Usuario like @Buscar + '%' or Apellido_Usuario like '%' + @Buscar + '%' or Apellido_Usuario like '%' + @Buscar
+go
+
+Create Proc Buscar_Admi_Usuario
+@Buscar varchar(50)
+as
+select Nombre_Usuario, Apellido_Usuario, Usuario from Acceso
+where Usuario like @Buscar + '%' or Usuario like '%' + @Buscar + '%' or Usuario like '%' + @Buscar
+go
+
 
 --*****************************************BUSCADOR POR CLIENTE************************************************
 --Buscador mediante codigo
 Create Proc Buscar_Cliente_Codigo
 @Buscar varchar(50)
 as
-select * from Clientes where Codigo like @Buscar + '%'
+select * from Clientes where Codigo like @Buscar + '%' or Codigo like '%' + @Buscar + '%' or Codigo like '%' + @Buscar
 go
 
 --Buscador mediante Nombre
 Create Proc Buscar_Cliente_Nombre
 @Buscar varchar(50)
 as
-select * from Clientes where Nombre like @Buscar + '%'
+select * from Clientes where Nombre like @Buscar + '%' or Nombre like '%' + @Buscar + '%' or Nombre like '%' + @Buscar
 go
 
 --Buscador mediante RUC
 Create Proc Buscar_Cliente_RUC
 @Buscar varchar(50)
 as
-select * from Clientes where RUC_Cliente like @Buscar + '%'
+select * from Clientes where RUC_Cliente like @Buscar + '%' or RUC_Cliente like '%' + @Buscar + '%' or RUC_Cliente like '%' + @Buscar
 go
 
 
@@ -834,14 +908,14 @@ go
 Create Proc Buscar_Empresa_Nombre
 @Buscar varchar(50)
 as
-select * from Empresas where Nombre like @Buscar + '%'
+select * from Empresas where Nombre like @Buscar + '%' or Nombre like '%' + @Buscar + '%' or Nombre like '%' + @Buscar
 go
 
 --Buscador mediante RUC
 Create Proc Buscar_Empresa_RUC
 @Buscar varchar(50)
 as
-select * from Empresas where RUC_Empresa like @Buscar + '%'
+select * from Empresas where RUC_Empresa like @Buscar + '%' or RUC_Empresa like '%' + @Buscar + '%' or RUC_Empresa like '%' + @Buscar
 go
 
 
@@ -854,7 +928,7 @@ as
 select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
-where Nombre like @Buscar + '%' 
+where Nombre like @Buscar + '%' or Nombre like '%' + @Buscar + '%' or Nombre like '%' + @Buscar
 go
 
 --Buscar Ingreso de los productos por fecha
@@ -864,7 +938,7 @@ as
 select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
-where Fecha_Ingreso like @Buscar + '%' 
+where Fecha_Ingreso like @Buscar + '%' or Fecha_Ingreso like '%' + @Buscar + '%' or Fecha_Ingreso like '%' + @Buscar
 go
 
 --Buscar Ingreso de los productos por comprobante
@@ -874,7 +948,7 @@ as
 select ing.ID_Ingreso, ing.No_Ingreso, Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
-where Comprobante like @Buscar + '%' 
+where Comprobante like @Buscar + '%' or Comprobante like '%' + @Buscar + '%' or Comprobante like '%' + @Buscar
 go
 
 /******************************************VENTAS PRODUCTOS********************************************/
@@ -887,7 +961,7 @@ select  C.Nombre, V.No_Factura, V.Fecha_Venta, V.Comprobante, V.Sub_Total, v.Des
 		From Ventas V 
 inner join Clientes C on V.ID_Cliente=C.ID_Cliente
 inner join Acceso A on A.ID_Usuario=V.ID_Usuario
-where C.Nombre like @Buscar + '%' 
+where C.Nombre like @Buscar + '%' or C.Nombre like '%' + @Buscar + '%' or C.Nombre like '%' + @Buscar
 go
 
 --Buscar ventas comprobantes
@@ -899,9 +973,10 @@ select  C.Nombre, V.No_Factura, V.Fecha_Venta, V.Comprobante, V.Sub_Total, v.Des
 		From Ventas V 
 inner join Clientes C on V.ID_Cliente=C.ID_Cliente
 inner join Acceso A on A.ID_Usuario=V.ID_Usuario
-where V.Comprobante like @Buscar + '%' 
+where V.Comprobante like @Buscar + '%' or V.Comprobante like '%' + @Buscar + '%' or V.Comprobante like '%' + @Buscar 
 go
 
+-----------------------------------------------MOSTRAR VENTAS GENERALES-------------------------------------------------------------------
 --Mostrar ventas generales
 create proc Mostrar_ventas
 as
@@ -965,25 +1040,20 @@ group by C.Categoria
 order by count(2)
 go
 
-/*Create Proc FechaCadProduc1
-as
-select P.Nombre,COUNT(P.Nombre) as CanFechaCaducidad, C.Categoria from Detalle_Producto DP
-inner join Productos P on P.ID_Producto=DP.Id_Producto
-inner join Categoria C on C.ID_Categoria = p.ID_Categoria 
-group by P.Nombre, C.Categoria
-order by count(2)
-go*/
-
 Create Proc FechaCadProduc1
 as
-select cdp.Nombre,COUNT(cdp.Nombre) as CanFechaCaducidad, C.Categoria from Inventarios DP
+select DP.Nombre,COUNT(CDP.Fecha_caducidad) as CanFechaCaducidad, C.Categoria from Inventarios DP
 inner join Categoria C on C.ID_Categoria = DP.ID_Categoria 
 inner join Can_Detalle_Producto CDP on DP.Nombre =CDP.Nombre where CDP.Cantidad>0
-group by cdp.Nombre, C.Categoria 
+group by DP.Nombre, C.Categoria 
 order by count(2)
 go
 
-
+select DP.Nombre,COUNT(CDP.Fecha_caducidad) as CanFechaCaducidad, C.Categoria from Inventarios DP
+inner join Categoria C on C.ID_Categoria = DP.ID_Categoria 
+inner join Can_Detalle_Producto CDP on DP.Nombre =CDP.Nombre where CDP.Cantidad>0
+group by DP.Nombre, C.Categoria 
+order by count(2)
 
 -------------------------------------------------------TRIGGER-------------------------------------------------
 --LUEGO DE CREAR SE ENCUENTRAN DENTRO DE LA TABLA EN LA CARPETA "TRIGGERS"
@@ -1031,7 +1101,7 @@ select @ID_Inventario=ID_Producto,@Codigo=Codigo, @Nombre=Nombre,@Costo_Unitario
 		@Precio_Venta=Precio_venta,	@Tipo_Cargo=Tipo_Cargo, @ID_Categoria=ID_Categoria from inserted
 select @Cantidad=Cantidad from Inventarios where ID_Inventario=@ID_Inventario
 update Inventarios set	inventarios.Codigo=@Codigo,inventarios.Nombre=@Nombre,inventarios.Costo_Unitario=@Costo_Unitario,
-						inventarios.Precio_venta=@Precio_Venta,inventarios.Monto_Total=(@Cantidad-@Costo_Unitario),
+						inventarios.Precio_venta=@Precio_Venta,inventarios.Monto_Total=(@Cantidad*@Costo_Unitario),
 						inventarios.Tipo_Cargo=@Tipo_Cargo, inventarios.ID_Categoria=@ID_Categoria
 where ID_Inventario=@ID_Inventario
 go

@@ -67,7 +67,5 @@ namespace Capa_Dominio
         {
             return ObjProveedores.Buscar_Compras_Comprobante(Proveedores);
         }
-
-
     }
 }

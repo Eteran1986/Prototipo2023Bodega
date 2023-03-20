@@ -74,8 +74,8 @@
             this.cboTipoCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoCargo.FormattingEnabled = true;
             this.cboTipoCargo.Items.AddRange(new object[] {
-            "Iva 12%",
-            "Sin IVA"});
+            "IVA",
+            "SIN IVA"});
             this.cboTipoCargo.Location = new System.Drawing.Point(117, 219);
             this.cboTipoCargo.Name = "cboTipoCargo";
             this.cboTipoCargo.Size = new System.Drawing.Size(228, 26);

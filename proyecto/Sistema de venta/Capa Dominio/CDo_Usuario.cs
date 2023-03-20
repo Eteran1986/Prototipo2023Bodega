@@ -33,5 +33,22 @@ namespace Capa_Dominio
             ObjAcceso.LoginAcceso(Login);
         }
 
+        public DataTable Buscar_Adm_Nombre(CE_Usuario Login)
+        {
+            return ObjAcceso.Buscar_Adm_Nombre(Login);
+        }
+
+        //Metodo permite buscar los compra por nombre
+        public DataTable Buscar_Adm_Apellido(CE_Usuario Login)
+        {
+            return ObjAcceso.Buscar_Adm_Apellido(Login);
+        }
+
+        //Metodo permite buscar los compra por comprobante
+        public DataTable Buscar_Admi_Usuario(CE_Usuario Login)
+        {
+            return ObjAcceso.Buscar_Admi_Usuario(Login);
+        }
+
     }
 }

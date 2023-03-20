@@ -15,7 +15,9 @@ namespace CapaDatos
     public class CD_Ventas
     {
         CD_Conexion Con = new CD_Conexion();
-        private SqlCommand Cmd;
+        SqlCommand Cmd;
+        SqlDataAdapter Da;
+        DataTable Dt;
 
         public void AgregarVentas(CE_Ventas Ventas)
         {
@@ -65,7 +67,6 @@ namespace CapaDatos
                 Con.Cerrar();
             }
         }
-
         public void Parametros(CE_Ventas Ventas)
         {
             Cmd.Parameters.Add(new SqlParameter("@ID_Cliente", Ventas.ID_Cliente));
@@ -105,6 +106,48 @@ namespace CapaDatos
             return Dt;
         }
 
+        public DataTable Buscar_Ventas_Usuario(CE_Ventas Ventas)
+        {
+            Dt = new DataTable("Usuario");
+            Cmd = new SqlCommand("Buscar_Ventas_Usuario", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
 
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
+        //Buscar Compra por Nombre
+        public DataTable Buscar_Ventas_Nombre(CE_Ventas Ventas)
+        {
+            Dt = new DataTable("Cliente");
+            Cmd = new SqlCommand("Buscar_Ventas_Nombre", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
+
+        //Buscar Compra por comprobante
+        public DataTable Buscar_Ventas_Comprobante(CE_Ventas Ventas)
+        {
+            Dt = new DataTable("Comprobante");
+            Cmd = new SqlCommand("Buscar_Ventas_Comprobante", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", Ventas.Buscar));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
     }
 }

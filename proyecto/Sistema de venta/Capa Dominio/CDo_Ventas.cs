@@ -32,5 +32,23 @@ namespace Capa_Dominio
         {
             return ObjVentas.Mostrar_ProduVentas();
         }
+
+        public DataTable Buscar_Ventas_Usuario(CE_Ventas Ventas)
+        {
+            return ObjVentas.Buscar_Ventas_Usuario(Ventas);
+        }
+
+        //Metodo permite buscar los compra por nombre
+        public DataTable Buscar_Ventas_Nombre(CE_Ventas Ventas)
+        {
+            return ObjVentas.Buscar_Ventas_Nombre(Ventas);
+        }
+
+        //Metodo permite buscar los compra por comprobante
+        public DataTable Buscar_Ventas_Comprobante(CE_Ventas Ventas)
+        {
+            return ObjVentas.Buscar_Ventas_Comprobante(Ventas);
+        }
+
     }
 }

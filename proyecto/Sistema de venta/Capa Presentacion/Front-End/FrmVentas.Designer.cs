@@ -56,6 +56,7 @@
             this.TxtBuscar.Name = "TxtBuscar";
             this.TxtBuscar.Size = new System.Drawing.Size(389, 20);
             this.TxtBuscar.TabIndex = 35;
+            this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
             // 
             // CboTipoBusqueda
             // 
@@ -63,8 +64,8 @@
             this.CboTipoBusqueda.BackColor = System.Drawing.Color.GhostWhite;
             this.CboTipoBusqueda.FormattingEnabled = true;
             this.CboTipoBusqueda.Items.AddRange(new object[] {
-            "Codigo",
-            "Nombre",
+            "Usuario",
+            "Cliente",
             "Comprobante"});
             this.CboTipoBusqueda.Location = new System.Drawing.Point(548, 10);
             this.CboTipoBusqueda.Name = "CboTipoBusqueda";

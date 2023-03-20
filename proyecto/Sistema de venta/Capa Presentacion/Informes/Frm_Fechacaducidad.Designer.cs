@@ -38,6 +38,11 @@
             this.datos_Generales = new Capa_Presentacion.Informes.Datos_Generales();
             this.mostrarInfFechaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.BtnCorreo = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.BtnPdf = new System.Windows.Forms.Button();
+            this.Logounemi = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.BtnAplicarDias = new System.Windows.Forms.Button();
@@ -58,18 +63,13 @@
             this.mostrar_Inf_FechaTableAdapter1 = new Capa_Presentacion.Informes.Datos_GeneralesTableAdapters.Mostrar_Inf_FechaTableAdapter();
             this.RVRDias = new Microsoft.Reporting.WinForms.ReportViewer();
             this.mostrarInfFechaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.BtnCorreo = new System.Windows.Forms.Button();
-            this.BtnPdf = new System.Windows.Forms.Button();
-            this.Logounemi = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Mostrar_InformeFechacaducidadBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datos_Generales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarInfFechaBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logounemi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarInformeFechacaducidadBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarInfFechaBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Logounemi)).BeginInit();
             this.SuspendLayout();
             // 
             // Mostrar_InformeFechacaducidadBindingSource
@@ -112,6 +112,61 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(210, 642);
             this.panel1.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(107)))), ((int)(((byte)(68)))));
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label8.Location = new System.Drawing.Point(1, 375);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(216, 23);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Productos por vencer  ";
+            // 
+            // BtnCorreo
+            // 
+            this.BtnCorreo.Image = global::Capa_Presentacion.Properties.Resources.email;
+            this.BtnCorreo.Location = new System.Drawing.Point(128, 423);
+            this.BtnCorreo.Name = "BtnCorreo";
+            this.BtnCorreo.Size = new System.Drawing.Size(54, 54);
+            this.BtnCorreo.TabIndex = 15;
+            this.BtnCorreo.UseVisualStyleBackColor = true;
+            this.BtnCorreo.Click += new System.EventHandler(this.BtnCorreo_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(107)))), ((int)(((byte)(68)))));
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(1, 347);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(212, 28);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Generar Reporte ";
+            // 
+            // BtnPdf
+            // 
+            this.BtnPdf.Image = global::Capa_Presentacion.Properties.Resources.archivo_pdf;
+            this.BtnPdf.Location = new System.Drawing.Point(27, 422);
+            this.BtnPdf.Name = "BtnPdf";
+            this.BtnPdf.Size = new System.Drawing.Size(54, 54);
+            this.BtnPdf.TabIndex = 13;
+            this.BtnPdf.UseVisualStyleBackColor = true;
+            this.BtnPdf.Click += new System.EventHandler(this.BtnPdf_Click);
+            // 
+            // Logounemi
+            // 
+            this.Logounemi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.Logounemi.Image = global::Capa_Presentacion.Properties.Resources.LOGO_WEB_AZUL1;
+            this.Logounemi.Location = new System.Drawing.Point(6, 497);
+            this.Logounemi.Name = "Logounemi";
+            this.Logounemi.Size = new System.Drawing.Size(194, 133);
+            this.Logounemi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logounemi.TabIndex = 12;
+            this.Logounemi.TabStop = false;
             // 
             // label6
             // 
@@ -299,61 +354,6 @@
             this.mostrarInfFechaBindingSource1.DataMember = "Mostrar_Inf_Fecha";
             this.mostrarInfFechaBindingSource1.DataSource = this.datos_Generales;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(107)))), ((int)(((byte)(68)))));
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(1, 347);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(212, 28);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Generar Reporte ";
-            // 
-            // BtnCorreo
-            // 
-            this.BtnCorreo.Image = global::Capa_Presentacion.Properties.Resources.email;
-            this.BtnCorreo.Location = new System.Drawing.Point(128, 423);
-            this.BtnCorreo.Name = "BtnCorreo";
-            this.BtnCorreo.Size = new System.Drawing.Size(54, 54);
-            this.BtnCorreo.TabIndex = 15;
-            this.BtnCorreo.UseVisualStyleBackColor = true;
-            this.BtnCorreo.Click += new System.EventHandler(this.BtnCorreo_Click);
-            // 
-            // BtnPdf
-            // 
-            this.BtnPdf.Image = global::Capa_Presentacion.Properties.Resources.archivo_pdf;
-            this.BtnPdf.Location = new System.Drawing.Point(27, 422);
-            this.BtnPdf.Name = "BtnPdf";
-            this.BtnPdf.Size = new System.Drawing.Size(54, 54);
-            this.BtnPdf.TabIndex = 13;
-            this.BtnPdf.UseVisualStyleBackColor = true;
-            this.BtnPdf.Click += new System.EventHandler(this.BtnPdf_Click);
-            // 
-            // Logounemi
-            // 
-            this.Logounemi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.Logounemi.Image = global::Capa_Presentacion.Properties.Resources.LOGO_WEB_AZUL1;
-            this.Logounemi.Location = new System.Drawing.Point(6, 497);
-            this.Logounemi.Name = "Logounemi";
-            this.Logounemi.Size = new System.Drawing.Size(194, 133);
-            this.Logounemi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Logounemi.TabIndex = 12;
-            this.Logounemi.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(107)))), ((int)(((byte)(68)))));
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label8.Location = new System.Drawing.Point(1, 375);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(216, 23);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Productos por vencer  ";
-            // 
             // Frm_Fechacaducidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,9 +372,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mostrarInfFechaBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logounemi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarInformeFechacaducidadBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrarInfFechaBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Logounemi)).EndInit();
             this.ResumeLayout(false);
 
         }
