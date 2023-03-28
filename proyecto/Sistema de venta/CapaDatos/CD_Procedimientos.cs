@@ -37,7 +37,7 @@ namespace CapaDatos
         //Metodo que permite alternar los colores
         public void AlternarColorFilaDataGridView (DataGridView Dgv)
         {
-            Dgv.AlternatingRowsDefaultCellStyle.BackColor= Color.LightBlue;
+            Dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(254, 240, 206);
             Dgv.DefaultCellStyle.BackColor = Color.White;
         }
 
@@ -202,6 +202,5 @@ namespace CapaDatos
             Con.Cerrar();
             return Codigo;
         }
-
     }
 }

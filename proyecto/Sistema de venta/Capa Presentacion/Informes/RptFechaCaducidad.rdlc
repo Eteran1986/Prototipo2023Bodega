@@ -145,7 +145,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.4375in</Height>
+    <Height>0.66667in</Height>
     <Style />
   </Body>
   <Width>7.14676in</Width>
@@ -493,7 +493,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>2.06375cm</Height>
+      <Height>1.13771cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <Style>

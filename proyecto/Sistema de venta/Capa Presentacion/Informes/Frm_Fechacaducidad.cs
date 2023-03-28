@@ -99,8 +99,9 @@ namespace Capa_Presentacion
 
                 iTextSharp.text.Font standarfont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
                 iTextSharp.text.Font standarfont1 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.TIMES_ROMAN, 18, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                iTextSharp.text.Font standarfont2 = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
-  
+
                 DOC.Add(new Paragraph("                            INFORME DE PRODUCTOS POR CADUCAR", standarfont1));
                 DOC.Add(Chunk.NEWLINE);
 
@@ -120,12 +121,13 @@ namespace Capa_Presentacion
                 DOC.Add(Portada);
 
                 PdfPTable InformeReporte = new PdfPTable(3);
-                InformeReporte.WidthPercentage = 90;
+                float[] medidaCeldas = { 0.55f, 2.25f, 0.75f };
+                InformeReporte.SetWidths(medidaCeldas);
 
                 PdfPCell Cant = new PdfPCell(new Phrase("\nCantidad", standarfont));
                 Cant.BorderWidth = 0;
                 Cant.BorderWidthBottom = 0.75f;
-
+ 
                 PdfPCell Nom = new PdfPCell(new Phrase("\nNombre del Producto", standarfont));
                 Nom.BorderWidth = 0;
                 Nom.BorderWidthBottom = 0.75f;
@@ -146,13 +148,13 @@ namespace Capa_Presentacion
                 SqlDataReader Dr = Cmd.ExecuteReader();
                 while (Dr.Read())
                 {
-                    Cant = new PdfPCell(new Phrase(Convert.ToString(Dr.GetInt32(0))));
+                    Cant = new PdfPCell(new Phrase(Convert.ToString(Dr.GetInt32(0)),standarfont2));
                     Cant.BorderWidth = 0;
 
-                    Nom = new PdfPCell(new Phrase(Dr.GetString(1)));
+                    Nom = new PdfPCell(new Phrase(Dr.GetString(1),standarfont2));
                     Nom.BorderWidth = 0;
 
-                    Fechcad = new PdfPCell(new Phrase(Convert.ToString(Dr.GetDateTime(2).ToShortDateString())));
+                    Fechcad = new PdfPCell(new Phrase(Convert.ToString(Dr.GetDateTime(2).ToShortDateString()), standarfont2));
                     Fechcad.BorderWidth = 0;
 
                     InformeReporte.AddCell(Cant);
@@ -178,9 +180,9 @@ namespace Capa_Presentacion
                     Process.Start(@"C:\\Users\\Public\\Documents\\Reporte.pdf");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe de cerrar el pdf", "ReportePDF", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Debe de cerrar el pdf" +ex.Message , "ReportePDF", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
         private void Correo()

@@ -33,7 +33,7 @@ namespace Capa_Presentacion
             CargaDatos();
             dataGridView1.Columns[0].Visible = false;//id ingreso
             dataGridView1.Columns[1].Visible = false;//Nunemro de ingreso
-            dataGridView1.Columns[2].Width = 100;//Nombre proveedor
+            dataGridView1.Columns[2].Width = 200;//Nombre proveedor
             dataGridView1.Columns[3].Width = 180;//fecha de ingreso
             dataGridView1.Columns[4].Width = 150;//comprobante
             dataGridView1.Columns[5].Width = 150;//monto total

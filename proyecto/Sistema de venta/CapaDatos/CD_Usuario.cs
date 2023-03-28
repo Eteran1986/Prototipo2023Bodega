@@ -83,7 +83,8 @@ namespace CapaDatos
             //Validación de credencial antes de la notificacion para el mensaje de los productos caducados
             if(a==1)
             {
-                Cmd = new SqlCommand("SELECT Top 1 Fecha_caducidad, count(*) as ProductoFecha FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad", Con.Abrir());
+                //Cmd = new SqlCommand("SELECT Top 1 Fecha_caducidad, count(*) as ProductoFecha FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad", Con.Abrir());
+                Cmd = new SqlCommand("declare  @fecha date \r\nset @fecha=(select top 1 Fecha_caducidad from Can_Detalle_Producto where Cantidad>0 order by Fecha_caducidad)\r\nselect top 1 ROW_NUMBER() over( order by nombre) AS ProductoFecha, @fecha AS Fecha_caducidad from Can_Detalle_Producto where Fecha_caducidad = @fecha and Cantidad>0 group by Nombre order by nombre desc", Con.Abrir());
                 Cmd.CommandType = CommandType.Text;
                 SqlDataReader Da = Cmd.ExecuteReader();
                 Da.Read();

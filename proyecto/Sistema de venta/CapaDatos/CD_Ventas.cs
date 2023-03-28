@@ -149,5 +149,19 @@ namespace CapaDatos
             Con.Cerrar();
             return Dt;
         }
+
+        public DataTable MostrarInforme(CE_Ventas Ventas)
+        {
+            Dt = new DataTable("MostrarInforme");
+            Cmd = new SqlCommand("MostrarInforme", Con.Abrir());
+            Cmd.CommandType = CommandType.StoredProcedure;
+            Cmd.Parameters.Add(new SqlParameter("@Buscar", InformacionUsuario.Categoria));
+
+            Da = new SqlDataAdapter(Cmd);
+            Da.Fill(Dt);
+
+            Con.Cerrar();
+            return Dt;
+        }
     }
 }

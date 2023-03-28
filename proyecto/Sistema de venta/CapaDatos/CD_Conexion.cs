@@ -27,7 +27,5 @@ namespace CapaDatos
                 Conexion.Close();
             return Conexion;
         }
-
-
     }
 }

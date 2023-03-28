@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Capa_Dominio;
+using Capa_Entidad;
 using Capa_Entidad.Cache;
 using CapaDatos;
 namespace Capa_Presentacion
@@ -21,6 +22,9 @@ namespace Capa_Presentacion
         {
             InitializeComponent();
         }
+        CDo_Ventas Ventas= new CDo_Ventas();
+        CDo_Procedimientos procedimiento = new CDo_Procedimientos();
+        CE_Ventas venta =new CE_Ventas();
         SqlConnection Conexion = new SqlConnection("Server=DESKTOP-79UE8TF;DataBase=DBSYSVENBOD; Integrated Security=true");
         SqlCommand Cmd;
         SqlDataReader Dr;
@@ -90,6 +94,14 @@ namespace Capa_Presentacion
                          }
                 }
             StackerBar.Series[0].Points.DataBindXY(NombrePro, CanFechaCad);
+            InformacionUsuario.Categoria = CboCategoria.Text;
+            dataGridView1.DataSource = Ventas.MostrarInforme(venta);
+            dataGridView1.Columns[0].Width = 250;
+            dataGridView1.Columns[1].Width = 120;
+            dataGridView1.Columns[2].Width = 150;
+            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            procedimiento.AlternarColorFilaDataGridView(dataGridView1);
             Dr.Close();
             Conexion.Close();
         }

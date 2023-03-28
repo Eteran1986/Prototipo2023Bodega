@@ -61,6 +61,5 @@ namespace Capa_Dominio
         {
             return ObjProcedimientos.GenerarCodigoFact(Campo);
         }
-
     }
 }

@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LUsuarios = new System.Windows.Forms.Label();
@@ -50,6 +50,7 @@
             this.LProveedor = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.CboCategoria = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -71,6 +72,7 @@
             this.CircleCP = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -78,6 +80,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StackerBar)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -231,15 +234,26 @@
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.CboCategoria);
             this.groupBox4.Controls.Add(this.groupBox9);
             this.groupBox4.Controls.Add(this.StackerBar);
             this.groupBox4.Location = new System.Drawing.Point(452, 76);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1157, 987);
+            this.groupBox4.Size = new System.Drawing.Size(1157, 1068);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(107)))), ((int)(((byte)(68)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(288, 514);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(563, 369);
+            this.dataGridView1.TabIndex = 12;
             // 
             // label13
             // 
@@ -302,31 +316,61 @@
             // 
             this.StackerBar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.StackerBar.BackColor = System.Drawing.Color.Khaki;
-            chartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.Khaki;
-            chartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.Khaki;
-            chartArea4.BackColor = System.Drawing.Color.Khaki;
-            chartArea4.Name = "ChartArea1";
-            this.StackerBar.ChartAreas.Add(chartArea4);
-            legend4.AutoFitMinFontSize = 12;
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.StackerBar.Legends.Add(legend4);
-            this.StackerBar.Location = new System.Drawing.Point(88, 113);
+            chartArea13.AxisX.LogarithmBase = 4D;
+            chartArea13.AxisX.MajorGrid.LineColor = System.Drawing.Color.Khaki;
+            chartArea13.AxisX.ScaleBreakStyle.Spacing = 4D;
+            chartArea13.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea13.AxisX.TitleForeColor = System.Drawing.Color.IndianRed;
+            chartArea13.AxisX2.TitleForeColor = System.Drawing.Color.Bisque;
+            chartArea13.AxisY.MajorGrid.LineColor = System.Drawing.Color.Khaki;
+            chartArea13.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea13.BackColor = System.Drawing.Color.Khaki;
+            chartArea13.Name = "ChartArea1";
+            chartArea13.ShadowColor = System.Drawing.Color.LightGray;
+            this.StackerBar.ChartAreas.Add(chartArea13);
+            legend13.AutoFitMinFontSize = 8;
+            legend13.BackColor = System.Drawing.Color.Khaki;
+            legend13.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            legend13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend13.HeaderSeparatorColor = System.Drawing.Color.IndianRed;
+            legend13.IsTextAutoFit = false;
+            legend13.Name = "Legend1";
+            this.StackerBar.Legends.Add(legend13);
+            this.StackerBar.Location = new System.Drawing.Point(6, 122);
             this.StackerBar.Name = "StackerBar";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series4.IsValueShownAsLabel = true;
-            series4.IsVisibleInLegend = false;
-            series4.LabelForeColor = System.Drawing.Color.White;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Single;
-            this.StackerBar.Series.Add(series4);
-            this.StackerBar.Size = new System.Drawing.Size(985, 868);
+            this.StackerBar.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.StackerBar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            series13.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.BottomRight;
+            series13.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.TileFlipY;
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series13.CustomProperties = "MaxPixelPointWidth=30, LabelStyle=TopRight, EmptyPointValue=Zero, MinPixelPointWi" +
+    "dth=20, StackedGroupName=1";
+            series13.EmptyPointStyle.IsValueShownAsLabel = true;
+            series13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series13.IsValueShownAsLabel = true;
+            series13.IsXValueIndexed = true;
+            series13.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series13.LabelForeColor = System.Drawing.Color.White;
+            series13.Legend = "Legend1";
+            series13.MarkerSize = 2;
+            series13.Name = "Series1";
+            series13.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            series13.ShadowColor = System.Drawing.Color.Black;
+            series13.SmartLabelStyle.Enabled = false;
+            series13.SmartLabelStyle.IsMarkerOverlappingAllowed = true;
+            series13.SmartLabelStyle.MovingDirection = ((System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles)((((((System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Top | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Right) 
+            | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.Left) 
+            | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.TopRight) 
+            | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.BottomLeft) 
+            | System.Windows.Forms.DataVisualization.Charting.LabelAlignmentStyles.BottomRight)));
+            series13.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            series13.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.UInt32;
+            this.StackerBar.Series.Add(series13);
+            this.StackerBar.Size = new System.Drawing.Size(1124, 340);
             this.StackerBar.TabIndex = 7;
             this.StackerBar.Text = "chart1";
+            this.StackerBar.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.SystemDefault;
             // 
             // label11
             // 
@@ -357,26 +401,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CircleCF.BackColor = System.Drawing.Color.Khaki;
-            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Khaki;
-            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Khaki;
-            chartArea5.BackColor = System.Drawing.Color.Khaki;
-            chartArea5.Name = "ChartArea1";
-            this.CircleCF.ChartAreas.Add(chartArea5);
-            legend5.BackColor = System.Drawing.Color.Khaki;
-            legend5.Name = "Legend1";
-            this.CircleCF.Legends.Add(legend5);
+            chartArea14.AxisX.MajorGrid.LineColor = System.Drawing.Color.Khaki;
+            chartArea14.AxisY.MajorGrid.LineColor = System.Drawing.Color.Khaki;
+            chartArea14.BackColor = System.Drawing.Color.Khaki;
+            chartArea14.Name = "ChartArea1";
+            this.CircleCF.ChartAreas.Add(chartArea14);
+            legend14.BackColor = System.Drawing.Color.Khaki;
+            legend14.Name = "Legend1";
+            this.CircleCF.Legends.Add(legend14);
             this.CircleCF.Location = new System.Drawing.Point(18, 82);
             this.CircleCF.Name = "CircleCF";
             this.CircleCF.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series5.IsValueShownAsLabel = true;
-            series5.LabelForeColor = System.Drawing.Color.White;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            series5.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            this.CircleCF.Series.Add(series5);
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series14.IsValueShownAsLabel = true;
+            series14.LabelForeColor = System.Drawing.Color.White;
+            series14.Legend = "Legend1";
+            series14.Name = "Series1";
+            series14.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.CircleCF.Series.Add(series14);
             this.CircleCF.Size = new System.Drawing.Size(395, 298);
             this.CircleCF.TabIndex = 8;
             this.CircleCF.Text = "chart2";
@@ -497,26 +541,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CircleCP.BackColor = System.Drawing.Color.Khaki;
-            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.Khaki;
-            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Khaki;
-            chartArea6.BackColor = System.Drawing.Color.Khaki;
-            chartArea6.Name = "ChartArea1";
-            this.CircleCP.ChartAreas.Add(chartArea6);
-            legend6.BackColor = System.Drawing.Color.Khaki;
-            legend6.Name = "Legend1";
-            this.CircleCP.Legends.Add(legend6);
+            chartArea15.AxisX.MajorGrid.LineColor = System.Drawing.Color.Khaki;
+            chartArea15.AxisY.MajorGrid.LineColor = System.Drawing.Color.Khaki;
+            chartArea15.BackColor = System.Drawing.Color.Khaki;
+            chartArea15.Name = "ChartArea1";
+            this.CircleCP.ChartAreas.Add(chartArea15);
+            legend15.BackColor = System.Drawing.Color.Khaki;
+            legend15.Name = "Legend1";
+            this.CircleCP.Legends.Add(legend15);
             this.CircleCP.Location = new System.Drawing.Point(18, 82);
             this.CircleCP.Name = "CircleCP";
             this.CircleCP.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series6.IsValueShownAsLabel = true;
-            series6.LabelForeColor = System.Drawing.Color.White;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            series6.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            this.CircleCP.Series.Add(series6);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series15.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series15.IsValueShownAsLabel = true;
+            series15.LabelForeColor = System.Drawing.Color.White;
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            series15.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.CircleCP.Series.Add(series15);
             this.CircleCP.Size = new System.Drawing.Size(395, 298);
             this.CircleCP.TabIndex = 8;
             this.CircleCP.Text = "chart2";
@@ -550,6 +594,17 @@
             this.groupBox10.TabIndex = 12;
             this.groupBox10.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(320, 483);
+            this.label5.Margin = new System.Windows.Forms.Padding(3, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(494, 28);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Productos - Número de Fecha - Cantidad";
+            // 
             // FrmDashboardcs
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -579,6 +634,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StackerBar)).EndInit();
@@ -635,5 +691,7 @@
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -209,6 +209,8 @@ namespace Capa_Presentacion
                 {
                     TxtDescuento.Focus();
                     e.Handled = true;
+                    TxtDescuento.Text = Convert.ToString(0);
+                    CalcularIVA();
                 }
             }
         }
@@ -340,7 +342,6 @@ namespace Capa_Presentacion
                     TxtNoCOmprobnte.Text == string.Empty)
                 {
                     MessageBox.Show("Debe completar todos los Campos por favor", "Agregar Venta Producto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
                 }
                 else
                 {
@@ -386,6 +387,7 @@ namespace Capa_Presentacion
                     LimpiarDetalle();
                     LimpiarCampo();
                     GenerarCorrelativos();
+                    TxtValorIva.Text = ValorIVA.ToString() + "%";
                     return true;
                 }
             }
@@ -458,6 +460,5 @@ namespace Capa_Presentacion
                     break;
             }
         }
-
     }
 }

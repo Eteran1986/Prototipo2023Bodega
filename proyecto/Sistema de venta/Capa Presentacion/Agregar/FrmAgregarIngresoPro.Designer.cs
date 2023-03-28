@@ -77,7 +77,7 @@ namespace Capa_Presentacion
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(660, 533);
+            this.btnCancelar.Location = new System.Drawing.Point(818, 533);
             // 
             // groupBox1
             // 
@@ -95,7 +95,7 @@ namespace Capa_Presentacion
             this.groupBox1.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(769, 90);
+            this.groupBox1.Size = new System.Drawing.Size(926, 90);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de Producto";
@@ -107,7 +107,7 @@ namespace Capa_Presentacion
             this.BtnBuscarProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscarProveedor.Image = global::Capa_Presentacion.Properties.Resources.buscardor;
             this.BtnBuscarProveedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnBuscarProveedor.Location = new System.Drawing.Point(495, 47);
+            this.BtnBuscarProveedor.Location = new System.Drawing.Point(620, 47);
             this.BtnBuscarProveedor.Name = "BtnBuscarProveedor";
             this.BtnBuscarProveedor.Size = new System.Drawing.Size(30, 26);
             this.BtnBuscarProveedor.TabIndex = 31;
@@ -117,7 +117,7 @@ namespace Capa_Presentacion
             // TxtIdProveedor
             // 
             this.TxtIdProveedor.BackColor = System.Drawing.Color.Linen;
-            this.TxtIdProveedor.Location = new System.Drawing.Point(389, 18);
+            this.TxtIdProveedor.Location = new System.Drawing.Point(364, 18);
             this.TxtIdProveedor.Multiline = true;
             this.TxtIdProveedor.Name = "TxtIdProveedor";
             this.TxtIdProveedor.Size = new System.Drawing.Size(24, 26);
@@ -138,7 +138,7 @@ namespace Capa_Presentacion
             // TxtComprobante
             // 
             this.TxtComprobante.BackColor = System.Drawing.Color.Linen;
-            this.TxtComprobante.Location = new System.Drawing.Point(538, 47);
+            this.TxtComprobante.Location = new System.Drawing.Point(663, 47);
             this.TxtComprobante.Multiline = true;
             this.TxtComprobante.Name = "TxtComprobante";
             this.TxtComprobante.Size = new System.Drawing.Size(213, 26);
@@ -150,7 +150,7 @@ namespace Capa_Presentacion
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(535, 28);
+            this.label3.Location = new System.Drawing.Point(660, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 16);
             this.label3.TabIndex = 4;
@@ -159,11 +159,11 @@ namespace Capa_Presentacion
             // TxtNomProveedor
             // 
             this.TxtNomProveedor.BackColor = System.Drawing.Color.Linen;
-            this.TxtNomProveedor.Location = new System.Drawing.Point(247, 47);
+            this.TxtNomProveedor.Location = new System.Drawing.Point(222, 47);
             this.TxtNomProveedor.Multiline = true;
             this.TxtNomProveedor.Name = "TxtNomProveedor";
             this.TxtNomProveedor.ReadOnly = true;
-            this.TxtNomProveedor.Size = new System.Drawing.Size(242, 26);
+            this.TxtNomProveedor.Size = new System.Drawing.Size(390, 26);
             this.TxtNomProveedor.TabIndex = 3;
             // 
             // label2
@@ -171,7 +171,7 @@ namespace Capa_Presentacion
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label2.Location = new System.Drawing.Point(244, 28);
+            this.label2.Location = new System.Drawing.Point(219, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 16);
             this.label2.TabIndex = 2;
@@ -184,7 +184,7 @@ namespace Capa_Presentacion
             this.TxtNoIngreso.Multiline = true;
             this.TxtNoIngreso.Name = "TxtNoIngreso";
             this.TxtNoIngreso.ReadOnly = true;
-            this.TxtNoIngreso.Size = new System.Drawing.Size(213, 26);
+            this.TxtNoIngreso.Size = new System.Drawing.Size(191, 26);
             this.TxtNoIngreso.TabIndex = 1;
             // 
             // label1
@@ -206,7 +206,7 @@ namespace Capa_Presentacion
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Image = global::Capa_Presentacion.Properties.Resources.guardar;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(534, 533);
+            this.btnAgregar.Location = new System.Drawing.Point(692, 533);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(120, 30);
             this.btnAgregar.TabIndex = 30;
@@ -278,7 +278,7 @@ namespace Capa_Presentacion
             this.TxtNombreProducto.Multiline = true;
             this.TxtNombreProducto.Name = "TxtNombreProducto";
             this.TxtNombreProducto.ReadOnly = true;
-            this.TxtNombreProducto.Size = new System.Drawing.Size(242, 26);
+            this.TxtNombreProducto.Size = new System.Drawing.Size(347, 26);
             this.TxtNombreProducto.TabIndex = 3;
             // 
             // label6
@@ -319,7 +319,7 @@ namespace Capa_Presentacion
             this.BtnBuscarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnBuscarProducto.Image = global::Capa_Presentacion.Properties.Resources.buscardor;
             this.BtnBuscarProducto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnBuscarProducto.Location = new System.Drawing.Point(514, 47);
+            this.BtnBuscarProducto.Location = new System.Drawing.Point(619, 47);
             this.BtnBuscarProducto.Name = "BtnBuscarProducto";
             this.BtnBuscarProducto.Size = new System.Drawing.Size(30, 26);
             this.BtnBuscarProducto.TabIndex = 31;
@@ -331,7 +331,7 @@ namespace Capa_Presentacion
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label5.Location = new System.Drawing.Point(40, 79);
+            this.label5.Location = new System.Drawing.Point(652, 28);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 16);
             this.label5.TabIndex = 32;
@@ -340,7 +340,7 @@ namespace Capa_Presentacion
             // TxtCostoUnitario
             // 
             this.TxtCostoUnitario.BackColor = System.Drawing.Color.Linen;
-            this.TxtCostoUnitario.Location = new System.Drawing.Point(43, 98);
+            this.TxtCostoUnitario.Location = new System.Drawing.Point(655, 47);
             this.TxtCostoUnitario.Multiline = true;
             this.TxtCostoUnitario.Name = "TxtCostoUnitario";
             this.TxtCostoUnitario.Size = new System.Drawing.Size(213, 26);
@@ -354,7 +354,7 @@ namespace Capa_Presentacion
             this.BtnEliminarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnEliminarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEliminarProducto.Image = global::Capa_Presentacion.Properties.Resources.cancelar;
-            this.BtnEliminarProducto.Location = new System.Drawing.Point(574, 79);
+            this.BtnEliminarProducto.Location = new System.Drawing.Point(879, 81);
             this.BtnEliminarProducto.Name = "BtnEliminarProducto";
             this.BtnEliminarProducto.Size = new System.Drawing.Size(30, 26);
             this.BtnEliminarProducto.TabIndex = 34;
@@ -368,7 +368,7 @@ namespace Capa_Presentacion
             this.BtnAgregarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAgregarProducto.Image = global::Capa_Presentacion.Properties.Resources.agregar;
-            this.BtnAgregarProducto.Location = new System.Drawing.Point(574, 45);
+            this.BtnAgregarProducto.Location = new System.Drawing.Point(879, 47);
             this.BtnAgregarProducto.Name = "BtnAgregarProducto";
             this.BtnAgregarProducto.Size = new System.Drawing.Size(30, 26);
             this.BtnAgregarProducto.TabIndex = 35;
@@ -431,7 +431,7 @@ namespace Capa_Presentacion
             this.groupBox2.ForeColor = System.Drawing.Color.DarkCyan;
             this.groupBox2.Location = new System.Drawing.Point(12, 101);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(769, 137);
+            this.groupBox2.Size = new System.Drawing.Size(926, 137);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle de Producto";
@@ -512,14 +512,14 @@ namespace Capa_Presentacion
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(768, 283);
+            this.dataGridView1.Size = new System.Drawing.Size(926, 283);
             this.dataGridView1.TabIndex = 35;
             // 
             // FrmAgregarIngresoPro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 575);
+            this.ClientSize = new System.Drawing.Size(950, 575);
             this.Controls.Add(this.TxtTotalPagar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dataGridView1);

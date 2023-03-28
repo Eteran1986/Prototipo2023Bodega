@@ -531,6 +531,7 @@
     <None Include="Resources\usuario.png" />
     <None Include="Resources\archivo-pdf.png" />
     <None Include="Resources\email.png" />
+    <None Include="Resources\proveedor1.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

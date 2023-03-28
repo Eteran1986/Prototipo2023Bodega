@@ -49,6 +49,10 @@ namespace Capa_Dominio
         {
             return ObjVentas.Buscar_Ventas_Comprobante(Ventas);
         }
+        public DataTable MostrarInforme(CE_Ventas Ventas)
+        {
+            return ObjVentas.MostrarInforme(Ventas);
+        }
 
     }
 }

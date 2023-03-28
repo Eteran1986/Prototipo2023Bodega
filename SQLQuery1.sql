@@ -439,6 +439,7 @@ as
 select ing.ID_Ingreso, ing.Id_Proveedor, ing.No_Ingreso ,Pro.Nombre as 'Nombre Proveedor', Ing.Fecha_Ingreso, Ing.Comprobante, Ing.Monto_Total,Ing.Estado 
 				  From Ingreso_Producto Ing inner join Proveedores Pro
 				  on Ing.Id_Proveedor=Pro.ID_Proveedor
+				  order by Ing.No_Ingreso
 go
 
 
@@ -742,7 +743,7 @@ go
 Create Proc Buscar_ProductoVentas_Codigo
 @Buscar varchar(50)
 as
-select P.Codigo,P.Nombre as 'Nombre Producto',P.Tipo_Cargo as 'Cargo', P.Precio_venta as 'Precio Ventas', I.Cantidad, P.Presentacion from Productos P 
+select p.ID_Producto, P.Codigo,P.Nombre as 'Nombre Producto',P.Tipo_Cargo as 'Cargo', P.Precio_venta as 'Precio Ventas', I.Cantidad, P.Presentacion from Productos P 
 inner join Inventarios I on I.Nombre=P.Nombre
 where P.Codigo like @Buscar + '%' or P.Codigo like '%' + @Buscar + '%' or P.Codigo like '%' + @Buscar
 go
@@ -751,7 +752,7 @@ go
 Create Proc Buscar_ProductoVentas_Nombre
 @Buscar varchar(50)
 as
-select P.Codigo,P.Nombre as 'Nombre Producto',P.Tipo_Cargo as 'Cargo', P.Precio_venta as 'Precio Ventas', I.Cantidad, P.Presentacion from Productos P 
+select p.ID_Producto, P.Codigo,P.Nombre as 'Nombre Producto',P.Tipo_Cargo as 'Cargo', P.Precio_venta as 'Precio Ventas', I.Cantidad, P.Presentacion from Productos P 
 inner join Inventarios I on I.Nombre=P.Nombre
 where P.Nombre like @Buscar + '%' or P.Nombre like '%' + @Buscar + '%' or P.Nombre like '%' + @Buscar
 go
@@ -976,6 +977,17 @@ inner join Acceso A on A.ID_Usuario=V.ID_Usuario
 where V.Comprobante like @Buscar + '%' or V.Comprobante like '%' + @Buscar + '%' or V.Comprobante like '%' + @Buscar 
 go
 
+---------------------------------------------------------------------------------------------------------------------
+Create proc MostrarInforme
+@Buscar nvarchar(100)
+as
+select DP.Nombre as 'Nombre del Producto',COUNT(CDP.Fecha_caducidad) as 'Cantidad de Fecha', DP.Cantidad as 'Cantidad de Productos' from Inventarios DP
+inner join Categoria C on C.ID_Categoria = DP.ID_Categoria 
+inner join Can_Detalle_Producto CDP on DP.Nombre =CDP.Nombre where CDP.Cantidad>0 and Categoria=@Buscar
+group by DP.Nombre,dp.Cantidad 
+order by count(2)
+go
+
 -----------------------------------------------MOSTRAR VENTAS GENERALES-------------------------------------------------------------------
 --Mostrar ventas generales
 create proc Mostrar_ventas
@@ -989,13 +1001,12 @@ go
 
 
 ------------------------------------------------------REPORTE CORREO ELECTRONICO------------------------------------------------
-create proc InformeReporte
+alter proc InformeReporte
 as
 declare @san datetime
 set @san = (SELECT Top 1 Fecha_caducidad FROM Can_Detalle_Producto where Cantidad>0 group by Fecha_caducidad order by Fecha_caducidad) 
-select Cantidad, Nombre, Fecha_caducidad from Can_Detalle_Producto where Cantidad > 0 and Fecha_caducidad=@san order by Fecha_caducidad 
+select sum(cantidad) as Cantidad, Nombre, @san as 'fecha de caducidad' from Can_Detalle_Producto where Cantidad > 0 and Fecha_caducidad=@san group by Nombre 
 go
-
 
 -------------------------------------------------------PRODUCTOS-VENTAS-----------------------------------------------------------------------------
 
@@ -1049,11 +1060,7 @@ group by DP.Nombre, C.Categoria
 order by count(2)
 go
 
-select DP.Nombre,COUNT(CDP.Fecha_caducidad) as CanFechaCaducidad, C.Categoria from Inventarios DP
-inner join Categoria C on C.ID_Categoria = DP.ID_Categoria 
-inner join Can_Detalle_Producto CDP on DP.Nombre =CDP.Nombre where CDP.Cantidad>0
-group by DP.Nombre, C.Categoria 
-order by count(2)
+
 
 -------------------------------------------------------TRIGGER-------------------------------------------------
 --LUEGO DE CREAR SE ENCUENTRAN DENTRO DE LA TABLA EN LA CARPETA "TRIGGERS"
@@ -1200,8 +1207,20 @@ Declare @nombre varchar(50)
 select @ID_Inventario=ID_Producto,@Cantidad=Cantidad from inserted
 select @nombre=(select nombre from Productos P where P.ID_Producto=@ID_Inventario)
 select @Stock_Actual=Cantidad, @idcan=ID_Can_Detalle from Can_Detalle_Producto where Cantidad>0 and Nombre=@nombre order by Fecha_caducidad desc
-update Can_Detalle_Producto Set Can_Detalle_Producto.Cantidad=@Stock_Actual-@Cantidad
-where @idcan=Can_Detalle_Producto.ID_Can_Detalle
+while (@Cantidad !=0)
+begin
+	IF(@Cantidad>@Stock_Actual)
+		BEGIN
+		update Can_Detalle_Producto Set Can_Detalle_Producto.Cantidad=0 where @idcan=Can_Detalle_Producto.ID_Can_Detalle
+		set @Cantidad=@Cantidad-@Stock_Actual
+		select @Stock_Actual=Cantidad, @idcan=ID_Can_Detalle from Can_Detalle_Producto where Cantidad>0 and Nombre=@nombre order by Fecha_caducidad desc
+		CONTINUE
+		END
+	ELSE
+		update Can_Detalle_Producto Set Can_Detalle_Producto.Cantidad=@Stock_Actual-@Cantidad
+		where @idcan=Can_Detalle_Producto.ID_Can_Detalle
+		set @Cantidad= 0
+end
 go
 
 Create Trigger Tr_Aumentar_producto_inventario
